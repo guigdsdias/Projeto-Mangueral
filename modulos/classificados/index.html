@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="pmApp">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Jardins Mangueiral</title>
+
+<!-- jquery -->
+<script src="js/jquery-2.1.1.min.js"></script>
+
+<!-- kendoui -->
+<script src="http://cdn.kendostatic.com/2013.2.716/js/kendo.all.min.js"></script>
+<link href='http://cdn.kendostatic.com/2013.2.716/styles/kendo.common.min.css' rel='stylesheet' />
+<link href='http://cdn.kendostatic.com/2013.2.716/styles/kendo.bootstrap.min.css' rel='stylesheet' />
+
+<!-- AngularJS -->
+<script data-require="angular.js@1.2.x" src="http://code.angularjs.org/1.2.4/angular.js" data-semver="1.2.1"></script>
+<script data-require="angular.js@1.2.x" src="http://code.angularjs.org/1.2.4/angular-route.js" ></script>
+<script data-require="angular.js@1.2.x" src="http://code.angularjs.org/1.2.4/i18n/angular-locale_pt-br.js" ></script>
+
+
+<!-- Bootstrap Core CSS -->
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+<!-- Font Awesome CSS -->
+<link href="css/font-awesome.min.css" rel="stylesheet" />
+
+<!-- Custom CSS -->
+<link href="css/animate.css" rel="stylesheet" />
+
+<!-- Custom CSS -->
+<link href="css/style.css" rel="stylesheet" />
+
+<!-- Custom Fonts -->
+<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css' />
+
+<!-- http://plnkr.co/vendor/select2/select2.css -->
+
+
+<!-- vendor js -->
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="js/jquery.appear.js"></script>
+<script src="js/contact_me.js"></script>
+<script src="js/jqBootstrapValidation.js"></script>
+<script src="js/modernizr.custom.js"></script>
+<script src="js/script.js"></script>
+<script src="js/angular-kendo.js"></script>
+
+<!-- kendoui -->
+<!-- <script src="http://kendo.cdn.telerik.com/2016.1.226/js/kendo.all.min.js"></script> -->
+
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript" src="angular/router.js"></script>
+    <script type="text/javascript" src="spa/resources/pm-constants.js"></script>
+    <script type="text/javascript" src="spa/resources/pm-directives.js"></script>
+    <script type="text/javascript" src="spa/resources/pm-services.js"></script>
+
+    <!-- controllers -->
+    <script type="text/javascript" src="spa/index-controller.js"></script>
+    <script type="text/javascript" src="spa/pages/home/home-controller.js"></script>
+    <script type="text/javascript" src="spa/pages/subcategoria/sub-categoria-controller.js"></script>
+    <script type="text/javascript" src="spa/includes/home/carousel-controller.js"></script>
+
+    <script>
+
+    </script>
+
+</head>
+
+<body data-ng-controller="indexController as ctrl">
+
+    <!-- Start Logo Section -->
+    <section id="logo-section" class="text-center" data-ng-include="'spa/includes/home/logo.html'"></section>
+    <!-- End Logo Section -->
+
+    <!-- menu -->
+    <div class="menuTop text-right">
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-left">
+                    <span>Você procura, nós encontramos!</span>
+                </div>
+                <div class="col-md-6">
+                    <a href="/admin">Admin</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Start Main Body Section -->
+    <div class="mainbody-section text-center">
+        <div class="container" data-ng-controller="homeController as home">
+
+            <!-- CONTEUDO da navegação do "Router"  -->
+            <!-- <div class="row" data-ng-view> </div> -->
+            <div class="row" data-ng-include="ctrl.includes.home"></div>
+
+        </div>
+    </div>
+    <!-- End Main Body Section -->
+
+    <!-- Start Copyright Section -->
+    <div class="copyright text-center" data-ng-include="ctrl.includes.copyright"></div>
+    <!-- End Copyright Section -->
+
+    <script type="text/javascript" src="spa/modals/home/feature-controller.js"></script>
+    <div data-ng-include="ctrl.includes.modal.modals">
+
+    </div>    
+</body>
+
+</html>

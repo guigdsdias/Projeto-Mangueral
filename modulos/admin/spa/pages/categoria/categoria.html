@@ -1,0 +1,130 @@
+<h1>Cadastro de Categoria</h1>
+<!-- {{vm.listaCategoria}} -->
+<br>
+<!-- <table ng-table="vm.tableParams" class="table table-condensed table-bordered table-striped"> -->
+<table ng-table="vm.tableParams" show-filter="true" class="table ng-table-resizable-columns ng-table-rowselected table-bordered" data-resizable-columns-id="vm.myTable">
+	<!-- <table ng-table="vm.tableParams" class="table" show-filter="false"> -->
+	<thead>
+		<tr>
+			<th>Nome</th>
+			<th>Cor</th>
+			<th>Ícone</th>
+			<th>Ordem</th>
+			<th>&nbsp;</th>
+		</tr>
+	</thead>
+	<tbody ui:sortable="vm.sortableOptions" ng:model="vm.listaCategoria">
+
+		<tr ng-repeat="item in $data"
+		ng-click="item.$selected = !item.$selected; vm.changeSelection(item)"
+		ng-class="{'active': item.$selected}" class="item" style="cursor: move;">
+
+			<td data-title="'Nome'" header-class="text-left" header-data-id="junk" sortable="'nome'" filter="{ 'nome': 'text' }">
+				{{item.nome}}
+			</td>
+
+			<td data-title="'Cor'" header-class="text-right" class="text-right" sortable="'cor'" filter="{ 'cor': 'text' }">
+				{{item.cor}}
+			</td>
+
+			<td data-title="'Ícone'" header-class="text-right" class="text-right" sortable="'fa_icone'" filter="{ 'fa_icone': 'text' }">
+				<a href="#"><i class="fa {{item.fa_icone}}" aria-hidden="true" style="font-size: 20px;"></i></a>
+			</td>
+
+			<td data-title="'Ordem'" header-class="text-center" class="text-center" sortable="'ordem'" filter="{ 'ordem': 'integer' }">
+				{{item.ordem}}
+			</td>
+
+			<td>
+				<div class="btn-group" role="group" aria-label="..." style="width: 95px;">
+					<button type="button" class="btn btn-default">
+						<i class="fa fa-edit" aria-hidden="true" style="font-size:20px;color:#0044cc;"></i>
+					</button>
+					<button type="button" class="btn btn-default">
+						<i class="fa fa-trash" aria-hidden="true" style="font-size:20px;color:#bd362f;"></i>
+					</button>
+				</div>
+			</td>
+<!--               <td>
+              	<a href="#"><i class="fa fa-edit" aria-hidden="true" style="font-size:20px;color:#0044cc;"></i></a>              	
+              </td>
+
+              <td>
+              	<a href="#"><i class="fa fa-trash" aria-hidden="true" style="font-size:20px;color:#bd362f;"></i></a>              	
+              </td> -->
+          </tr>
+
+	    <!-- <tr ng-repeat="categoria in $data">
+	        <td title="'Nome'">{{categoria.nome}}</td>
+	        <td title="'Cor'">{{categoria.cor}}</td>
+	    </tr> -->
+	</tbody>
+</table>
+
+<!-- <table class="table table-bordered table-striped ng-scope" ng-grid="">
+	<thead>
+		<tr>
+			<th>Nome</th>
+			<th>Cor</th>
+			<th>Ícone</th>
+			<th>Ordem</th>
+		</tr>
+	</thead>
+    <tbody ui:sortable ng:model="vm.data">
+		<tr data-ng-repeat="cat in vm.listaCategoria">
+			<td>{{cat.nome}}</td>
+			<td>{{cat.cor}}</td>
+			<td>{{cat.fa_icone}}</td>
+			<td>{{cat.ordem}}</td>
+		</tr>
+
+	</tbody>
+</table> -->
+
+<!-- <table class="table table-bordered table-striped" ng-grid>  		 -->
+<!-- <legend>Categorias</legend> -->
+<!-- <tr ng-repeat="categoria in vm.listaCategoria"> -->
+<!-- <td title="Nome">{{categoria.nome}}</td> -->
+<!-- <td title="Cor">{{categoria.cor}}</td> -->
+<!-- <td title="Ícone">{{categoria.fa_icone}}</td>	 -->
+<!-- <td title="Ordem">{{categoria.ordem}}</td> -->
+<!-- </tr>		   -->
+<!-- </table> -->
+
+<style>
+
+	a:link{text-decoration:none;}
+
+	.rc-handle-container { position: relative; }
+
+	.rc-handle {
+		position: absolute;
+		width: 7px;
+		cursor: ew-resize;
+		margin-left: -3px;
+		z-index: 2; }
+
+		table.rc-table-resizing { cursor: ew-resize; }
+		table.rc-table-resizing thead, table.rc-table-resizing thead > th, table.rc-table-resizing thead > th > a { cursor: ew-resize; }
+		.item, .placeholder {
+			padding: 0px;
+			width: 50px;
+			height: 20px;
+			/* border: 1px solid #333; */
+			/* background: #EEE; */
+		}
+
+		.placeholder {
+			background: #AEF;
+		}
+
+		.ui-sortable-helper  {
+			border: 2px solid #159E5C;
+			border-radius: 5px;
+			background: #EEE;
+		}
+
+		.ui-sortable-helper td {
+			border: none !important;
+		}
+	</style>

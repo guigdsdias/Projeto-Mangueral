@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    
+    <script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+    <script src="https://rawgit.com/esvit/ng-table/master/dist/ng-table.js"></script>
+    <script src="https://rawgit.com/esvit/ng-table-resizable-columns/master/ng-table-resizable-columns.src.js"></script>
+    <script src="https://rawgit.com/marcuswestin/store.js/master/store.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.min.js"></script>
+    
+    <link rel="stylesheet" href="https://rawgit.com/esvit/ng-table/master/ng-table.css">
+
+  
+</head>
+<body ng-app="main">
+
+<h1>ngTable Drag and Drop Rows</h1>
+
+<div ng-controller="DemoCtrl">
+
+    <table ng-table="tableParams" show-counts="false" show-filter="true" class="table ng-table-resizable-columns ng-table-rowselected table-bordered" data-resizable-columns-id="myTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody ui:sortable ng:model="data">
+          <tr ng-repeat="user in $data"
+              ng-click="user.$selected = !user.$selected; changeSelection(user)"
+              ng-class="{'active': user.$selected}"
+              class="item" style="cursor: move;">
+              <td data-title="'Name'" header-class="text-left" header-data-id="junk" sortable="'name'" filter="{ 'name': 'text' }">
+                  {{user.name}}
+              </td>
+              <td data-title="'Age'" header-class="text-right" class="text-right" sortable="'age'" filter="{ 'age': 'text' }">
+                  {{user.age}}
+              </td>
+          </tr>
+        </tbody>
+    </table>
+
+
+
+<script>
+    var app = angular.module('main', ['ngTable', 'ngTableResizableColumns', 'ui']).
+            controller('DemoCtrl', function ($scope, $filter, ngTableParams) {
+                var data = [
+                    {name: "Moroni blah blah this is long text", age: 50},
+                    {name: "Tiancum", age: 43},
+                    {name: "Jacob", age: 27},
+                    {name: "Nephi", age: 29},
+                    {name: "Enos", age: 34},
+                    {name: "Tiancum", age: 43},
+                    {name: "Jacob", age: 27},
+                    {name: "Nephi", age: 29},
+                    {name: "Enos", age: 34},
+                    {name: "Tiancum", age: 43},
+                    {name: "Jacob", age: 27},
+                    {name: "Nephi", age: 29},
+                    {name: "Enos", age: 34},
+                    {name: "Tiancum", age: 43},
+                    {name: "Jacob", age: 27},
+                    {name: "Nephi", age: 29},
+                    {name: "Enos", age: 34}
+                ];
+                $scope.lista = data;
+
+                $scope.tableParams = new ngTableParams({
+                    page: 1,            // show first page
+                    count: 10,          // count per page
+                    filter: {
+                        //name: 'M'       // initial filter
+                    },
+                    sorting: {
+                        //name: 'asc'     // initial sorting
+                    }
+                }, {
+                    total: $scope.lista.length, // length of data
+                    getData: function ($defer, params) {
+                        // use build-in angular filter
+                        var filteredData = params.filter() ?
+                                $filter('filter')($scope.lista, params.filter()) :
+                                $scope.lista;
+                        var orderedData = params.sorting() ?
+                                $filter('orderBy')(filteredData, params.orderBy()) :
+                                $scope.lista;
+
+                        params.total(orderedData.length); // set total for recalc pagination
+                        $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+                    }
+                });
+
+                $scope.changeSelection = function(user) {
+                    // console.info(user);
+                }
+            })
+</script>
+
+<style>
+.rc-handle-container {
+  position: relative; }
+
+.rc-handle {
+  position: absolute;
+  width: 7px;
+  cursor: ew-resize;
+  margin-left: -3px;
+  z-index: 2; }
+
+table.rc-table-resizing {
+  cursor: ew-resize; }
+  table.rc-table-resizing thead, table.rc-table-resizing thead > th, table.rc-table-resizing thead > th > a {
+    cursor: ew-resize; }
+    
+  .item, .placeholder {
+      padding: 2px;
+      width: 50px;
+      height: 20px;
+      border: 1px solid #333;
+      /* background: #EEE; */
+  }
+  .placeholder {
+      background: #AEF;
+  }
+  .ui-sortable-helper  {
+    border: 1px solid #333;
+    background: #EEE;
+}
+</style>
+
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!-- esquerda -->
+<div class="col-md-3">
+	<categoria cor="blue" href="#subcategoria" icone="fa-automobile" texto="Veiculos"></categoria>
+	<categoria cor="green" href="#portfolio-modal" modal="true" icone="fa-paw" texto="Animais"></categoria>
+	<categoria cor="light-red" href="#about-modal" modal="true" icone="fa-music" texto="Música e Instrumentoss"></categoria>
+</div>
+
+
+<!-- centro -->
+<div class="col-md-6">
+	
+	<!-- Start Carousel Section -->
+	<!-- <div class="home-slider" data-ng-include="vm.includes.carousel"></div> -->
+	<div class="home-slider" data-ng-view style="margin-bottom:29px;"></div>
+	<!-- Start Carousel Section -->
+
+	<div class="row">
+	    <div class="col-md-6">
+	        <categoria cor="color" class="responsive" href="#service-modal" icone="fa-home" texto="Para sua casa"></categoria>
+	    </div>
+	    
+	    <div class="col-md-6">
+	        <categoria  cor="light-orange" class="responsive-2"
+	                    href="#team-modal" icone="fa-mobile-phone" texto="Eletrônicos e Celulares" />
+	    </div>
+	    
+	</div>
+</div>
+
+<!-- direita -->
+<div class="col-md-3">
+	<categoria cor="light-red" class="" href="#contact-modal" icone="fa-building" texto="Imóveis"></categoria>
+	<categoria cor="color" class="" href="#testimonial-modal" icone="fa-users" texto="Negócios e Empregos"></categoria>
+	<categoria cor="blue" class="" href="#news-modal" icone="fa-bicycle" texto="Esportes"></categoria>
+</div>
+
+vm.uf: {{vm.teste}}
