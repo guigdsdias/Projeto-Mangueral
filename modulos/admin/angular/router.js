@@ -2,7 +2,8 @@ angular.module("pmAdmin", [
     'ngResource',
     'ngRoute',
 	'kendo.directives',
-    'moduloCategoriaController'
+    'moduloCategoriaController',
+    'inserirCategoriaController'
 /*	'pmDirectives',
 	'pmConstants',
     'pmServices',
@@ -15,7 +16,9 @@ angular.module("pmAdmin", [
 .config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
-                when('/categoria',     {templateUrl: 'spa/pages/categoria/categoria.html', controller: 'categoriaController as vm'}).
+                when('/categoria',         {templateUrl: 'spa/pages/categoria/categoria.html',         controller: 'categoriaController as vm'}).
+                when('/inserir-categoria', {templateUrl: 'spa/pages/categoria/inserir-categoria.html', controller: 'inserirCategoriaController as vm'}).
+                
                 when('/subcategoria', {templateUrl: 'spa/pages/subcategoria/sub-categoria.html', controller: 'subCategoriaController as vm'}).
                 otherwise({
                     redirectTo: '/categoria'

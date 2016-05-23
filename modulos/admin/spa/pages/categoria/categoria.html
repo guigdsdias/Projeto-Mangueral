@@ -1,12 +1,13 @@
 <h1>Cadastro de Categoria</h1>
 <!-- {{vm.listaCategoria}} -->
 <br>
+
 <!-- <table ng-table="vm.tableParams" class="table table-condensed table-bordered table-striped"> -->
 <table ng-table="vm.tableParams" show-filter="true" class="table ng-table-resizable-columns ng-table-rowselected table-bordered" data-resizable-columns-id="vm.myTable">
 	<!-- <table ng-table="vm.tableParams" class="table" show-filter="false"> -->
 	<thead>
 		<tr>
-			<th>Nome</th>
+			<th>Nome 	{{vm.teste}}</th>
 			<th>Cor</th>
 			<th>Ícone</th>
 			<th>Ordem</th>
@@ -60,6 +61,11 @@
 	    </tr> -->
 	</tbody>
 </table>
+
+<button type="button" class="btn btn-default" aria-label="Left Align" data-ng-click="vm.navegar('inserir-categoria')">
+  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+  Inserir
+</button>
 
 <!-- <table class="table table-bordered table-striped ng-scope" ng-grid="">
 	<thead>

@@ -7,11 +7,17 @@
 
 	.controller('categoriaController', categoriaController);
 
-	categoriaController.$inject = ['$http','$rootScope','$scope','ngTableParams','$templateCache','$filter'];
+	categoriaController.$inject = ['$http','$rootScope','$scope','ngTableParams','$templateCache','$filter','$location'];
 
-	function categoriaController($http, $rootScope, $scope, ngTableParams,$templateCache,$filter){
+	function categoriaController($http, $rootScope, $scope, ngTableParams,$templateCache,$filter,$location){
 
 		var vm = this;
+
+		vm.teste = "abc";
+
+		vm.navegar = function(destino){
+			$location.path(destino);
+		};
 
 		vm.dados = [{"id":"1","nome":"Veículos","cor":"blue","fa_icone":"fa-automobile","ordem":"1"},{"id":"2","nome":"Animais","cor":"green","fa_icone":"fa-paw","ordem":"2"},{"id":"3","nome":"Para sua Casa","cor":"color","fa_icone":"fa-home","ordem":"3"},{"id":"4","nome":"Eletronicos e Celulares","cor":"light-orange","fa_icone":"fa-mobile-phone","ordem":"4"},{"id":"5","nome":"Imoveis","cor":"light-red","fa_icone":"fa-building","ordem":"4"},{"id":"6","nome":"Negocios e Empregos","cor":"color","fa_icone":"fa-users","ordem":"5"},{"id":"7","nome":"Esportes","cor":"blue","fa_icone":"fa-bicycle","ordem":"6"}];
 
