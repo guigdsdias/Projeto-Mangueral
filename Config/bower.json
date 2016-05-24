@@ -1,0 +1,24 @@
+{
+  "name": "Config",
+  "homepage": "https://github.com/guigdsdias/Projeto-Mangueral",
+  "authors": [
+    "Guilherme Dias dos Santos <guigds.dias@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "angular": "^1.5.5",
+    "font-awesome": "^4.6.3",
+    "angular-ui-sortable": "^0.14.0",
+    "animate.css": "^3.5.1"
+  }
+}
