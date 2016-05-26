@@ -7,8 +7,8 @@
 	var includes = "spa/includes/home/";
 	var modals   = "spa/modals/home/";
 	var pages	 = "spa/pages/home/"
-    
-    angular.module('pmConstants', [])
+
+    angular.module('constants', [])
 
     .constant('PARAMS',{
 		"index":{
@@ -34,9 +34,9 @@
 			} // includes
 		} // index
     })
-    
+
     .constant(
-    
+
     'MSG',{
 		VALIDACAO: {
 		},
@@ -50,5 +50,5 @@
 			VAZIO:""
 		}
     })
-    
+
 })(angular);

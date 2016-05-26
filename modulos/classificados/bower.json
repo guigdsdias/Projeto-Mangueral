@@ -1,0 +1,14 @@
+{
+  "name": "classificados",
+  "description": "classificados portal mangueiral",
+  "main": "index.html",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
