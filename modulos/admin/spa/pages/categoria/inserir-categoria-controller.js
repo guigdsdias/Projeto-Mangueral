@@ -1,7 +1,7 @@
 (function() {
-	
+
 	'use strict';
-	
+
 	angular.module('inserirCategoriaController',['ngTable'])
 
 	.controller('inserirCategoriaController', inserirCategoriaController);
@@ -19,10 +19,6 @@
 
 		});
 */
-		vm.changeSelection = function(item) {
-			vm.selecionado = item;
-		}
-
 	}
 
 })();

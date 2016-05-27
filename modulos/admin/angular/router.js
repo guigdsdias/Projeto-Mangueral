@@ -1,7 +1,7 @@
 angular.module("pmAdmin", [
     'ngResource',
     'ngRoute',
-    'directives',
+    'htmlDirectives',
     'constants',
     'moduloCategoriaController',
     'inserirCategoriaController'

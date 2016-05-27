@@ -1,3 +1,7 @@
+<style>
+.dropdown-menu > li > a:hover{background-color: transparent; font-weight: bold;}
+</style>
+
 <h1>Inserir Categoria</h1>
 <!-- {{vm.listaCategoria}} -->
 <br>
@@ -15,41 +19,7 @@
 
 				<h-field id="txtOrdem" label="Ordem" width="10" type="text"></h-field>
 
-
-<!------------------------------------>
-<!------------------------------------>
-<div class="form-group">
-	<label class="col-sm-2 control-label">
-		Cor
-	</label>
-	<div class="col-sm-10">
-		<div class="btn-group" style="width:100% !important;">
-
-			<!-- valor default -->
-			<button class="btn {{vm.color ? vm.color.cor : 'color' }} col-sm-4">
-				{{vm.color ? vm.color.texto : 'Default' }}
-			</button>
-
-			<!-- seta para baixo -->
-			<button data-toggle="dropdown" class="btn btn-default dropdown-toggle">
-				<span class="caret"></span>
-			</button>
-
-			<!-- opções para seleção -->
-			<ul class="dropdown-menu cols-sm-4">
-				<li class="color">			<a href data-ng-click="vm.color={cor:'color',texto:'Default'}">			Default</a>		</li>
-				<li class="blue">			<a href data-ng-click="vm.color={cor:'blue',texto:'Azul'}">				Azul</a>		</li>
-				<li class="green">			<a href data-ng-click="vm.color={cor:'green',texto:'Verde'}">			Verde</a>		</li>
-				<li class="light-red">		<a href data-ng-click="vm.color={cor:'light-red',texto:'Vermelho'}">	Vermelho</a>	</li>
-				<li class="light-orange">	<a href data-ng-click="vm.color={cor:'light-orange',texto:'Laranja'}">	Laranja</a>		</li>
-			</ul>
-
-		</div>
-	</div>
-
-</div>
-<!------------------------------------>
-<!------------------------------------>
+				<h-color-palette label="Cor" width="5"></h-color-palette>
 
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
