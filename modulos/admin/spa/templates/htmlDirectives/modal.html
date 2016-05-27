@@ -1,0 +1,41 @@
+<div class="col-md-12">
+	<div class="modal fade {{id}}" id="{{id}}" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+
+				<!-- cabeçalho -->
+				<div class="modal-header">
+
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+						<i class="fa {{icons.faClose ? icons.faClose: 'fa-times-circle'}}" aria-hidden="true" style="color:#ff0000"></i>
+					</button>
+
+					<!-- título -->
+					<h3 class="modal-title" id="myModalLabel">
+						{{title}}
+					</h3>
+				</div>
+
+				<div class="modal-body" data-ng-transclude>
+					<!-- conteúdo -->
+				</div>
+
+				<!-- botões -->
+				<div class="modal-footer">
+
+					<button type="button" class="btn btn-default" data-dismiss="modal">
+						Fechar
+					</button>
+
+					<button type="button" class="btn btn-primary">
+						Salvar
+					</button>
+
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+</div>

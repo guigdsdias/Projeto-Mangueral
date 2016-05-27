@@ -12,13 +12,13 @@
 
 		var vm = this;
 
-/*		$http({
-			url: "http://localhost/apirest/admin/categoria",
+		$http({
+			url: "spa/resources/fontawesome.json",
 			method: "GET"
 		}).then(function(response){
-
+			vm.listaIcones = (response.data);
 		});
-*/
+
 	}
 
 })();
