@@ -39,7 +39,7 @@ angular.module('htmlDirectives', ['constants'])
 	return{
 		restrict: 'E',
 		transclude: false,
-		scope: {id: '@', label: '@', width: '@'},
+		scope: {id: '@', label: '@', width: '@', selected: '@', model: '='},
 		templateUrl: "spa/templates/htmlDirectives/colorPalette.html"
 	}
 });

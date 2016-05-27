@@ -1,11 +1,11 @@
-<div class="form-group">
+<div class="form-group" data-ng-init="model={cor:'color',texto:'Default'}">
 	<label class="col-sm-2 control-label">{{label}}</label>
 	<div class="col-sm-10">
 		<div class="btn-group" style="width:100% !important;">
 
 			<!-- valor default -->
-			<button class="btn {{vm.color ? vm.color.cor : 'color' }} col-sm-{{width ? width : '4'}}">
-				{{vm.color ? vm.color.texto : 'Default' }}
+			<button class="btn {{model ? model.cor : 'color' }} col-sm-{{width ? width : '4'}}">
+				{{model ? model.texto : 'Default' }}
 			</button>
 
 			<!-- seta para baixo -->
@@ -15,11 +15,11 @@
 
 			<!-- opções para seleção -->
 			<ul class="dropdown-menu col-sm-{{width ? width : '4'}}">
-				<li class="color" class="corSelecionadaHover">			<a href data-ng-click="vm.color={cor:'color',texto:'Default'}">			Default</a>		</li>
-				<li class="blue">			<a href data-ng-click="vm.color={cor:'blue',texto:'Azul'}">				Azul</a>		</li>
-				<li class="green">			<a href data-ng-click="vm.color={cor:'green',texto:'Verde'}">			Verde</a>		</li>
-				<li class="light-red">		<a href data-ng-click="vm.color={cor:'light-red',texto:'Vermelho'}">	Vermelho</a>	</li>
-				<li class="light-orange">	<a href data-ng-click="vm.color={cor:'light-orange',texto:'Laranja'}">	Laranja</a>		</li>
+				<li class="color">			<a href data-ng-click="model={cor:'color',texto:'Default'}">			Default</a>		</li>
+				<li class="blue">			<a href data-ng-click="model={cor:'blue',texto:'Azul'}">				Azul</a>		</li>
+				<li class="green">			<a href data-ng-click="model={cor:'green',texto:'Verde'}">			Verde</a>		</li>
+				<li class="light-red">		<a href data-ng-click="model={cor:'light-red',texto:'Vermelho'}">	Vermelho</a>	</li>
+				<li class="light-orange">	<a href data-ng-click="model={cor:'light-orange',texto:'Laranja'}">	Laranja</a>		</li>
 			</ul>
 
 		</div>
