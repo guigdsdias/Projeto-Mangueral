@@ -28,18 +28,24 @@ angular.module('htmlDirectives', ['constants'])
 					'	<label for="{{id}}" class="col-sm-2 control-label">' +
 					'		{{label}}' +
 					'	</label>' +
-					'	<div class="col-sm-{{width}}" data-ng-transclude></div>' +
+					'	<div class="col-sm-{{width}}" data-ng-transclude>'+
+					'	</div>' +
 					'</div>'
 	}
 })
 
-.directive('hField',function(){
+.directive('hTextField',function(){
 	return {
 		restrict: 'E',
 		transclude: false,
-		scope: { id: '@', label: '@' , width: '@' , type: '@'},
-		template:	'<h-line id="{{id}}" label="{{label}}" width="{{width}}">' +
-					'	<input class="form-control" id="{{id}}" type="{{type}}" />' +
+		scope: { id: '@', label: '@' , width: '@' , type: '@', model:'=ngModel'},
+		template:'<div class="form-group">' +
+					'	<label for="{{id}}" class="col-sm-2 control-label">' +
+					'		{{label}}' +
+					'	</label>' +
+					'	<div class="col-sm-{{width}}">'+
+					'		<input class="form-control" id="{{id}}" type="{{type}}" ng-model="model" />' +
+					'	</div>' +
 					'</div>'
 	}
 })
