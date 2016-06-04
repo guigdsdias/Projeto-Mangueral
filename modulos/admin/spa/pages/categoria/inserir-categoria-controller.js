@@ -25,7 +25,7 @@
 
 		vm.salvar = function(){
 			$http({
-				url: "http://localhost/apirest/admin/categoria/inserir",
+				url: "/apirest/admin/categoria/inserir",
 				method: "POST",
 				data: {nome: vm.nome, cor: vm.cor, fa_icone: vm.fa_icone}
 			}).then(function(response){
