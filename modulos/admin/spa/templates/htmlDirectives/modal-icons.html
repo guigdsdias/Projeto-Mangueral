@@ -1,0 +1,26 @@
+<modal id="{{id}}" title="{{title || 'Selecione um ícone'}}">
+
+	<div class="panel-group" id="{{id}}-painel-icones">
+		<!-- collapse -->
+		<div class="panel panel-default" data-ng-repeat="lista in listaIcones">
+			<div class="panel-heading">
+
+				<!-- grupo de ícones -->
+				<a class="panel-title collapsed" data-toggle="collapse" data-parent="#{{id}}-painel-icones" data-target=".panel-element-{{lista.id}}" style="cursor:pointer;">
+					{{lista.grupo}}
+				</a>
+
+
+				<!-- exibição dos ícones -->
+				<div id="panel-element-{{lista.id}}" class="panel-collapse collapse panel-element-{{lista.id}}">
+					<div class="panel-body">
+						<button type="submit" class="btn btn-default" data-ng-repeat="icone in lista.icones" style="padding:0px;" data-dismiss="modal" ng-click="selecionar(icone)">
+							<i class="fa fa-{{icone}}" aria-hidden="true" style="font-size:30px;margin:10px;width:40px;height:30px;color:#1c816c" ></i>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</modal>
