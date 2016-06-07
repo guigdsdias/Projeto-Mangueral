@@ -4,29 +4,31 @@ angular.module("pmAdmin", [
     'htmlDirectives',
     'constants',
     'moduloCategoriaController',
-    'inserirCategoriaController'
-/*	'pmDirectives',
-	'pmConstants',
+    'inserirCategoriaController',
+    'alterarCategoriaController'
+    /*	'pmDirectives',
+    'pmConstants',
     'pmServices',
     'moduloIndexController',
     'moduloHomeController',
     'moduloSubCategoriaController',
     'moduloCarouselController'
-*/])
+    */])
 
-.config(['$routeProvider',
+    .config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
-                when('/categoria',         {templateUrl: 'spa/pages/categoria/categoria.html',         controller: 'categoriaController as vm'}).
-                when('/inserir-categoria', {templateUrl: 'spa/pages/categoria/inserir-categoria.html', controller: 'inserirCategoriaController as vm'}).
+        when('/categoria',         {templateUrl: 'spa/pages/categoria/categoria.html',          controller: 'categoriaController as vm'}).
+        when('/categoria/:id',     {templateUrl: 'spa/pages/categoria/alterar-categoria.html',  controller: 'alterarCategoriaController as vm'}).
+        when('/inserir-categoria', {templateUrl: 'spa/pages/categoria/inserir-categoria.html',  controller: 'inserirCategoriaController as vm'}).
 
-                when('/subcategoria', {templateUrl: 'spa/pages/subcategoria/sub-categoria.html', controller: 'subCategoriaController as vm'}).
-                otherwise({
-                    redirectTo: '/categoria'
-                });
+        when('/subcategoria', {templateUrl: 'spa/pages/subcategoria/sub-categoria.html', controller: 'subCategoriaController as vm'}).
+        otherwise({
+            redirectTo: '/categoria'
+        });
     }
 ])
 
 .run(['$route', function ($route) {
-    //console.debug('tfa-app.js:run');
+    //console.debug('');
 }]).run(['$route', angular.noop]);

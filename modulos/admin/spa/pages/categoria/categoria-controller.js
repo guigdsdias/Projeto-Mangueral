@@ -23,6 +23,10 @@
 
 		vm.filtroPesquisa = {nomeEstadoConta: 'Ativa', codigoAgencia: '', numeroConta: ''};
 
+		vm.alterar = function(id){
+			$location.path("/categoria/"+id);
+		}
+
 		vm.excluir = function(id){
 			$http({
 				url:	"/apirest/admin/categoria/deletar",
