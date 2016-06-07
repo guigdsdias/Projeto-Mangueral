@@ -71,6 +71,30 @@ angular.module('htmlDirectives', ['constants'])
 
 	}
 })
+
+.directive('modalIcons',function($http){
+	return {
+		restrict: 'E',
+		transclude: false,
+		scope: {id:'@', ngModel:'='},
+		templateUrl: "spa/templates/htmlDirectives/modal-icons.html",
+		link: function (scope,elem,attrs){
+
+			scope.selecionar = function (icone){
+				scope.ngModel='fa-'+icone;
+			}
+
+			console.log(scope);
+			$http({
+				url: "spa/resources/fontawesome.json",
+				method: "GET"
+			}).then(function(response){
+				scope.listaIcones = (response.data);
+			});
+		}
+	}
+})
+
 .directive('modal', function(){
 	return{
 		restrict: 'E',
