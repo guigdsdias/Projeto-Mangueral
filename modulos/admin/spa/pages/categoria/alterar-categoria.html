@@ -1,0 +1,43 @@
+<style>
+.dropdown-menu > li > a:hover{background-color: transparent; font-weight: bold;}
+</style>
+
+<h1>Alterar Categoria</h1>
+<!-- {{vm.listaCategoria}} -->
+<br>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-5">
+			<form class="form-horizontal" role="form">
+
+				<h-text-field id="txtNome"  label="Nome"  width="10" type="text" ng-model="vm.nome"></h-text-field>
+
+				<h-color-palette label="Cor" width="5" model="vm.cor"></h-color-palette>
+
+				<h-line id="modalIcone" label="Ícone" width="10">
+
+					<!-- exibe o ícone selecionado -->
+					<i class="fa {{vm.fa_icone}}" data-ng-if="vm.fa_icone" aria-hidden="true" style="font-size:30px;width:40px;height:30px;color:#1c816c" ></i>
+
+					<show-modal for="modalTeste2" type="link">Escolher Ícone</show-modal>
+					<modal-icons id="modalTeste2" ng-model="vm.fa_icone" ></modal-icons>
+
+				</h-line>
+
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn" style="font-size:20px;opacity:0.7;" data-ng-click="vm.voltar()">
+							<i class="fa fa-angle-double-left" aria-hidden="true" style="font-size:30px;width:40px;height:30px;color:#1c816c"></i>
+							Voltar
+						</button>
+						<button type="button" class="btn btn-default" data-ng-click="vm.salvar()" style="font-size:20px;opacity:0.7;font-weight:bold;">
+							<i class="fa fa-save" aria-hidden="true" style="font-size:30px;width:40px;height:30px;color:#1c816c"></i>
+							Salvar
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
