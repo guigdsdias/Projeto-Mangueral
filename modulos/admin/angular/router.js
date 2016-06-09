@@ -19,8 +19,8 @@ angular.module("pmAdmin", [
     function($routeProvider) {
         $routeProvider.
         when('/categoria',         {templateUrl: 'spa/pages/categoria/categoria.html',          controller: 'categoriaController as vm'}).
-        when('/categoria/:id',     {templateUrl: 'spa/pages/categoria/alterar-categoria.html',  controller: 'alterarCategoriaController as vm'}).
-        when('/inserir-categoria', {templateUrl: 'spa/pages/categoria/inserir-categoria.html',  controller: 'inserirCategoriaController as vm'}).
+        when('/categoria/:id',     {templateUrl: 'spa/pages/categoria/manter-categoria.html',  controller: 'alterarCategoriaController as vm'}).
+        when('/inserir-categoria', {templateUrl: 'spa/pages/categoria/manter-categoria.html',  controller: 'inserirCategoriaController as vm'}).
 
         when('/subcategoria', {templateUrl: 'spa/pages/subcategoria/sub-categoria.html', controller: 'subCategoriaController as vm'}).
         otherwise({

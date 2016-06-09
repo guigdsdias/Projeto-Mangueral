@@ -12,11 +12,20 @@
 
 		var vm = this;
 
-		console.log("routeParams",$routeParams);
-
 		vm.voltar = function(){
 			$location.path("/categoria");
 		};
+
+		$http({
+			url: "/apirest/admin/categoria",
+			method: "GET",
+			params:{id:$routeParams.id} // recupera o id da url (router)
+		}).then(function(response){
+			vm.nome = response.data[0].nome;
+			vm.cor = {cor: response.data[0].cor, texto: null};
+			vm.id = response.data[0].id;
+			vm.fa_icone = response.data[0].icone;
+		});
 
 		vm.salvar = function(){
 			$http({
