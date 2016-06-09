@@ -15,11 +15,12 @@
 
 			<!-- opções para seleção -->
 			<ul class="dropdown-menu col-sm-{{width ? width : '4'}}">
-				<li class="color">			<a href data-ng-click="model={cor:'color',texto:'Default'}">			Default</a>		</li>
-				<li class="blue">			<a href data-ng-click="model={cor:'blue',texto:'Azul'}">				Azul</a>		</li>
+				<li class="{{item.cor}}" data-ng-repeat="item in listaCores">			<a href data-ng-click="model={'cor':item.cor,'texto':item.texto}">{{item.texto}}</a>		</li>
+				<!-- <li class="color">			<a href data-ng-click="model={cor:'color',texto:'Default'}">		Default</a>		</li>
+				<li class="blue">			<a href data-ng-click="model={cor:'blue',texto:'Azul'}">			Azul</a>		</li>
 				<li class="green">			<a href data-ng-click="model={cor:'green',texto:'Verde'}">			Verde</a>		</li>
 				<li class="light-red">		<a href data-ng-click="model={cor:'light-red',texto:'Vermelho'}">	Vermelho</a>	</li>
-				<li class="light-orange">	<a href data-ng-click="model={cor:'light-orange',texto:'Laranja'}">	Laranja</a>		</li>
+				<li class="light-orange">	<a href data-ng-click="model={cor:'light-orange',texto:'Laranja'}">	Laranja</a>		</li> -->
 			</ul>
 
 		</div>

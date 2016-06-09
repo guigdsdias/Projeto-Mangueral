@@ -55,7 +55,27 @@ angular.module('htmlDirectives', ['constants'])
 		restrict: 'E',
 		transclude: false,
 		scope: {id: '@', label: '@', width: '@', selected: '@', model: '='},
-		templateUrl: "spa/templates/htmlDirectives/colorPalette.html"
+		templateUrl: "spa/templates/htmlDirectives/colorPalette.html",
+		link: function(scope,elem,attrs){
+
+			scope.cores = [];
+			scope.cores['color'] = 'Default';
+			scope.cores['blue'] = 'Azul';
+			scope.cores['green'] = 'Verde';
+			scope.cores['light-red'] = 'Vermelho';
+			scope.cores['light-orange'] = 'Laranja';
+
+			scope.listaCores = [];
+			for (var cor in scope.cores){
+				var texto = scope.cores[cor];
+				scope.listaCores.push({"cor":cor,"texto":texto});
+			}
+			console.log("listaCores",scope.listaCores);
+
+			scope.$watch("model",function(oldV,newV){
+				scope.model.texto = scope.cores[scope.model.cor];
+			});
+		}
 	}
 })
 
