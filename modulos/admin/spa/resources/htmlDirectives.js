@@ -100,6 +100,8 @@ angular.module('htmlDirectives', ['constants'])
 		templateUrl: "spa/templates/htmlDirectives/modal-icons.html",
 		link: function (scope,elem,attrs){
 
+			scope.filtro = "";
+
 			scope.selecionar = function (icone){
 				scope.ngModel='fa-'+icone;
 			}
