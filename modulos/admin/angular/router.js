@@ -5,7 +5,8 @@ angular.module("pmAdmin", [
     'constants',
     'moduloCategoriaController',
     'inserirCategoriaController',
-    'alterarCategoriaController'
+    'alterarCategoriaController',
+    'htmlServices',
     /*	'pmDirectives',
     'pmConstants',
     'pmServices',
