@@ -31,7 +31,7 @@
 			$http({
 				url: "/apirest/admin/categoria/alterar",
 				method: "POST",
-				data: {nome: vm.nome, cor: vm.cor, fa_icone: vm.fa_icone}
+				data: {id: $routeParams.id ,nome: vm.nome, cor: vm.cor.cor, fa_icone: vm.fa_icone}
 			}).then(function(response){
 				vm.resposta = response;
 				vm.voltar();

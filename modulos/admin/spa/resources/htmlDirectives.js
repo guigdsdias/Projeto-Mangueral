@@ -50,7 +50,7 @@ angular.module('htmlDirectives', ['constants'])
 	}
 })
 
-.directive('hColorPalette',function(){
+.directive('hColorPalette',function($http,ColorPalette){
 	return{
 		restrict: 'E',
 		transclude: false,
@@ -58,20 +58,20 @@ angular.module('htmlDirectives', ['constants'])
 		templateUrl: "spa/templates/htmlDirectives/colorPalette.html",
 		link: function(scope,elem,attrs){
 
-			scope.cores = [];
-			scope.cores['color'] = 'Default';
-			scope.cores['blue'] = 'Azul';
-			scope.cores['green'] = 'Verde';
-			scope.cores['light-red'] = 'Vermelho';
-			scope.cores['light-orange'] = 'Laranja';
-
-			scope.listaCores = [];
-			for (var cor in scope.cores){
-				var texto = scope.cores[cor];
-				scope.listaCores.push({"cor":cor,"texto":texto});
+			scope.defineCor = function(item){
+				scope.model = item;
 			}
-			console.log("listaCores",scope.listaCores);
 
+			scope.cores = {};
+			ColorPalette.get().then(function(response){
+				for (var i in response.data){
+					var e = response.data[i];
+					scope.cores[e.cor] = e.texto;
+				}
+				scope.listaCores = response.data;
+			});
+
+			// recupera a cor quando for selecionado um item para alteração
 			scope.$watch("model",function(oldV,newV){
 				scope.model.texto = scope.cores[scope.model.cor];
 			});
@@ -104,9 +104,8 @@ angular.module('htmlDirectives', ['constants'])
 				scope.ngModel='fa-'+icone;
 			}
 
-			console.log(scope);
 			$http({
-				url: "spa/resources/fontawesome.json",
+				url: "spa/resources/data/fontawesome.json",
 				method: "GET"
 			}).then(function(response){
 				scope.listaIcones = (response.data);
