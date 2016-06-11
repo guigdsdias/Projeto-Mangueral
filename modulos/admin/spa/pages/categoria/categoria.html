@@ -3,14 +3,17 @@
 <br>
 
 <!-- <table ng-table="vm.tableParams" class="table table-condensed table-bordered table-striped"> -->
-<table ng-table="vm.tableParams" show-filter="true" class="table ng-table-resizable-columns ng-table-rowselected table-bordered" data-resizable-columns-id="vm.myTable">
+<table 	ng-table="vm.tableParams" show-filter="true"
+		class="table ng-table-resizable-columns ng-table-rowselected table-bordered"
+		data-resizable-columns-id="vm.myTable"
+		style="width:70%">
 	<!-- <table ng-table="vm.tableParams" class="table" show-filter="false"> -->
 	<thead>
 		<tr>
 			<th>Nome 	{{vm.teste}}</th>
 			<th>Cor</th>
-			<th>Ícone</th>
-			<th>Ordem</th>
+			<th style="text-align:center">Ícone</th>
+			<!-- <th>Ordem</th> -->
 			<th>&nbsp;</th>
 		</tr>
 	</thead>
@@ -24,24 +27,25 @@
 				{{item.nome}}
 			</td>
 
-			<td data-title="'Cor'" header-class="text-right" class="text-right" sortable="'cor'" filter="{ 'cor': 'text' }">
-				{{item.cor}}
+			<td data-title="'Cor'" header-class="text-right" class="text-right {{item.cor}}" sortable="'cor'" filter="{ 'cor': 'text' }">
+				&nbsp;
 			</td>
 
-			<td data-title="'Ícone'" header-class="text-right" class="text-right" sortable="'fa_icone'" filter="{ 'fa_icone': 'text' }">
-				<a href="#"><i class="fa {{item.fa_icone}}" aria-hidden="true" style="font-size: 20px;"></i></a>
+			<td data-title="'Ícone'" header-class="text-right" class="text-right" sortable="'fa_icone'" filter="{ 'fa_icone': 'text' }"><center>
+				<a href="#"><i class="fa {{item.icone}}" aria-hidden="true" style="font-size: 20px;color:#444444;"></i></a>
+			</center>
 			</td>
 
-			<td data-title="'Ordem'" header-class="text-center" class="text-center" sortable="'ordem'" filter="{ 'ordem': 'integer' }">
+			<!-- <td data-title="'Ordem'" header-class="text-center" class="text-center" sortable="'ordem'" filter="{ 'ordem': 'integer' }">
 				{{item.ordem}}
-			</td>
+			</td> -->
 
 			<td style="padding:0px;">
 				<div class="btn-group" role="group" aria-label="..." style="width: 100% !important;">
-					<button type="button" class="btn btn-default" data-ng-click="vm.alterar(item.id)" style="border:0px;width:50%;border-radius:0px;padding-top:8px;margin:0px;">
+					<button type="button" class="btn btn-default" data-ng-click="vm.alterar(item.id)" style="border:0px;width:50%;border-radius:0px;padding:8px 0px 8px 0px;margin:0px;">
 						<i class="fa fa-edit" aria-hidden="true" style="font-size:20px;color:#0044cc;"></i>
 					</button>
-					<button type="button" class="btn btn-default" data-ng-click="vm.excluir(item.id)" style="border:0px;width:50%;border-radius:0px;padding-top:8px;margin:0px;">
+					<button type="button" class="btn btn-default" data-ng-click="vm.excluir(item.id)" style="border:0px;width:50%;border-radius:0px;padding:8px 0px 8px 0px;margin:0px;">
 						<i class="fa fa-trash" aria-hidden="true" style="font-size:20px;color:#bd362f;"></i>
 					</button>
 				</div>

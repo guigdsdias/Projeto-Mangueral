@@ -7,9 +7,9 @@
 
 	.controller('categoriaController', categoriaController);
 
-	categoriaController.$inject = ['$http','$rootScope','$scope','ngTableParams','$templateCache','$filter','$location'];
+	categoriaController.$inject = ['$http','$rootScope','$scope','ngTableParams','$filter','$location', 'ColorPalette'];
 
-	function categoriaController($http, $rootScope, $scope, ngTableParams,$templateCache,$filter,$location){
+	function categoriaController($http, $rootScope, $scope, ngTableParams,$filter,$location, ColorPalette){
 
 		var vm = this;
 
@@ -27,6 +27,8 @@
 			$location.path("/categoria/"+id);
 		}
 
+
+
 		vm.excluir = function(id){
 			$http({
 				url:	"/apirest/admin/categoria/deletar",
@@ -39,70 +41,80 @@
 			});
 		}
 
-		$http({
-			url: "/apirest/admin/categoria",
-			method: "GET"
-		}).then(function(response){
-			vm.listaCategoria = response.data;
+		ColorPalette.get().then(function(response){
 
-			// ngTable
-			vm.tableParams = new ngTableParams({count:100}, { dataset: vm.listaCategoria , counts:[], update: function(e,ui){console.log(e);}});
+			vm.cores = response.data;
 
-			vm.sortingLog = [];
+			$http({
+				url: "/apirest/admin/categoria",
+				method: "GET"
+			}).then(function(response){
 
-			vm.sortableOptions = {
-				start: function(event, ui) {
-					var ini_pos = ui.item.index();
-					ui.item.data('ini_pos', ini_pos);
-				},
-				beforeStop: function(event, ui) {
+				vm.listaCategoria = response.data;
 
-					var ini_pos = ui.item.data('ini_pos')+1;
-					var fin_pos = ui.placeholder.index();
+				console.log(vm.listaCategoria);
 
-					var desceu = (ini_pos < fin_pos);
-					var subiu  = (fin_pos < ini_pos);
+				// ngTable
+				vm.tableParams = new ngTableParams({count:100}, { dataset: vm.listaCategoria , counts:[], update: function(e,ui){console.log(e);}});
 
-					if (desceu){
-						for (var i=ini_pos+1;i<=fin_pos;i++){
+				vm.sortingLog = [];
 
-							var elemento = Utils.obterElemento("ordem",i,vm.listaCategoria);
-							elemento.ordem = (parseInt(elemento.ordem)-1).toString();
-							$http.post("/apirest/admin/categoria/altera",elemento);
+				vm.sortableOptions = {
+					start: function(event, ui) {
+						var ini_pos = ui.item.index();
+						ui.item.data('ini_pos', ini_pos);
+					},
+					beforeStop: function(event, ui) {
 
+						var ini_pos = ui.item.data('ini_pos')+1;
+						var fin_pos = ui.placeholder.index();
+
+						var desceu = (ini_pos < fin_pos);
+						var subiu  = (fin_pos < ini_pos);
+
+						if (desceu){
+							for (var i=ini_pos+1;i<=fin_pos;i++){
+
+								var elemento = Utils.obterElemento("ordem",i,vm.listaCategoria);
+								elemento.ordem = (parseInt(elemento.ordem)-1).toString();
+								$http.post("/apirest/admin/categoria/altera",elemento);
+
+							}
+						} else if (subiu) {
+
+							for (var i=ini_pos-1;i>=fin_pos;i--){
+
+								var elemento = Utils.obterElemento("ordem",i,vm.listaCategoria);
+								elemento.ordem = (parseInt(elemento.ordem)+1).toString();
+								console.log("update: ",elemento);
+								$http.post("/apirest/admin/categoria/altera",elemento);
+
+							}
 						}
-					} else if (subiu) {
 
-						for (var i=ini_pos-1;i>=fin_pos;i--){
+						vm.listaCategoria[ini_pos-1].ordem = fin_pos.toString();
 
-							var elemento = Utils.obterElemento("ordem",i,vm.listaCategoria);
-							elemento.ordem = (parseInt(elemento.ordem)+1).toString();
-							console.log("update: ",elemento);
-							$http.post("/apirest/admin/categoria/altera",elemento);
+						$http.post("/apirest/admin/categoria/altera",vm.listaCategoria[ini_pos-1]).success(function(response){
+							// atualiza a lista
+							$http.get("/apirest/admin/categoria").success(function(response){
 
-						}
-					}
+								vm.listaCategoria = response;
 
-					vm.listaCategoria[ini_pos-1].ordem = fin_pos.toString();
+								vm.tableParams = new ngTableParams({count:100}, { dataset: vm.listaCategoria, counts:[] });
+								console.log(vm.tableParams);
 
-					$http.post("/apirest/admin/categoria/altera",vm.listaCategoria[ini_pos-1]).success(function(response){
-						// atualiza a lista
-						$http.get("/apirest/admin/categoria").success(function(response){
-
-							vm.listaCategoria = response;
-
-							vm.tableParams = new ngTableParams({count:100}, { dataset: vm.listaCategoria, counts:[] });
-							console.log(vm.tableParams);
-
-						}).error(function(err){
-							console.log("não foi possível ordenar a lista de categorias");
+							}).error(function(err){
+								console.log("não foi possível ordenar a lista de categorias");
+							});
 						});
-					});
 
-				}
-			};
+					}
+				};
 
+			});
 		});
+
+
 
 		vm.changeSelection = function(item) {
 			vm.selecionado = item;
