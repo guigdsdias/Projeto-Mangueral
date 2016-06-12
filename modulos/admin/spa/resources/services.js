@@ -3,22 +3,37 @@
 
     /* Services */
 
-    angular.module('pmServices', [])
+    angular.module('htmlServices', [])
 
     // declaração dos serviços
     .factory('TesteService', TesteService)
-    
-    // injeção de dependências    
+    .factory('ColorPalette', ColorPalette);
+
+    // injeção de dependências
     TesteService.$inject = ['$http'];
-    
+    ColorPalette.$inject = ['$http'];
+
     /** construção dos serviços **/
-    
-    function TesteService($http) {
-        
+    function ColorPalette($http) {
+
         var factory = {};
-        
+
+        factory.get = function(){
+            return $http({
+                url: "spa/resources/data/colorPalette.json",
+                method: "GET"
+            });
+        };
+
+        return factory;
+    }
+
+    function TesteService($http) {
+
+        var factory = {};
+
         factory.get = function () {
-        	
+
             return {dados:[
                 {id:1,uf:"DF"},
                 {id:2,uf:"MG"},
@@ -31,9 +46,9 @@
 
             //return $http.get(PltConfig.baseAPIPath + '/v1/usuarioLogado', {cache: 'true', params : parametrosDePesquisa});
         };
-        
-        return factory;
-    };
 
-    
+        return factory;
+    }
+
+
 })(angular);
