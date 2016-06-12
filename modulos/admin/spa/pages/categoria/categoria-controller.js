@@ -50,6 +50,7 @@
 				method: "GET"
 			}).then(function(response){
 
+<<<<<<< HEAD
 				vm.listaCategoria = response.data;
 
 				console.log(vm.listaCategoria);
@@ -74,6 +75,24 @@
 
 						if (desceu){
 							for (var i=ini_pos+1;i<=fin_pos;i++){
+=======
+					if (desceu){
+						for (var i=ini_pos+1;i<=fin_pos;i++){
+
+							var elemento = Utils.obterElemento("ordem",i,vm.listaCategoria);
+							elemento.ordem = (parseInt(elemento.ordem)-1).toString();
+							$http.post("/apirest/admin/categoria/altera",elemento);
+
+						}
+					} else if (subiu) {
+
+						for (var i=ini_pos-1;i>=fin_pos;i--){
+
+							var elemento = Utils.obterElemento("ordem",i,vm.listaCategoria);
+							elemento.ordem = (parseInt(elemento.ordem)+1).toString();
+							console.log("update: ",elemento);
+							$http.post("/apirest/admin/categoria/altera",elemento);
+>>>>>>> desenv
 
 								var elemento = Utils.obterElemento("ordem",i,vm.listaCategoria);
 								elemento.ordem = (parseInt(elemento.ordem)-1).toString();
@@ -91,12 +110,24 @@
 
 							}
 						}
+<<<<<<< HEAD
 
 						vm.listaCategoria[ini_pos-1].ordem = fin_pos.toString();
 
 						$http.post("/apirest/admin/categoria/altera",vm.listaCategoria[ini_pos-1]).success(function(response){
 							// atualiza a lista
 							$http.get("/apirest/admin/categoria").success(function(response){
+=======
+					}
+
+					vm.listaCategoria[ini_pos-1].ordem = fin_pos.toString();
+
+					$http.post("/apirest/admin/categoria/altera",vm.listaCategoria[ini_pos-1]).success(function(response){
+						// atualiza a lista
+						$http.get("/apirest/admin/categoria").success(function(response){
+
+							vm.listaCategoria = response;
+>>>>>>> desenv
 
 								vm.listaCategoria = response;
 
