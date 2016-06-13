@@ -69,6 +69,7 @@ angular.module('htmlDirectives', ['constants'])
 					scope.cores[e.cor] = e.texto;
 				}
 				scope.listaCores = response.data;
+				scope.model = scope.listaCores[0];
 			});
 
 			// recupera a cor quando for selecionado um item para alteração
