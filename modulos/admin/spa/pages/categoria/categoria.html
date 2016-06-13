@@ -19,8 +19,9 @@
 	</thead>
 	<tbody ui:sortable="vm.sortableOptions" ng:model="vm.listaCategoria">
 
+		<!-- seleciona um item (tr) -->
+		<!-- ng-click="item.$selected = !item.$selected; vm.changeSelection(item)" -->
 		<tr ng-repeat="item in $data"
-		ng-click="item.$selected = !item.$selected; vm.changeSelection(item)"
 		ng-class="{'active': item.$selected}" class="item" style="cursor: move;">
 
 			<td data-title="'Nome'" header-class="text-left" header-data-id="junk" sortable="'nome'" filter="{ 'nome': 'text' }">
