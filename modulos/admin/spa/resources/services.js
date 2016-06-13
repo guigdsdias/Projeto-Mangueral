@@ -7,7 +7,7 @@
 
     // declaração dos serviços
     .factory('TesteService', TesteService)
-    .factory('ColorPalette', ColorPalette)
+    .factory('ColorPalette', ColorPalette);
 
     // injeção de dependências
     TesteService.$inject = ['$http'];
@@ -23,7 +23,7 @@
                 url: "spa/resources/data/colorPalette.json",
                 method: "GET"
             });
-        }
+        };
 
         return factory;
     }
@@ -48,7 +48,7 @@
         };
 
         return factory;
-    };
+    }
 
 
 })(angular);

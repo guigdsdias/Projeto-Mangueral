@@ -1,55 +1,55 @@
-'use strict';
+(function (){
+	'use strict';
 
-angular.module('htmlDirectives', ['constants'])
+	angular.module('htmlDirectives', ['constants'])
 
-.directive('categoria',function(){
-	return {
-		restrict: 'E',
-		transclude : true,
-		scope: {
-			cor: '@', href: '@', modal: '@', icone: '@', texto: '@', class: '@'
-		},
-		template: '<div class="menu-item {{cor}} {{class}}">'+
-							'    <a href="{{href}}" data-toggle="{{modal ? \'modal\' : false}}">'+
-							'        <i class="fa {{icone}}"></i>'+
-							'        <p>{{texto}}</p>'+
-							'    </a>'+
-							'</div>'
-	};
-})
+	.directive('categoria',function(){
+		return {
+			restrict: 'E',
+			transclude : true,
+			scope: {
+				cor: '@', href: '@', modal: '@', icone: '@', texto: '@', class: '@'
+			},
+			template: '<div class="menu-item {{cor}} {{class}}">'+
+								'    <a href="{{href}}" data-toggle="{{modal ? \'modal\' : false}}">'+
+								'        <i class="fa {{icone}}"></i>'+
+								'        <p>{{texto}}</p>'+
+								'    </a>'+
+								'</div>'
+		};
+	})
 
-// horizontal form field
-.directive('hLine',function(){
-	return {
-		restrict: 'E',
-		transclude: true,
-		scope: { id: '@', label: '@' , width: '@'},
-		template:	'<div class="form-group">' +
-					'	<label for="{{id}}" class="col-sm-2 control-label">' +
-					'		{{label}}' +
-					'	</label>' +
-					'	<div class="col-sm-{{width}}" data-ng-transclude>'+
-					'	</div>' +
-					'</div>'
-	}
-})
+	// horizontal form field
+	.directive('hLine',function(){
+		return {
+			restrict: 'E',
+			transclude: true,
+			scope: { id: '@', label: '@' , width: '@'},
+			template:	'<div class="form-group">' +
+						'	<label for="{{id}}" class="col-sm-2 control-label">' +
+						'		{{label}}' +
+						'	</label>' +
+						'	<div class="col-sm-{{width}}" data-ng-transclude>'+
+						'	</div>' +
+						'</div>'
+		};
+	})
 
-.directive('hTextField',function(){
-	return {
-		restrict: 'E',
-		transclude: false,
-		scope: { id: '@', label: '@' , width: '@' , type: '@', model:'=ngModel'},
-		template:'<div class="form-group">' +
-					'	<label for="{{id}}" class="col-sm-2 control-label">' +
-					'		{{label}}' +
-					'	</label>' +
-					'	<div class="col-sm-{{width}}">'+
-					'		<input class="form-control" id="{{id}}" type="{{type}}" ng-model="model" />' +
-					'	</div>' +
-					'</div>'
-	}
-})
-
+	.directive('hTextField',function(){
+		return {
+			restrict: 'E',
+			transclude: false,
+			scope: { id: '@', label: '@' , width: '@' , type: '@', model:'=ngModel'},
+			template:'<div class="form-group">' +
+						'	<label for="{{id}}" class="col-sm-2 control-label">' +
+						'		{{label}}' +
+						'	</label>' +
+						'	<div class="col-sm-{{width}}">'+
+						'		<input class="form-control" id="{{id}}" type="{{type}}" ng-model="model" />' +
+						'	</div>' +
+						'</div>'
+		};
+	})
 .directive('hColorPalette',function($http,ColorPalette){
 	return{
 		restrict: 'E',
@@ -60,7 +60,7 @@ angular.module('htmlDirectives', ['constants'])
 
 			scope.defineCor = function(item){
 				scope.model = item;
-			}
+			};
 
 			scope.cores = {};
 			ColorPalette.get().then(function(response){
@@ -77,20 +77,21 @@ angular.module('htmlDirectives', ['constants'])
 				scope.model.texto = scope.cores[scope.model.cor];
 			});
 		}
-	}
+	};
 })
 
-.directive('showModal', function(){
-	return {
-		restrict: 'E',
-		transclude: true,
-		scope: {for:'@', type:'@'},
-		template:	'<button type="button" id="btn_{{for}}" class="btn btn-{{type ? type : link}}" data-toggle="modal" data-target=".{{for}}">' +
-					'	<span data-ng-transclude></span>' +
-					'	<label for="btn_{{for}}" style="cursor:pointer"><i class="fa fa-external-link-square" aria-hidden="true"></i></label>' +
-					'</button>'
+	.directive('showModal', function(){
+		return {
+			restrict: 'E',
+			transclude: true,
+			scope: {for:'@', type:'@'},
+			template:	'<button type="button" id="btn_{{for}}" class="btn btn-{{type ? type : link}}" data-toggle="modal" data-target=".{{for}}">' +
+						'	<span data-ng-transclude></span>' +
+						'	<label for="btn_{{for}}" style="cursor:pointer"><i class="fa fa-external-link-square" aria-hidden="true"></i></label>' +
+						'</button>'
 
-	}
+
+	};
 })
 
 .directive('modalIcons',function($http){
@@ -105,7 +106,7 @@ angular.module('htmlDirectives', ['constants'])
 
 			scope.selecionar = function (icone){
 				scope.ngModel='fa-'+icone;
-			}
+			};
 
 			$http({
 				url: "spa/resources/data/fontawesome.json",
@@ -114,7 +115,7 @@ angular.module('htmlDirectives', ['constants'])
 				scope.listaIcones = (response.data);
 			});
 		}
-	}
+	};
 })
 
 .directive('modal', function(){
@@ -123,5 +124,7 @@ angular.module('htmlDirectives', ['constants'])
 		transclude: true,
 		scope: {id: '@', title: '@', width: '@', icons: '=' },
 		templateUrl: "spa/templates/htmlDirectives/modal.html"
-	}
+	};
 });
+
+})();

@@ -1,0 +1,23 @@
+{
+  "name": "ng-table-resizable-columns",
+  "main": [
+    "ng-table-resizable-columns.js"
+  ],
+  "ignore": [
+    "src"
+  ],
+  "dependencies": {
+    "angular": ">=1.2.0-rc.2"
+  },
+  "homepage": "https://github.com/esvit/ng-table-resizable-columns",
+  "_release": "61a9319533",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "61a9319533220315db6438a67e6afd14c13cdf12"
+  },
+  "_source": "https://github.com/esvit/ng-table-resizable-columns.git",
+  "_target": "*",
+  "_originalSource": "ng-table-resizable-columns",
+  "_direct": true
+}

@@ -6,8 +6,8 @@
 //	var modals   = "spa/modals/home/";
 	var includes = "spa/includes/home/";
 	var modals   = "spa/modals/home/";
-	var pages	 = "spa/pages/home/"
-    
+	var pages	 = "spa/pages/home/";
+
     angular.module('pmConstants', [])
 
     .constant('PARAMS',{
@@ -34,10 +34,8 @@
 			} // includes
 		} // index
     })
-    
-    .constant(
-    
-    'MSG',{
+
+    .constant('MSG',{
 		VALIDACAO: {
 		},
 		ALTERACAO: {
@@ -49,6 +47,6 @@
 		DADO:{
 			VAZIO:""
 		}
-    })
-    
+  });
+
 })(angular);
