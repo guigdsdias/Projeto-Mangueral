@@ -27,8 +27,6 @@
 			$location.path("/categoria/"+id);
 		}
 
-
-
 		vm.excluir = function(id){
 			$http({
 				url:	"/apirest/admin/categoria/deletar",
@@ -49,11 +47,7 @@
 				url: "/apirest/admin/categoria",
 				method: "GET"
 			}).then(function(response){
-
-<<<<<<< HEAD
 				vm.listaCategoria = response.data;
-
-				console.log(vm.listaCategoria);
 
 				// ngTable
 				vm.tableParams = new ngTableParams({count:100}, { dataset: vm.listaCategoria , counts:[], update: function(e,ui){console.log(e);}});
@@ -75,28 +69,10 @@
 
 						if (desceu){
 							for (var i=ini_pos+1;i<=fin_pos;i++){
-=======
-					if (desceu){
-						for (var i=ini_pos+1;i<=fin_pos;i++){
-
-							var elemento = Utils.obterElemento("ordem",i,vm.listaCategoria);
-							elemento.ordem = (parseInt(elemento.ordem)-1).toString();
-							$http.post("/apirest/admin/categoria/altera",elemento);
-
-						}
-					} else if (subiu) {
-
-						for (var i=ini_pos-1;i>=fin_pos;i--){
-
-							var elemento = Utils.obterElemento("ordem",i,vm.listaCategoria);
-							elemento.ordem = (parseInt(elemento.ordem)+1).toString();
-							console.log("update: ",elemento);
-							$http.post("/apirest/admin/categoria/altera",elemento);
->>>>>>> desenv
 
 								var elemento = Utils.obterElemento("ordem",i,vm.listaCategoria);
 								elemento.ordem = (parseInt(elemento.ordem)-1).toString();
-								$http.post("/apirest/admin/categoria/altera",elemento);
+								$http.post("/apirest/admin/categoria/ordenar",elemento);
 
 							}
 						} else if (subiu) {
@@ -106,28 +82,16 @@
 								var elemento = Utils.obterElemento("ordem",i,vm.listaCategoria);
 								elemento.ordem = (parseInt(elemento.ordem)+1).toString();
 								console.log("update: ",elemento);
-								$http.post("/apirest/admin/categoria/altera",elemento);
+								$http.post("/apirest/admin/categoria/ordenar",elemento);
 
 							}
 						}
-<<<<<<< HEAD
 
 						vm.listaCategoria[ini_pos-1].ordem = fin_pos.toString();
 
-						$http.post("/apirest/admin/categoria/altera",vm.listaCategoria[ini_pos-1]).success(function(response){
+						$http.post("/apirest/admin/categoria/ordenar",vm.listaCategoria[ini_pos-1]).success(function(response){
 							// atualiza a lista
 							$http.get("/apirest/admin/categoria").success(function(response){
-=======
-					}
-
-					vm.listaCategoria[ini_pos-1].ordem = fin_pos.toString();
-
-					$http.post("/apirest/admin/categoria/altera",vm.listaCategoria[ini_pos-1]).success(function(response){
-						// atualiza a lista
-						$http.get("/apirest/admin/categoria").success(function(response){
-
-							vm.listaCategoria = response;
->>>>>>> desenv
 
 								vm.listaCategoria = response;
 
@@ -137,20 +101,17 @@
 							}).error(function(err){
 								console.log("não foi possível ordenar a lista de categorias");
 							});
-						});
+						}); // $http.post "/apirest/admin/categoria/ordenar"
+					} // beforeStop: function(event, ui)
+				}; // vm.sortableOptions
 
-					}
-				};
+			}); // $http url: "/apirest/admin/categoria
 
-			});
-		});
+			vm.changeSelection = function(item) {
+				vm.selecionado = item;
+			};
 
-
-
-		vm.changeSelection = function(item) {
-			vm.selecionado = item;
-		};
-
-	}
+		}); // ColorPalette.get().then(function(response){...})
+	}; // function categoriaController
 
 })();
