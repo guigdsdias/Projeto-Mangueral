@@ -1,37 +1,33 @@
-<!-- esquerda -->
-<div class="col-md-3">
-	<categoria cor="blue" href="#subcategoria" icone="fa-automobile" texto="Veiculos"></categoria>
-	<categoria cor="green" href="#portfolio-modal" modal="true" icone="fa-paw" texto="Animais"></categoria>
-	<categoria cor="light-red" href="#about-modal" modal="true" icone="fa-music" texto="Música e Instrumentoss"></categoria>
-</div>
+<div class="row"  data-ng-init="itens = home.listaCategoria[0]">
 
+	<!-- esquerda -->
+	<div class="col-md-3">
+		<categoria cor="{{home.primeiros[0].cor}}" href="#subcategoria" icone="{{home.primeiros[0].icone}}" texto="{{home.primeiros[0].nome}}"></categoria>
+		<categoria cor="{{home.primeiros[1].cor}}" href="#portfolio-modal" modal="true" icone="{{home.primeiros[1].icone}}" texto="{{home.primeiros[1].nome}}"></categoria>
+	</div>
 
-<!-- centro -->
-<div class="col-md-6">
-	
-	<!-- Start Carousel Section -->
-	<!-- <div class="home-slider" data-ng-include="vm.includes.carousel"></div> -->
-	<div class="home-slider" data-ng-view style="margin-bottom:29px;"></div>
-	<!-- Start Carousel Section -->
+	<!-- centro -->
+	<div class="col-md-6">
 
-	<div class="row">
-	    <div class="col-md-6">
-	        <categoria cor="color" class="responsive" href="#service-modal" icone="fa-home" texto="Para sua casa"></categoria>
-	    </div>
-	    
-	    <div class="col-md-6">
-	        <categoria  cor="light-orange" class="responsive-2"
-	                    href="#team-modal" icone="fa-mobile-phone" texto="Eletrônicos e Celulares" />
-	    </div>
-	    
+		<!-- Start Carousel Section -->
+		<div class="home-slider" data-ng-include="home.includes.carousel" style="margin-bottom:29px;"></div>
+		<!-- <div class="home-slider" data-ng-view style="margin-bottom:29px;"></div> -->
+		<!-- Start Carousel Section -->
+
+	</div>
+
+	<!-- direita -->
+	<div class="col-md-3">
+		<categoria cor="{{home.primeiros[2].cor}}" class="" href="#contact-modal" icone="{{home.primeiros[2].icone}}" texto="{{home.primeiros[2].nome}}"></categoria>
+		<categoria cor="{{home.primeiros[3].cor}}" class="" href="#testimonial-modal" icone="{{home.primeiros[3].icone}}" texto="{{home.primeiros[3].nome}}"></categoria>
 	</div>
 </div>
 
-<!-- direita -->
-<div class="col-md-3">
-	<categoria cor="light-red" class="" href="#contact-modal" icone="fa-building" texto="Imóveis"></categoria>
-	<categoria cor="color" class="" href="#testimonial-modal" icone="fa-users" texto="Negócios e Empregos"></categoria>
-	<categoria cor="blue" class="" href="#news-modal" icone="fa-bicycle" texto="Esportes"></categoria>
+<div class="row" data-ng-repeat="row in home.listaCategoria">
+	<div class="col-md-3" data-ng-repeat="cat in row">
+		<categoria cor="{{cat.cor}}" href="#about-modal" modal="true" icone="{{cat.icone}}" texto="{{cat.nome}}"></categoria>
+	</div>
+	<!-- <div class="col-md-3"><categoria cor="color"        class="responsive"   href="#service-modal" icone="fa-home"         texto="Para sua casa"></categoria></div>
+	<div class="col-md-3"><categoria cor="light-orange" class="responsive-2" href="#team-modal"	   icone="fa-mobile-phone" texto="Eletrônicos e Celulares"></categoria></div>
+	<div class="col-md-3"><categoria cor="blue" 		class="" 			 href="#news-modal"    icone="fa-bicycle"      texto="Esportes"></categoria></div> -->
 </div>
-
-vm.uf: {{vm.teste}}
