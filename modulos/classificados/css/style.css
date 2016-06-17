@@ -160,6 +160,12 @@ fieldset[disabled] .btn-primary.active {
     background: lightgray;
 }
 
+.transparency{
+    opacity: 0.2;
+    filter: alpha(opacity=20);
+    background: gray;
+}
+
 
 
 /**** Start Main Body Section ****/
