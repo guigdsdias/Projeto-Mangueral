@@ -18,6 +18,7 @@
 				esquerda: includes+"esquerda.html",
 				centro:   includes+"centro.html",
 				carousel: includes+"carousel.html",
+				navbar: includes+"navbar.html",
 				copyright:includes+"copyright.html",
 				direita:  includes+"direita.html",
 				modal:    {

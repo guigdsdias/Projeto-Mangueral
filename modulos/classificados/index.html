@@ -1,61 +1,61 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="pmApp">
+<html lang="en" ng-app="pmApp" style="padding-top:50px;">
 
 <head>
 
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="author" content="">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-<title>Jardins Mangueiral</title>
+    <title>Jardins Mangueiral</title>
 
-<!-- jquery -->
-<script src="../../Config/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- jquery -->
+    <script src="../../Config/bower_components/jquery/dist/jquery.min.js"></script>
 
-<!-- kendoui -->
-<script src="http://cdn.kendostatic.com/2013.2.716/js/kendo.all.min.js"></script>
-<link href='http://cdn.kendostatic.com/2013.2.716/styles/kendo.common.min.css' rel='stylesheet' />
-<link href='http://cdn.kendostatic.com/2013.2.716/styles/kendo.bootstrap.min.css' rel='stylesheet' />
+    <!-- kendoui -->
+    <script src="http://cdn.kendostatic.com/2013.2.716/js/kendo.all.min.js"></script>
+    <link href='http://cdn.kendostatic.com/2013.2.716/styles/kendo.common.min.css' rel='stylesheet' />
+    <link href='http://cdn.kendostatic.com/2013.2.716/styles/kendo.bootstrap.min.css' rel='stylesheet' />
 
-<!-- AngularJS -->
-<script src="../../Config/bower_components/angular/angular.js"></script>
-<script data-require="angular.js@1.2.x" src="http://code.angularjs.org/1.2.4/angular-route.js" ></script>
-<script src="../../Config/bower_components/angular-locale-pt-br/angular-locale_pt-br.js"></script>
-
-
-<!-- Bootstrap Core CSS -->
-<link href="../../Config/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-
-<!-- Font Awesome CSS -->
-<link href="../../Config/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-
-<!-- Custom CSS -->
-<link href="../../Config/bower_components/animate.css/animate.css" rel="stylesheet" />
-
-<!-- Custom CSS -->
-<link href="css/style.css" rel="stylesheet" />
-
-<!-- Custom Fonts -->
-<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css' />
-
-<!-- http://plnkr.co/vendor/select2/select2.css -->
+    <!-- AngularJS -->
+    <script src="../../Config/bower_components/angular/angular.js"></script>
+    <script data-require="angular.js@1.2.x" src="http://code.angularjs.org/1.2.4/angular-route.js" ></script>
+    <script src="../../Config/bower_components/angular-locale-pt-br/angular-locale_pt-br.js"></script>
 
 
-<!-- vendor js -->
-<script src="../../Config/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="../../Config/vendor/jquery.appear.js"></script>
-<script src="../../Config/js/contact_me.js"></script>
-<script src="../../Config/vendor/jqBootstrapValidation.js"></script>
-<script src="../../Config/vendor/modernizr.custom.js"></script>
-<script src="../../Config/js/script.js"></script>
-<script src="../../Config/vendor/angular-kendo.js"></script>
+    <!-- Bootstrap Core CSS -->
+    <link href="../../Config/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-<!-- kendoui -->
-<!-- <script src="http://kendo.cdn.telerik.com/2016.1.226/js/kendo.all.min.js"></script> -->
+    <!-- Font Awesome CSS -->
+    <link href="../../Config/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
 
-<!--[if lt IE 9]>
+    <!-- Custom CSS -->
+    <link href="../../Config/bower_components/animate.css/animate.css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet" />
+
+    <!-- Custom Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css' />
+
+    <!-- http://plnkr.co/vendor/select2/select2.css -->
+
+
+    <!-- vendor js -->
+    <script src="../../Config/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../../Config/vendor/jquery.appear.js"></script>
+    <script src="../../Config/js/contact_me.js"></script>
+    <script src="../../Config/vendor/jqBootstrapValidation.js"></script>
+    <script src="../../Config/vendor/modernizr.custom.js"></script>
+    <script src="../../Config/js/script.js"></script>
+    <script src="../../Config/vendor/angular-kendo.js"></script>
+
+    <!-- kendoui -->
+    <!-- <script src="http://kendo.cdn.telerik.com/2016.1.226/js/kendo.all.min.js"></script> -->
+
+    <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
@@ -84,20 +84,8 @@
     <!-- End Logo Section -->
 
     <!-- menu -->
-    <div class="menuTop text-right">
-
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 text-left">
-                    <span>Você procura, nós encontramos!</span>
-                </div>
-                <div class="col-md-6">
-                    <a href="/Projeto-Mangueral/modulos/admin">Admin</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    <!-- <div class="menuTop text-right" ></div> -->
+    <div style="padding: 18px 10px 0px 10px;" data-ng-include="ctrl.includes.navbar"></div>
 
     <!-- Start Main Body Section -->
     <div class="mainbody-section text-center">
