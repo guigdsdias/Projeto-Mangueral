@@ -23,14 +23,16 @@
 	</div>
 </div>
 
-<div class="row" data-ng-repeat="row in home.listaCategoria">
+<div class="row">
+	<div class="col-md-3" data-ng-repeat="cat in home.listaCategoria">
+		<categoria cor="{{cat.cor || 'transparency'}}" class="{{ cat.nome ? '' : 'teste'}}" href="#about-modal" modal="true" icone="{{cat.icone || 'fa fa-ellipsis-h'}}" texto="{{cat.nome || '.'}}"></categoria>
+	</div>
+</div>
+<!-- <div class="row" data-ng-repeat="row in home.listaCategoria">
 	<div class="col-md-{{12/row.length}}" data-ng-repeat="cat in row">
 		<categoria cor="{{cat.cor || 'transparency'}}" class="{{ cat.nome ? '' : 'teste'}}" href="#about-modal" modal="true" icone="{{cat.icone || 'fa fa-ellipsis-h'}}" texto="{{cat.nome || '.'}}"></categoria>
 	</div>
-	<!-- <div class="col-md-3"><categoria cor="color"        class="responsive"   href="#service-modal" icone="fa-home"         texto="Para sua casa"></categoria></div>
-	<div class="col-md-3"><categoria cor="light-orange" class="responsive-2" href="#team-modal"	   icone="fa-mobile-phone" texto="Eletrônicos e Celulares"></categoria></div>
-	<div class="col-md-3"><categoria cor="blue" 		class="" 			 href="#news-modal"    icone="fa-bicycle"      texto="Esportes"></categoria></div> -->
-</div>
+</div> -->
 
 <style>
 div.teste > a > i{color:gray;}

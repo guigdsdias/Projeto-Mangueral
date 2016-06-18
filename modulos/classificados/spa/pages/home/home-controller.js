@@ -20,18 +20,11 @@
 			vm.listaCategoria = [];
 
 			vm.primeiros = response.data.splice(0,4);
-			// vm.listaCategoria = response.data;
+			vm.listaCategoria = response.data;
 
-			for (var i=0; i<response.data.length;i){
-				vm.listaCategoria.push(response.data.slice(i,i+4));
-
-				// preenche a lista com elementos vazios no final para completar 4 elementos por linha
-				var ultimoInserido = vm.listaCategoria[vm.listaCategoria.length-1];
-				for (var j=ultimoInserido.length;j<4;j++){
-					ultimoInserido.push({});
-				}
-
-				i +=4;
+			var qtdItensPreencherNoFinal = 4 - (vm.listaCategoria.length % 4);
+			for (var i=0; i < qtdItensPreencherNoFinal; i++){
+				vm.listaCategoria.push({});
 			}
 
 			console.log(vm.listaCategoria);
