@@ -6,14 +6,17 @@ angular.module("pmApp", [
     'pmServices',
     'moduloIndexController',
     'moduloHomeController',
-    'moduloSubCategoriaController',
-    'moduloCarouselController'
+    'moduloCarouselController',
+    'moduloInserirController',
+    'htmlDirectives',
+    'constants'
 ])
 
 .config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
-                when('/home',         {templateUrl: 'spa/pages/home/home.html'}).
+                when('/home',     {templateUrl: 'spa/pages/home/home.html',       controller: 'homeController as home'}).
+                when('/anunciar', {templateUrl: 'spa/pages/anuncio/inserir.html', controller: 'inserirController as vm'}).
                 // when('/subcategoria', {templateUrl: 'spa/pages/subcategoria/sub-categoria.html', controller: 'subCategoriaController as vm'}).
                 // when('/carossel',     {templateUrl: 'spa/includes/home/carousel.html', controller: 'carouselController as vm'}).
 //                when('/cadastrese', {templateUrl: 'pages/cadastrese.html',       controller: 'portalController'}).

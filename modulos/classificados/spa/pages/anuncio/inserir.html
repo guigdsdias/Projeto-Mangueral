@@ -1,0 +1,14 @@
+<div class="container-fluid" style="background-color:white;border-radius:10px;">
+	<h1>Inserir Anuncio</h1><hr />
+	<div class="col-md-12">
+		<form class="form-horizontal" role="form">
+
+			<h-select id="idCategoria" label="Categoria: " width="20" ng-model="vm.categoria" options="vm.listaCategoria"></h-select>
+			<h-text-field id="idTitulo"  label="Título:"  width="5" type="text" ng-model="vm.titulo"></h-text-field>
+			<h-text-field id="idDescricao"  label="Descrição:"  width="10" type="text" ng-model="vm.descricao"></h-text-field>
+			<h-text-field id="idPreco"  label="Preço:"  width="2" type="text" ng-model="vm.preco"></h-text-field>
+			<h-select id="idCategoria" label="Aceita Troca: " width="20" ng-model="vm.aceitaTroca" options="[{codigo:'S',texto:'Sim'},{codigo:'N',texto:'Não'}]"></h-select>
+
+		</form>
+	</div>
+</div>

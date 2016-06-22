@@ -3,21 +3,21 @@
 
 	angular.module('htmlDirectives', ['constants'])
 
-	.directive('categoria',function(){
-		return {
-			restrict: 'E',
-			transclude : true,
-			scope: {
-				cor: '@', href: '@', modal: '@', icone: '@', texto: '@', class: '@'
-			},
-			template: '<div class="menu-item {{cor}} {{class}}">'+
-								'    <a href="{{href}}" data-toggle="{{modal ? \'modal\' : false}}">'+
-								'        <i class="fa {{icone}}"></i>'+
-								'        <p>{{texto}}</p>'+
-								'    </a>'+
-								'</div>'
-		};
-	})
+	// .directive('categoria',function(){
+	// 	return {
+	// 		restrict: 'E',
+	// 		transclude : true,
+	// 		scope: {
+	// 			cor: '@', href: '@', modal: '@', icone: '@', texto: '@', class: '@'
+	// 		},
+	// 		template: '<div class="menu-item {{cor}} {{class}}">'+
+	// 							'    <a href="{{href}}" data-toggle="{{modal ? \'modal\' : false}}">'+
+	// 							'        <i class="fa {{icone}}"></i>'+
+	// 							'        <p>{{texto}}</p>'+
+	// 							'    </a>'+
+	// 							'</div>'
+	// 	};
+	// })
 
 	// horizontal form field
 	.directive('hLine',function(){
@@ -50,6 +50,19 @@
 						'</div>'
 		};
 	})
+.directive('hSelect',function($http){
+	return {
+		restrict: 'E',
+		transclude: false,
+		scope: {id: '@', label: '@', width: '@', model:'=ngModel', options: '='},
+		templateUrl: "/admin/spa/templates/htmlDirectives/selectBox.html",
+		link: function(scope,elem,attrs){
+			scope.selecionaItem = function(item){
+				scope.model = item;
+			};
+		}
+	}
+})
 .directive('hColorPalette',function($http,ColorPalette){
 	return{
 		restrict: 'E',

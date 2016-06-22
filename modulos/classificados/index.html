@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="pmApp" style="padding-top:50px;">
+<html lang="en" ng-app="pmApp" style="padding-top:50px;color:#ffffff">
 
 <head>
 
@@ -64,11 +64,13 @@
     <script type="text/javascript" src="spa/resources/pm-constants.js"></script>
     <script type="text/javascript" src="spa/resources/pm-directives.js"></script>
     <script type="text/javascript" src="spa/resources/pm-services.js"></script>
+    <script type="text/javascript" src="/admin/spa/resources/htmlDirectives.js"></script>
+    <script type="text/javascript" src="/admin/spa/resources/constants.js"></script>
 
     <!-- controllers -->
     <script type="text/javascript" src="spa/index-controller.js"></script>
     <script type="text/javascript" src="spa/pages/home/home-controller.js"></script>
-    <script type="text/javascript" src="spa/pages/subcategoria/sub-categoria-controller.js"></script>
+    <script type="text/javascript" src="spa/pages/anuncio/inserir-controller.js"></script>
     <script type="text/javascript" src="spa/includes/home/carousel-controller.js"></script>
 
     <script>
@@ -89,7 +91,7 @@
 
     <!-- Start Main Body Section -->
     <div class="mainbody-section text-center">
-        <div class="container" data-ng-controller="homeController as home">
+        <div class="container">
 
             <!-- CONTEUDO da navegação do "Router"  -->
             <div data-ng-view> </div>
