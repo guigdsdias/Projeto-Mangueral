@@ -45,53 +45,108 @@
 						'		{{label}}' +
 						'	</label>' +
 						'	<div class="col-sm-{{width}}">'+
-						'		<input class="form-control" id="{{id}}" type="{{type}}" ng-model="model" />' +
+						'		<input class="form-control" id="{{id}}" type="text" ng-model="model" />' +
 						'	</div>' +
 						'</div>'
 		};
 	})
-.directive('hSelect',function($http){
-	return {
-		restrict: 'E',
-		transclude: false,
-		scope: {id: '@', label: '@', width: '@', model:'=ngModel', options: '='},
-		templateUrl: "/admin/spa/templates/htmlDirectives/selectBox.html",
-		link: function(scope,elem,attrs){
-			scope.selecionaItem = function(item){
-				scope.model = item;
-			};
-		}
-	}
-})
-.directive('hColorPalette',function($http,ColorPalette){
-	return{
-		restrict: 'E',
-		transclude: false,
-		scope: {id: '@', label: '@', width: '@', selected: '@', model: '='},
-		templateUrl: "spa/templates/htmlDirectives/colorPalette.html",
-		link: function(scope,elem,attrs){
 
-			scope.defineCor = function(item){
-				scope.model = item;
-			};
+	.directive('hTextArea',function(){
+		return {
+			restrict: 'E',
+			transclude: false,
+			scope: { id: '@', label: '@' , width: '@' , type: '@', model:'=ngModel'},
+			template:'<div class="form-group">' +
+						'	<label for="{{id}}" class="col-sm-2 control-label">' +
+						'		{{label}}' +
+						'	</label>' +
+						'	<div class="col-sm-{{width}}">'+
+						'		<textarea class="form-control" rows="{{rows ? rows : 5}}" id="{{id}}" data-ng-model="model">{{value}}</textarea>' +
+						'	</div>' +
+						'</div>'
+		};
+	})
 
-			scope.cores = {};
-			ColorPalette.get().then(function(response){
-				for (var i in response.data){
-					var e = response.data[i];
-					scope.cores[e.cor] = e.texto;
+	.directive('hCheckbutton',function($http){
+		return {
+			restrict: 'E',
+			transclude: false,
+			scope: {id: '@', label: '@', width: '@', model:'=ngModel', options: '=', valorInicial:"="},
+			template:	'<div class="form-group">'+
+							'<label class="col-sm-2 control-label">{{label}}</label>'+
+								'<div class="col-sm-4" style="text-align:left;">'+
+									'<div class="btn-group">'+
+										'<label data-ng-repeat="item in options" class="btn {{class ? class : \'btn-primary\'}}" data-ng-class="{active:model.texto==item.texto}" data-ng-click="selecionar(item)" ng-model="model" uib-btn-radio="{{item.texto}}">{{item.texto}}</label>'+
+									'</div>'+
+								'</div>'+
+							'</div>',
+			link: function(scope,elem,attrs){
+
+				scope.$watch("options",function(oldValue,newValue){
+					try {
+						var vI = parseInt(scope.valorInicial);
+						scope.model = (isNaN(vI)) ? {} : oldValue[vI];
+					} catch (e) { /***/ }
+				});
+				
+				scope.selecionar = function(item){
+					scope.model = item;
 				}
-				scope.listaCores = response.data;
-				scope.model = scope.listaCores[0];
-			});
-
-			// recupera a cor quando for selecionado um item para alteração
-			scope.$watch("model",function(oldV,newV){
-				scope.model.texto = scope.cores[scope.model.cor];
-			});
+			}
 		}
-	};
-})
+	})
+
+	.directive('hSelect',function($http){
+		return {
+			restrict: 'E',
+			transclude: false,
+			scope: {id: '@', label: '@', width: '@', model:'=ngModel', options: '=', valorInicial:"="},
+			templateUrl: "/admin/spa/templates/htmlDirectives/selectBox.html",
+			link: function(scope,elem,attrs){
+
+				scope.$watch("options",function(oldValue,newValue){
+					try {
+						var vI = parseInt(scope.valorInicial);
+						scope.model = (isNaN(vI)) ? {} : oldValue[vI];
+					} catch (e) { /***/ }
+				});
+
+				scope.selecionaItem = function(item){
+					scope.model = item;
+				};
+			}
+		}
+	})
+
+	.directive('hColorPalette',function($http,ColorPalette){
+		return{
+			restrict: 'E',
+			transclude: false,
+			scope: {id: '@', label: '@', width: '@', selected: '@', model: '='},
+			templateUrl: "spa/templates/htmlDirectives/colorPalette.html",
+			link: function(scope,elem,attrs){
+
+				scope.defineCor = function(item){
+					scope.model = item;
+				};
+
+				scope.cores = {};
+				ColorPalette.get().then(function(response){
+					for (var i in response.data){
+						var e = response.data[i];
+						scope.cores[e.cor] = e.texto;
+					}
+					scope.listaCores = response.data;
+					scope.model = scope.listaCores[0];
+				});
+
+				// recupera a cor quando for selecionado um item para alteração
+				scope.$watch("model",function(oldV,newV){
+					scope.model.texto = scope.cores[scope.model.cor];
+				});
+			}
+		};
+	})
 
 	.directive('showModal', function(){
 		return {

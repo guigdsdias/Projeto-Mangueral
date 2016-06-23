@@ -27,11 +27,10 @@
 				vm.listaCategoria.push({
 					codigo: e.id,
 					texto: e.nome,
-					icone: e.icone
+					icone: e.icone,
+					cor: e.cor
 				});
 			});
-
-			console.log(response);
 
 		});
 

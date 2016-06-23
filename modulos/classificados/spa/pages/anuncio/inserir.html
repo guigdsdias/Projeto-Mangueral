@@ -1,14 +1,38 @@
 <div class="container-fluid" style="background-color:white;border-radius:10px;">
 	<h1>Inserir Anuncio</h1><hr />
 	<div class="col-md-12">
-		<form class="form-horizontal" role="form">
+		<form class="form-horizontal" role="form" data-ng-init="vm.aceitaTroca = {'codigo':'S','texto':'Sim'}">
 
-			<h-select id="idCategoria" label="Categoria: " width="20" ng-model="vm.categoria" options="vm.listaCategoria"></h-select>
+			<h-select id="idCategoria" label="Categoria: " width="20" ng-model="vm.categoria" options="vm.listaCategoria" valor-inicial="0"></h-select>
 			<h-text-field id="idTitulo"  label="Título:"  width="5" type="text" ng-model="vm.titulo"></h-text-field>
-			<h-text-field id="idDescricao"  label="Descrição:"  width="10" type="text" ng-model="vm.descricao"></h-text-field>
+			<!-- <h-text-field id="idDescricao"  label="Descrição:"  width="10" type="text" ng-model="vm.descricao"></h-text-field> -->
+			<h-text-area id="idDescricao"  label="Descrição:"  width="10" type="text" ng-model="vm.descricao"></h-text-area>
 			<h-text-field id="idPreco"  label="Preço:"  width="2" type="text" ng-model="vm.preco"></h-text-field>
-			<h-select id="idCategoria" label="Aceita Troca: " width="20" ng-model="vm.aceitaTroca" options="[{codigo:'S',texto:'Sim'},{codigo:'N',texto:'Não'}]"></h-select>
+			<!-- <h-select id="idCategoria" label="Aceita Troca: " width="20" ng-model="vm.aceitaTroca" valor-inicial="0" options="[{codigo:'S',texto:'Sim'},{codigo:'N',texto:'Não'}]"></h-select> -->
+			<h-checkbutton label="Aceita Troca:" ng-model="vm.aceitaTroca" valor-inicial="1" options="[{codigo:'S',texto:'Sim'},{codigo:'N',texto:'Não'}]"></h-checkbutton>
+
+			<!-- seleciona categorias para troca -->
+			<div class="form-group" data-ng-if="vm.aceitaTroca.codigo=='S'">
+				<label class="col-sm-2 control-label"></label>
+				<div class="col-sm-10">
+					<div class="jumbotron" style="padding: 10px 5px;">
+						<h4>Selecione as categorias de seu interesse para troca:</h4>
+						<hr />
+						<label data-ng-repeat="item in vm.listaCategoria" class="btn {{item.cor}}" data-ng-class="categoriaSelecionadaParaTroca:item==vm.categoriaParaTroca" style="width:200px;margin:5px;">
+								<a data-ng-click="vm.selecionarCategoriaParaTroca(item)" data-toggle="false" style="color:white;font-weight:bold;font-size:20px;">
+									<i class="fa  {{item.icone}}"></i>
+									<p class="ng-binding" style="font-weight:bold;font-size:15px;">{{item.texto}}</p>
+								</a>
+						</label>
+					</div>
+				</div>
+			</div>
 
 		</form>
 	</div>
 </div>
+
+
+<style>
+.categoriaSelecionadaParaTroca{border:solid 2px #3b6a95;}
+</style>
