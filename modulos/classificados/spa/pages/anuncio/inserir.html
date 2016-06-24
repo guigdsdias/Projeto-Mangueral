@@ -12,7 +12,6 @@
 				<a class="btn btn-primary" style="font-weight:bold;font-size:20px;padding:0px 15px;" data-ng-click="vm.addCaracteristica=true">+</a>
 			</h-line>
 
-			vm.caracteristicaSelecionada: {{vm.caracteristicaSelecionada}}
 			<h-line width="10" data-ng-if="vm.addCaracteristica">
 				<div class="jumbotron" style="padding: 10px 5px;" data-ng-init="vm.listaCaracteristica=['Modelo','Ano','Cor','Marca','Tipo']">
 					<h4>Selecione a caracterísica:</h4>
@@ -20,7 +19,7 @@
 					<label class="btn btn-warning" data-ng-repeat="item in vm.listaCaracteristica" data-ng-click="vm.caracteristicaSelecionada=true" data-ng-if="!vm.caracteristicaSelecionada" style="margin:5px;">
 						<a style="color:#5d5d5d;font-weight:bold;"> {{item}} </a>
 					</label>
-					
+
 				</div>
 			</h-line>
 
