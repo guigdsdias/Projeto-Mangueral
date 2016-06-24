@@ -7,9 +7,9 @@
 			<h-text-field id="idTitulo"  label="Título:"  width="5" type="text" ng-model="vm.titulo"></h-text-field>
 			<!-- <h-text-field id="idDescricao"  label="Descrição:"  width="10" type="text" ng-model="vm.descricao"></h-text-field> -->
 			<h-text-area id="idDescricao"  label="Descrição:"  width="10" type="text" ng-model="vm.descricao"></h-text-area>
-			<h-text-field id="idPreco"  label="Preço:"  width="2" type="text" ng-model="vm.preco"></h-text-field>
+			<h-text-field id="idPreco"  label="Preço:"  width="2" type="text" ng-model="vm.preco" placeholder="R$"></h-text-field>
 			<!-- <h-select id="idCategoria" label="Aceita Troca: " width="20" ng-model="vm.aceitaTroca" valor-inicial="0" options="[{codigo:'S',texto:'Sim'},{codigo:'N',texto:'Não'}]"></h-select> -->
-			<h-checkbutton label="Aceita Troca:" ng-model="vm.aceitaTroca" valor-inicial="1" options="[{codigo:'S',texto:'Sim'},{codigo:'N',texto:'Não'}]"></h-checkbutton>
+			<h-checkbutton label="Aceita Troca:" width="4" ng-model="vm.aceitaTroca" valor-inicial="1" options="[{codigo:'S',texto:'Sim'},{codigo:'N',texto:'Não'}]"></h-checkbutton>
 
 			<!-- seleciona categorias para troca -->
 			<div class="form-group" data-ng-if="vm.aceitaTroca.codigo=='S'">
@@ -18,11 +18,12 @@
 					<div class="jumbotron" style="padding: 10px 5px;">
 						<h4>Selecione as categorias de seu interesse para troca:</h4>
 						<hr />
-						<label data-ng-repeat="item in vm.listaCategoria" class="btn {{item.cor}}" data-ng-class="categoriaSelecionadaParaTroca:item==vm.categoriaParaTroca" style="width:200px;margin:5px;">
-								<a data-ng-click="vm.selecionarCategoriaParaTroca(item)" data-toggle="false" style="color:white;font-weight:bold;font-size:20px;">
-									<i class="fa  {{item.icone}}"></i>
-									<p class="ng-binding" style="font-weight:bold;font-size:15px;">{{item.texto}}</p>
-								</a>
+						<label data-ng-repeat="item in vm.listaCategoria" class="btn {{item.cor}}" data-ng-click="vm.selecionarCategoriaParaTroca(item)"
+							data-ng-class="{categoriaSelecionadaParaTroca:vm.categoriaSelecionada(item)}" style="width:200px;margin:5px;height:78px;">
+							<a data-toggle="false" style="color:white;font-weight:bold;font-size:20px;">
+								<i class="fa  {{item.icone}}"></i>
+								<p class="ng-binding" style="font-weight:bold;font-size:15px;">{{item.texto}}</p>
+							</a>
 						</label>
 					</div>
 				</div>
@@ -34,5 +35,5 @@
 
 
 <style>
-.categoriaSelecionadaParaTroca{border:solid 2px #3b6a95;}
+.categoriaSelecionadaParaTroca{border:solid 5px #626262;width:190px;height:68px;}
 </style>

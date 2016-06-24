@@ -34,6 +34,27 @@
 
 		});
 
+		vm.categoriaParaTroca = [];
+		vm.categoriaSelecionada = function(item){
+			var strCat = JSON.stringify(vm.categoriaParaTroca);
+			var strItem = JSON.stringify(item);
+			return (strCat.indexOf(strItem) > -1);
+		}
+		vm.selecionarCategoriaParaTroca = function(item){
+			var strCat = JSON.stringify(vm.categoriaParaTroca);
+			var strItem = JSON.stringify(item);
+
+			// se o item já está na "vm.categoriaParaTroca": remove
+			if (strCat.indexOf(strItem) > -1){
+				strCat = strCat.replace(strItem+",","");
+				strCat = strCat.replace(","+strItem,"");
+				strCat = strCat.replace(strItem,"");
+				vm.categoriaParaTroca = JSON.parse(strCat);
+			} else { // se não: adiciona
+				vm.categoriaParaTroca.push(item);
+			}
+		};
+
 	}
 
 })();

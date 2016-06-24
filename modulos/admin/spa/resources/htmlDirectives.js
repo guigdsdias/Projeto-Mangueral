@@ -22,14 +22,14 @@
 	// horizontal form field
 	.directive('hLine',function(){
 		return {
-			restrict: 'E',
+			restrict: 	'E',
 			transclude: true,
-			scope: { id: '@', label: '@' , width: '@'},
+			scope:		{ id: '@', label: '@' , width: '@'},
 			template:	'<div class="form-group">' +
 						'	<label for="{{id}}" class="col-sm-2 control-label">' +
 						'		{{label}}' +
 						'	</label>' +
-						'	<div class="col-sm-{{width}}" data-ng-transclude>'+
+						'	<div class="col-sm-{{width}}" style="text-align:left;" data-ng-transclude>'+
 						'	</div>' +
 						'</div>'
 		};
@@ -37,17 +37,12 @@
 
 	.directive('hTextField',function(){
 		return {
-			restrict: 'E',
+			restrict: 	'E',
 			transclude: false,
-			scope: { id: '@', label: '@' , width: '@' , type: '@', model:'=ngModel'},
-			template:'<div class="form-group">' +
-						'	<label for="{{id}}" class="col-sm-2 control-label">' +
-						'		{{label}}' +
-						'	</label>' +
-						'	<div class="col-sm-{{width}}">'+
-						'		<input class="form-control" id="{{id}}" type="text" ng-model="model" />' +
-						'	</div>' +
-						'</div>'
+			scope: 		{ id: '@', label: '@' , width: '@' , model:'=ngModel', placeholder: '@'},
+			template:	'<h-line id="{{id}}" label="{{label}}" width="{{width}}">'+
+							'<input class="form-control" id="{{id}}" type="text" ng-model="model" placeholder="{{placeholder}}"/>' +
+						'</h-line>'
 		};
 	})
 
@@ -56,30 +51,22 @@
 			restrict: 'E',
 			transclude: false,
 			scope: { id: '@', label: '@' , width: '@' , type: '@', model:'=ngModel'},
-			template:'<div class="form-group">' +
-						'	<label for="{{id}}" class="col-sm-2 control-label">' +
-						'		{{label}}' +
-						'	</label>' +
-						'	<div class="col-sm-{{width}}">'+
-						'		<textarea class="form-control" rows="{{rows ? rows : 5}}" id="{{id}}" data-ng-model="model">{{value}}</textarea>' +
-						'	</div>' +
-						'</div>'
+			template:	'<h-line id="{{id}}" label="{{label}}" width="{{width}}">'+
+							'<textarea class="form-control" rows="{{rows ? rows : 5}}" id="{{id}}" data-ng-model="model">{{value}}</textarea>' +
+						'</h-line>'
 		};
 	})
 
 	.directive('hCheckbutton',function($http){
 		return {
-			restrict: 'E',
+			restrict: 	'E',
 			transclude: false,
-			scope: {id: '@', label: '@', width: '@', model:'=ngModel', options: '=', valorInicial:"="},
-			template:	'<div class="form-group">'+
-							'<label class="col-sm-2 control-label">{{label}}</label>'+
-								'<div class="col-sm-4" style="text-align:left;">'+
-									'<div class="btn-group">'+
-										'<label data-ng-repeat="item in options" class="btn {{class ? class : \'btn-primary\'}}" data-ng-class="{active:model.texto==item.texto}" data-ng-click="selecionar(item)" ng-model="model" uib-btn-radio="{{item.texto}}">{{item.texto}}</label>'+
-									'</div>'+
-								'</div>'+
-							'</div>',
+			scope: 		{id: '@', label: '@', width: '@', model:'=ngModel', options: '=', valorInicial:"="},
+			template:	'<h-line id="{{id}}" label="{{label}}" width="{{width}}">'+
+							'<div class="btn-group">'+
+								'<label data-ng-repeat="item in options" class="btn {{class ? class : \'btn-primary\'}}" data-ng-class="{active:model.texto==item.texto}" data-ng-click="selecionar(item)" ng-model="model" uib-btn-radio="{{item.texto}}">{{item.texto}}</label>'+
+							'</div>'+
+						'</h-line>',
 			link: function(scope,elem,attrs){
 
 				scope.$watch("options",function(oldValue,newValue){
@@ -88,7 +75,7 @@
 						scope.model = (isNaN(vI)) ? {} : oldValue[vI];
 					} catch (e) { /***/ }
 				});
-				
+
 				scope.selecionar = function(item){
 					scope.model = item;
 				}
