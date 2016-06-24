@@ -24,7 +24,7 @@
 		return {
 			restrict: 	'E',
 			transclude: true,
-			scope:		{ id: '@', label: '@' , width: '@'},
+			scope:		{ id: '@', label: '@' , width: '@', if:"=ngIf"},
 			template:	'<div class="form-group">' +
 						'	<label for="{{id}}" class="col-sm-2 control-label">' +
 						'		{{label}}' +

@@ -5,10 +5,25 @@
 
 			<h-select id="idCategoria" label="Categoria: " width="20" ng-model="vm.categoria" options="vm.listaCategoria" valor-inicial="0"></h-select>
 			<h-text-field id="idTitulo"  label="Título:"  width="5" type="text" ng-model="vm.titulo"></h-text-field>
-			<!-- <h-text-field id="idDescricao"  label="Descrição:"  width="10" type="text" ng-model="vm.descricao"></h-text-field> -->
 			<h-text-area id="idDescricao"  label="Descrição:"  width="10" type="text" ng-model="vm.descricao"></h-text-area>
 			<h-text-field id="idPreco"  label="Preço:"  width="2" type="text" ng-model="vm.preco" placeholder="R$"></h-text-field>
-			<!-- <h-select id="idCategoria" label="Aceita Troca: " width="20" ng-model="vm.aceitaTroca" valor-inicial="0" options="[{codigo:'S',texto:'Sim'},{codigo:'N',texto:'Não'}]"></h-select> -->
+
+			<h-line label="Características:" width="10">
+				<a class="btn btn-primary" style="font-weight:bold;font-size:20px;padding:0px 15px;" data-ng-click="vm.addCaracteristica=true">+</a>
+			</h-line>
+
+			vm.caracteristicaSelecionada: {{vm.caracteristicaSelecionada}}
+			<h-line width="10" data-ng-if="vm.addCaracteristica">
+				<div class="jumbotron" style="padding: 10px 5px;" data-ng-init="vm.listaCaracteristica=['Modelo','Ano','Cor','Marca','Tipo']">
+					<h4>Selecione a caracterísica:</h4>
+					<hr />
+					<label class="btn btn-warning" data-ng-repeat="item in vm.listaCaracteristica" data-ng-click="vm.caracteristicaSelecionada=true" data-ng-if="!vm.caracteristicaSelecionada" style="margin:5px;">
+						<a style="color:#5d5d5d;font-weight:bold;"> {{item}} </a>
+					</label>
+					
+				</div>
+			</h-line>
+
 			<h-checkbutton label="Aceita Troca:" width="4" ng-model="vm.aceitaTroca" valor-inicial="1" options="[{codigo:'S',texto:'Sim'},{codigo:'N',texto:'Não'}]"></h-checkbutton>
 
 			<!-- seleciona categorias para troca -->
@@ -19,7 +34,7 @@
 						<h4>Selecione as categorias de seu interesse para troca:</h4>
 						<hr />
 						<label data-ng-repeat="item in vm.listaCategoria" class="btn {{item.cor}}" data-ng-click="vm.selecionarCategoriaParaTroca(item)"
-							data-ng-class="{categoriaSelecionadaParaTroca:vm.categoriaSelecionada(item)}" style="width:200px;margin:5px;height:78px;">
+							   data-ng-class="{categoriaSelecionadaParaTroca:vm.categoriaSelecionada(item)}" style="width:200px;margin:5px;height:78px;">
 							<a data-toggle="false" style="color:white;font-weight:bold;font-size:20px;">
 								<i class="fa  {{item.icone}}"></i>
 								<p class="ng-binding" style="font-weight:bold;font-size:15px;">{{item.texto}}</p>
