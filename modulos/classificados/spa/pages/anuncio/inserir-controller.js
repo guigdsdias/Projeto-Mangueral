@@ -5,9 +5,9 @@
 
 	.controller('inserirController', inserirController);
 
-	inserirController.$inject = ['$http','$rootScope','$scope','INCLUDES'];
+	inserirController.$inject = ['$http','$rootScope','$scope','INCLUDES', ArrayServices];
 
-	function inserirController($http, $rootScope, $scope, INCLUDES){
+	function inserirController($http, $rootScope, $scope, INCLUDES, ArrayServices){
 
 		var vm = this;
 		// vm.includes = INCLUDES.index.files;
@@ -53,6 +53,17 @@
 			} else { // se não: adiciona
 				vm.categoriaParaTroca.push(item);
 			}
+		};
+
+		vm.caracteristicas = [];
+		vm.salvarCaracteristica = function(){
+			var item = {chave:vm.caracteristicaSelecionada, valor:vm.valorCaracteristica };
+			ArrayServices.add(vm.caracteristicas,item);
+			console.log(vm.caracteristicas);
+			// vm.addItem(vm.caracteristicas,item);
+			vm.caracteristicaSelecionada =
+			vm.valorCaracteristica = 
+			vm.addCaracteristica = null;
 		};
 
 	}
