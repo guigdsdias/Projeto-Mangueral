@@ -20,6 +20,9 @@
 	// })
 
 	// horizontal form field
+	.directive('empty',function(){
+		return {restrict: 'E', template: ''};
+	})
 	.directive('hLine',function(){
 		return {
 			restrict: 	'E',
@@ -39,9 +42,10 @@
 		return {
 			restrict: 	'E',
 			transclude: false,
+			replace: false,
 			scope: 		{ id: '@', label: '@' , width: '@' , model:'=ngModel', placeholder: '@'},
 			template:	'<h-line id="{{id}}" label="{{label}}" width="{{width}}">'+
-							'<input class="form-control" id="{{id}}" type="text" ng-model="model" placeholder="{{placeholder}}"/>' +
+							'<input class="form-control" id="{{id}}" type="text" ng-model="model" placeholder="{{placeholder}}"/>'+
 						'</h-line>'
 		};
 	})
