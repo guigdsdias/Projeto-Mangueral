@@ -38,7 +38,7 @@
         <input type="password" data-ng-model="ctrl.senha" required autocomplete="off"/>
       </div>
 
-      <button type="submit" class="button button-block"/>Cadastrar</button>
+      <button type="submit" class="button button-block">Cadastrar</button>
 
     </div>
 
@@ -59,14 +59,9 @@
         <input type="password" ng-model="ctrl.senha" required autocomplete="off"/>
       </div>
 
-      <p class="forgot"><a href="#">escqueceu sua senha?</a></p>
+      <p class="forgot"><a href="#">esqueceu sua senha?</a></p>
 
-      <button class="button button-block"/>Entrar</button>
-
-      <fb:login-button show-faces="true" max-rows="1" size="large"></fb:login-button>
-
-      <div id="fb-root">
-      </div>
+      <button class="button button-block" data-ng-click="ctrl.cadastrar()">Entrar</button>
 
     </div>
 

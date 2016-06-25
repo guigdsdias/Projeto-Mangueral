@@ -20,7 +20,9 @@
 					<ul class="nav navbar-nav"><li class=""><a href="#">
 						<i class="fa fa-bullhorn" aria-hidden="true" style="font-size:23px;margin-top:-3px;"></i>
 						Comércio Local
-					</a></li></ul>
+					</a>
+					<div id="fb-root"></div>
+				</li></ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li>
 							<a href="#">
@@ -51,7 +53,7 @@
 								<li class="divider"></li>
 
 								<!-- Login do Facebook -->
-								<li><a href="#">
+								<li><a data-ng-click="ctrl.loginFacebook()">
 									<i class="fa fa-facebook-square" aria-hidden="true" style="font-size:23px;margin-top:-3px;color:rgb(59, 89, 152);"></i>
 									Login do Facebook
 								</a></li>
