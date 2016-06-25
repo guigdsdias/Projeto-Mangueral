@@ -3,7 +3,7 @@ angular.module("pmApp", [
 	'kendo.directives',
 	'pmDirectives',
 	'pmConstants',
-    'pmServices',
+    'services',
     'moduloIndexController',
     'moduloHomeController',
     'moduloCarouselController',
