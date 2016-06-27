@@ -3,15 +3,23 @@
 	<div class="col-md-12">
 		<form class="form-horizontal" role="form" data-ng-init="vm.aceitaTroca = {'codigo':'S','texto':'Sim'}">
 
+
+			<!-- <input type="text" placeholder="Locations loaded via $http" uib-typeahead="crct as crct.nome for crct in vm.listaCaracteristica | filter:{nome:$viewValue}" typeahead-loading="loadingLocations" typeahead-no-results="noResults" class="form-control">
+		    <input type="text" 																								uib-typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control">
+		    <input type="text" placeholder="Custom template" 			uib-typeahead="crct as crct.nome for crct in vm.listaCaracteristica | filter:{nome:$viewValue}" typeahead-template-url="customTemplate.html" class="form-control" typeahead-show-hint="true" typeahead-min-length="0">
+		    <input type="text" placeholder="Custom popup template" 		uib-typeahead="crct as crct.nome for crct in vm.listaCaracteristica | filter:{nome:$viewValue}" typeahead-popup-template-url="customPopupTemplate.html" class="form-control"> -->
+
+			<h-checkbutton label="Objetivo do Anúncio:" width="4" ng-model="vm.objetivo" valor-inicial="0" options="[{codigo:'O',texto:'Ofertar'},{codigo:'B',texto:'Buscar Produtos/Serviços'}]"></h-checkbutton>
 			<h-select id="idCategoria" label="Categoria: " width="20" ng-model="vm.categoria" options="vm.listaCategoria" valor-inicial="0"></h-select>
+
 			<h-text-field id="idTitulo"  label="Título:"  width="5" type="text" ng-model="vm.titulo"></h-text-field>
 			<h-text-area id="idDescricao"  label="Descrição:"  width="10" type="text" ng-model="vm.descricao"></h-text-area>
 			<h-text-field id="idPreco"  label="Preço:"  width="2" type="text" ng-model="vm.preco" placeholder="R$"></h-text-field>
 
 			<h-line label="Características:" width="10">
 
-				<!-- caracteristicas informadas -->
-				<label class="btn btn-warning" data-ng-repeat="item in vm.caracteristicas" data-ng-click="vm.caracteristicaSelecionada=item" style="margin:5px;">
+				<!-- exibe as caracteristicas informadas -->
+				<label class="btn btn-warning" data-ng-repeat="item in vm.caracteristicas" data-ng-click="vm.alterarCaracteristica(item)" style="margin:5px;">
 					<a style="color:#5d5d5d;font-weight:bold;"> {{item.chave}}: </a>
 					<span>{{item.valor}}</span>
 				</label>
@@ -23,22 +31,27 @@
 
 			<!-- área para inclusão de caracteristicas -->
 			<h-line width="10" data-ng-if="vm.addCaracteristica">
-				<div class="jumbotron" style="padding: 10px 5px;" data-ng-init="vm.listaCaracteristica=['Marca','Modelo','Tipo','Ano','Cor']">
+				<div class="jumbotron" style="padding: 10px 5px;">
 
 					<!-- seleção de categorias -->
 					<span data-ng-if="!vm.caracteristicaSelecionada">
 						<h4 style="margin:1px 5px;">Selecione a caracterísica:</h4>
 						<hr style="margin:1px 5px 10px; border-color:#868585;" />
-						<label class="btn btn-warning" data-ng-repeat="item in vm.listaCaracteristica" data-ng-click="vm.caracteristicaSelecionada=item" style="margin:5px;">
-							<a style="color:#5d5d5d;font-weight:bold;"> {{item}} </a>
+						<label class="btn btn-warning" data-ng-repeat="item in vm.listaCaracteristica" data-ng-click="vm.selecionarCaracteristica(item)" style="margin:5px;">
+							<a style="color:#5d5d5d;font-weight:bold;"> {{item.nome}} </a>
 						</label>
 					</span>
 
 					<!-- salvar característica -->
 					<span data-ng-if="vm.caracteristicaSelecionada">
-						<label for="idModelo" class="col-sm-2 control-label ng-binding">{{vm.caracteristicaSelecionada}}:</label>
+						<label for="idModelo" class="col-sm-2 control-label ng-binding">{{vm.caracteristicaSelecionada.nome}}:</label>
 						<div class="input-group col-sm-8" >
-							<input type="text" class="form-control" ng-model="vm.valorCaracteristica" placeholder="Informe..." aria-describedby="basic-addon1">
+
+							<input type="text" class="form-control" ng-model="vm.valorCaracteristica" placeholder="Informe..." aria-describedby="basic-addon1"
+									uib-typeahead="item as item.nome for item in vm.dominio | filter:{nome:$viewValue}"
+									typeahead-show-hint="true"
+									typeahead-min-length="0" >
+
 							<span class="input-group-btn" style="cursor:pointer;" data-ng-click="vm.salvarCaracteristica();">
 								<button class="btn btn-warning" type="button"><i class="fa fa-check"></i></button>
 							</span>
@@ -48,7 +61,7 @@
 				</div>
 			</h-line>
 
-			<h-checkbutton label="Aceita Troca:" width="4" ng-model="vm.aceitaTroca" valor-inicial="1" options="[{codigo:'S',texto:'Sim'},{codigo:'N',texto:'Não'}]"></h-checkbutton>
+			<h-checkbutton label="Aceita Troca:" width="4" ng-model="vm.aceitaTroca" valor-inicial="0" options="[{codigo:'N',texto:'Não'},{codigo:'S',texto:'Sim'}]"></h-checkbutton>
 
 			<!-- seleciona categorias para troca -->
 			<div class="form-group" data-ng-if="vm.aceitaTroca.codigo=='S'">

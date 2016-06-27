@@ -5,9 +5,9 @@
 
 	.controller('homeController', homeController);
 
-	homeController.$inject = ['$http','$rootScope','$scope','TesteService','INCLUDES'];
+	homeController.$inject = ['$http','$rootScope','$scope','INCLUDES'];
 
-	function homeController($http, $rootScope, $scope, TesteService, INCLUDES){
+	function homeController($http, $rootScope, $scope, INCLUDES){
 
 		var vm = this;
 
@@ -30,8 +30,6 @@
 					vm.listaCategoria.push({});
 				}
 			}
-
-			console.log(vm.listaCategoria);
 
 		});
 	}

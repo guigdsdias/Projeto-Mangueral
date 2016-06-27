@@ -68,7 +68,7 @@
 			scope: 		{id: '@', label: '@', width: '@', model:'=ngModel', options: '=', valorInicial:"="},
 			template:	'<h-line id="{{id}}" label="{{label}}" width="{{width}}">'+
 							'<div class="btn-group">'+
-								'<label data-ng-repeat="item in options" class="btn {{class ? class : \'btn-primary\'}}" data-ng-class="{active:model.texto==item.texto}" data-ng-click="selecionar(item)" ng-model="model" uib-btn-radio="{{item.texto}}">{{item.texto}}</label>'+
+								'<label data-ng-repeat="item in options" class="btn {{class ? class : \'btn-primary\'}}" data-ng-class="{active:model.texto==item.texto}" data-ng-click="selecionar(item)" ng-model="model" style="text-transform:none;">{{item.texto}}</label>'+
 							'</div>'+
 						'</h-line>',
 			link: function(scope,elem,attrs){
