@@ -20,6 +20,7 @@
 		vm.trocaPor = [{}]; // aceita troca por qual(is) categoria(s) (multiplo)
 		vm.subcategoria = [{}]; // multiplo
 		vm.imagens = [];
+		vm.exibirAutoDominio   = vm.exibirSelectDominio = false;
 
 		vm.checkObjetivo = [{codigo:'O',texto:'Ofertar'},{codigo:'B',texto:'Buscar Produtos/Serviços'}];
 
@@ -63,19 +64,31 @@
 
 		vm.caracteristicas = [];
 		vm.salvarCaracteristica = function(){
-			var valorCaracteristica = (vm.valorCaracteristica.nome) ? vm.valorCaracteristica.nome : vm.valorCaracteristica;
+			var valorCaracteristica = (vm.valorCaracteristica.texto) ? vm.valorCaracteristica.texto : vm.valorCaracteristica;
 			var item = {chave:vm.caracteristicaSelecionada.nome, valor:valorCaracteristica };
 			ArrayServices.add(vm.caracteristicas,item);
-			// vm.addItem(vm.caracteristicas,item);
+
+			// remove a última caracteristca informada para evitar duplicação
+			vm.listaCaracteristica = ArrayServices.del(vm.listaCaracteristica, vm.caracteristicaSelecionada);
+
+			// limpa os dados
 			vm.caracteristicaSelecionada = vm.valorCaracteristica = vm.addCaracteristica = null;
 		};
 
+		$scope.$watch("vm.valorCaracteristica",function(oldValue,newValue){
+			if (vm.exibirSelectDominio && newValue && oldValue){
+				vm.salvarCaracteristica();
+			}
+		});
 
 		vm.construirDominio = function(strDominio){
 			vm.dominio = [];
 			strDominio.split("|").forEach(function(e,i,a){
-				vm.dominio.push({nome:e});
+				vm.dominio.push({texto:e});
 			});
+
+			if (vm.dominio[0].texto=="")
+				vm.dominio = [];
 		}
 		// ao selecionar a característica é preciso buscar os valores possíveis para cada característica (dominio)
 		vm.selecionarCaracteristica = function(item){
@@ -87,17 +100,17 @@
 				}
 			});
 
-			if (!vm.dominio.length){
+			vm.exibirAutoDominio   = false;
+			vm.exibirSelectDominio = vm.dominio.length || false;
+
+			if (!vm.exibirSelectDominio){
 				$http({
 					method: "GET", url: "/apirest/admin/caracteristica_categoria",
 					params:{idCategoria:vm.categoria.codigo,idCaracteristica:item.id}
 				}).then(function(response){
-					try {
+					if (response.data[0])
 						vm.construirDominio(response.data[0].dominio);
-					} catch (e) {
-					} finally {
-
-					}
+					vm.exibirAutoDominio = vm.dominio.length || false;
 				});
 			}
 		}

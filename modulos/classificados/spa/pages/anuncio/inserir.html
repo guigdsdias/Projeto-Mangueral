@@ -10,7 +10,10 @@
 		    <input type="text" placeholder="Custom popup template" 		uib-typeahead="crct as crct.nome for crct in vm.listaCaracteristica | filter:{nome:$viewValue}" typeahead-popup-template-url="customPopupTemplate.html" class="form-control"> -->
 
 			<h-checkbutton label="Objetivo do Anúncio:" width="4" ng-model="vm.objetivo" valor-inicial="0" options="[{codigo:'O',texto:'Ofertar'},{codigo:'B',texto:'Buscar Produtos/Serviços'}]"></h-checkbutton>
-			<h-select id="idCategoria" label="Categoria: " width="20" ng-model="vm.categoria" options="vm.listaCategoria" valor-inicial="0"></h-select>
+
+			<h-line label="Categoria:" width="10">
+				<h-select id="idCategoria" label="Categoria: " width="20" ng-model="vm.categoria" options="vm.listaCategoria" valor-inicial="0"></h-select>
+			</h-line>
 
 			<h-text-field id="idTitulo"  label="Título:"  width="5" type="text" ng-model="vm.titulo"></h-text-field>
 			<h-text-area id="idDescricao"  label="Descrição:"  width="10" type="text" ng-model="vm.descricao"></h-text-area>
@@ -45,13 +48,28 @@
 					<!-- salvar característica -->
 					<span data-ng-if="vm.caracteristicaSelecionada">
 						<label for="idModelo" class="col-sm-2 control-label ng-binding">{{vm.caracteristicaSelecionada.nome}}:</label>
-						<div class="input-group col-sm-8" >
 
-							<input type="text" class="form-control" ng-model="vm.valorCaracteristica" placeholder="Informe..." aria-describedby="basic-addon1"
-									uib-typeahead="item as item.nome for item in vm.dominio | filter:{nome:$viewValue}"
-									typeahead-show-hint="true"
-									typeahead-min-length="0" >
+						<div class="row" data-ng-if="vm.exibirSelectDominio">
+							<div class="col-sm-5">
+								<h-select width="11" ng-model="vm.valorCaracteristica" options="vm.dominio" />
+							</div>
+							<!-- <span class="col-sm-1" style="cursor:pointer;" data-ng-click="vm.salvarCaracteristica();">
+								<button class="btn btn-warning" type="button"><i class="fa fa-check"></i></button>
+							</span> -->
+						</div>
 
+						<div class="input-group col-sm-8" data-ng-if="!vm.exibirSelectDominio">
+
+							<!-- autocomplete dos valores das caracterísitcas -->
+							<input data-ng-if="vm.exibirAutoDominio" type="text" class="form-control" ng-model="vm.valorCaracteristica" placeholder="Informe ou Selecione..." aria-describedby="basic-addon1"
+									uib-typeahead="item as item.texto for item in vm.dominio | filter:{texto:$viewValue}"
+									typeahead-show-hint="false" typeahead-no-results="vm.noResults"
+									typeahead-min-length="0" />
+
+
+							<input data-ng-if="!vm.dominio.length" type="text" class="form-control" ng-model="vm.valorCaracteristica" placeholder="Informe..." / />
+
+							<!-- botão para salvar a característica e seu valor correspondente -->
 							<span class="input-group-btn" style="cursor:pointer;" data-ng-click="vm.salvarCaracteristica();">
 								<button class="btn btn-warning" type="button"><i class="fa fa-check"></i></button>
 							</span>

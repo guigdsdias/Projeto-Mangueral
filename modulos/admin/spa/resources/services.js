@@ -48,6 +48,8 @@
 				strArr = strArr.replace(strItem,"");
 				arr = JSON.parse(strArr);
 			}
+
+            return arr;
 		}
 
 
