@@ -41,15 +41,12 @@
 	.directive('hTextField',function(){
 		return {
 			restrict: 	'E',
-			transclude: false,
-			replace: false,
-			scope: 		{ id: '@', label: '@' , width: '@' , model:'=ngModel', placeholder: '@', prefix:'@'},
-			template:	'<h-line id="{{id}}" label="{{label}}" width="{{width}}">'+
-							'<div ng-class="{\'input-group\':group}">'+
+			// replace: true,
+			scope: 		{ id: '@', label: '@' , width: '@', placeholder: '@', prefix:'@', maxlength: '@' , model:'=ngModel'},
+			template:	'<div ng-class="{\'input-group\':group}">'+
 								'<span class="input-group-addon" data-ng-if="prefix">{{prefix}}</span>'+
-								'<input class="form-control" id="{{id}}" type="text" ng-model="model" placeholder="{{placeholder}}"/>'+
-							'</div>'+
-						'</h-line>',
+								'<input class="form-control" id="{{id}}" type="text" data-ng-model="model" placeholder="{{placeholder}}" maxlength="{{maxlength}}"/>'+
+						'</div>',
 			link: function (scope,elem,attrs){
 				if (scope.prefix)
 					scope.group = true;
@@ -62,9 +59,7 @@
 			restrict: 'E',
 			transclude: false,
 			scope: { id: '@', label: '@' , width: '@' , type: '@', model:'=ngModel'},
-			template:	'<h-line id="{{id}}" label="{{label}}" width="{{width}}">'+
-							'<textarea class="form-control" rows="{{rows ? rows : 5}}" id="{{id}}" data-ng-model="model">{{value}}</textarea>' +
-						'</h-line>'
+			template:	'<textarea class="form-control" rows="{{rows ? rows : 5}}" id="{{id}}" data-ng-model="model">{{value}}</textarea>'
 		};
 	})
 

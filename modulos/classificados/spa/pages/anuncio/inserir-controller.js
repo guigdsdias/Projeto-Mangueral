@@ -51,6 +51,8 @@
 			var strCat = JSON.stringify(vm.categoriaParaTroca);
 			var strItem = JSON.stringify(item);
 
+			vm.itemSelecionadoParaTroca = item;
+
 			// se o item já está na "vm.categoriaParaTroca": remove
 			if (strCat.indexOf(strItem) > -1){
 				strCat = strCat.replace(strItem+",","");
