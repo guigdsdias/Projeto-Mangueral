@@ -43,10 +43,17 @@
 			restrict: 	'E',
 			transclude: false,
 			replace: false,
-			scope: 		{ id: '@', label: '@' , width: '@' , model:'=ngModel', placeholder: '@'},
+			scope: 		{ id: '@', label: '@' , width: '@' , model:'=ngModel', placeholder: '@', prefix:'@'},
 			template:	'<h-line id="{{id}}" label="{{label}}" width="{{width}}">'+
-							'<input class="form-control" id="{{id}}" type="text" ng-model="model" placeholder="{{placeholder}}"/>'+
-						'</h-line>'
+							'<div ng-class="{\'input-group\':group}">'+
+								'<span class="input-group-addon" data-ng-if="prefix">{{prefix}}</span>'+
+								'<input class="form-control" id="{{id}}" type="text" ng-model="model" placeholder="{{placeholder}}"/>'+
+							'</div>'+
+						'</h-line>',
+			link: function (scope,elem,attrs){
+				if (scope.prefix)
+					scope.group = true;
+			}
 		};
 	})
 
