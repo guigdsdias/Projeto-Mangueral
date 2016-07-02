@@ -71,9 +71,14 @@
 
 							<!-- botão para salvar a característica e seu valor correspondente -->
 							<span class="input-group-btn" style="cursor:pointer;" data-ng-click="vm.salvarCaracteristica();">
-								<button class="btn btn-warning" type="button"><i class="fa fa-check"></i></button>
+								<button class="btn btn-warning" type="button">
+									<i class="fa fa-check"></i>
+								</button>
 							</span>
 						</div>
+						<a href="" data-ng-click="vm.caracteristicaSelecionada=vm.addCaracteristica=false;" style="float:right;margin:-41px 0 0 0;">
+							<i class="material-icons pull-right" style="font-size:15px;color:darkred;">close</i>
+						</a>
 					</span>
 
 				</div>
