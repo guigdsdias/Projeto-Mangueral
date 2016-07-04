@@ -1,7 +1,7 @@
 (function(){
   'user strict';
 
-  angular.module('PortalMangueiralFactory',[])
+  angular.module('portalMangueiralFactory',[])
   .factory('UserService', [function () {
     return {
       isLogged: false,

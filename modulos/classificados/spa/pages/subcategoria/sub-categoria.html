@@ -1,7 +1,7 @@
 <div class="modal-content col-md-12" style="margin-bottom:29px; height:313px;">
 
 	<!--<categoria cor="blue" href="#subcategoria" icone="fa-automobile" texto="Veiculos"></categoria>-->
-	
+
 	<div class="menu-item blue" style="padding: 10px 0px 5px 0px; margin: 10px 0px 10px 0px;">
 		<i class="fa fa-automobile" ><span style="font-family: helvetica;word-spacing:10px;"> Veículos</span></i>
 		<!-- <p>Veículos</p> -->
@@ -24,18 +24,18 @@
 
 		<hr style="margin: 6px 0px 6px 0px;border: solid 1px silver;">
 
-		
+
 		<div class="row">
 			<div class="col-md-2">
 				<h4>Marca:</h4>
 			</div>
 
 			<div class="col-md-10" style="padding-top:5px;">
-				<div kendo-multi-select 
-				ng-model="vm.marca.selecionados" 
-				k-data-source="vm.marca.lista" 
-				k-placeholder="'Marca'" 
-				k-data-text-field="'marca'" 
+				<div kendo-multi-select
+				ng-model="vm.marca.selecionados"
+				k-data-source="vm.marca.lista"
+				k-placeholder="'Marca'"
+				k-data-text-field="'marca'"
 				k-data-value-field="'id'"></div>
 			</div>
 		</div>
@@ -46,11 +46,11 @@
 			</div>
 
 			<div class="col-md-10" style="padding-top:5px;">
-				<div  	kendo-multi-select 
-				ng-model="vm.modelo.selecionados" 
-				k-data-source="vm.modelo.lista" 
-				k-placeholder="'Marca'" 
-				k-data-text-field="'modelo'" 
+				<div  	kendo-multi-select
+				ng-model="vm.modelo.selecionados"
+				k-data-source="vm.modelo.lista"
+				k-placeholder="'Marca'"
+				k-data-text-field="'modelo'"
 				k-data-value-field="'id'"></div>
 			</div>
 		</div>
@@ -67,5 +67,5 @@
 
 	</div>
             <!-- 		<div ng-show="vm.marca.selecionados">Marcas Selecionadas: {{vm.marca.selecionados}}</div>
-            <div ng-show="vm.modelo.selecionados">Modelos Selecionados: {{vm.modelo.selecionados}}</div> -->	
+            <div ng-show="vm.modelo.selecionados">Modelos Selecionados: {{vm.modelo.selecionados}}</div> -->
 </div>

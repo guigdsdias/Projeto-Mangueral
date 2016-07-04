@@ -3,7 +3,7 @@
 
 
 body {
-    background: url(/classificados/images/background.jpg) no-repeat;
+    background: url(/Projeto-Mangueral/modulos/classificados/images/background.jpg) no-repeat;
     background-attachment: fixed;
     background-size: cover;
     background-position: 50% 50%;
@@ -978,4 +978,14 @@ and (max-width : 991px) {
     background: #FF432E;
     padding: 20px;
     color: #fff;
+}
+
+.btnLogin {
+  height: 43px;
+    background-color: gainsboro;
+    background: none;
+    font-family: Arial, Tahoma;
+    font-weight: bold;
+    font-size: larger;
+    color: azure;
 }

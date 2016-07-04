@@ -20,12 +20,12 @@
 
     };
 
-    vm.login = function () {
-
-    };
-
     vm.cadastrar = function () {
-
+      console.log('teste');
+      FB.login(function(response){
+          // Handle the response object, like in statusChangeCallback() in our demo
+          // code.
+      });
     };
 
     vm.login = function () {
