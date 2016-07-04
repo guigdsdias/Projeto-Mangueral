@@ -30,7 +30,8 @@
 							team:        modals+"team-modal.html",
 							news:  		 modals+"news-modal.html",
 							testimonial: modals+"testimonial-modal.html",
-							contact:     modals+"contact-modal.html"
+							contact:     modals+"contact-modal.html",
+              login:      modals+"login-modal.html"
 				} // modal
 			} // includes
 		} // index

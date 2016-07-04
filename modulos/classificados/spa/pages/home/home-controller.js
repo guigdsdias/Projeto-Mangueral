@@ -13,14 +13,6 @@
 
 		vm.includes = PARAMS.index.includes;
 
-		vm.loginFacebook = function (){
-			console.log('teste');
-      FB.login(function(response){
-          // Handle the response object, like in statusChangeCallback() in our demo
-          // code.
-      });
-		};
-
 		$http({
 			url: "/apirest/admin/categoria",
 			method: "GET"

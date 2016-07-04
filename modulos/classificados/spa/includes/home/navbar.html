@@ -32,8 +32,59 @@
 						</li>
 
 						<!-- abre a modal de login -->
-						<li style="border-left:solid 1px #222222;">
-							<a href="#">Login</a>
+						<li style="border-left:solid 1px #222222;" >
+							<a href="#modal-login" data-toggle="modal" data-ng-hide="ctrl.logado">Login</a>
+							<div id="fb-root" data-ng-show="ctrl.logado"></div>
+						</li>
+
+						<!-- logout -->
+						<li style="border-left:solid 1px #222222;" >
+							<a data-ng-show="ctrl.logado" data-ng-click="ctrl.logoutFacebook()">Logout</a>
+						</li>
+
+						<li class="dropdown">
+							<!-- Login -->
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Logar<strong class="caret"></strong></a>
+
+							<ul class="dropdown-menu form" style="width: 700px;">
+
+								<!-- Logar -->
+								<li class="">
+
+										<div id="login" >
+									    <h1>Seja Bem-Vindo!</h1>
+
+									    <div class="field-wrap">
+									      <label data-ng-hide="ctrl.email.length > 0">
+									        Email<span class="req">*</span>
+									      </label>
+									      <input type="text" ng-model="ctrl.email" required autocomplete="off"/>
+									    </div>
+
+									    <div class="field-wrap">
+									      <label data-ng-hide="ctrl.senha.length > 0">
+									        Senha<span class="req">*</span>
+									      </label>
+									      <input type="password" ng-model="ctrl.senha" required autocomplete="off"/>
+									    </div>
+
+									    <p class="forgot"><a href="#">esqueceu sua senha?</a></p>
+
+									    <button class="button button-block" data-ng-click="ctrl.cadastrar()">Entrar</button>
+											<br>
+											<div class="">
+
+											</div>
+											<button class="button" data-ng-click="ctrl.cadastrar()">Entrar com facebook</button>
+											<br>
+											<button class="button" data-ng-click="ctrl.cadastrar()">Entrar com Google</button>
+
+									  </div>
+
+								</li>
+
+							</ul>
+
 						</li>
 
 						<!-- Cadastro de usuários -->
@@ -84,6 +135,81 @@
 			</nav>
 		</div>
 	</div>
+</div>
+
+<div class="modal fade" id="modal-login" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="form">
+
+		  <ul class="tab-group">
+		    <li class="tab active"><a data-ng-click="ctrl.trocaAba(1)">Criar conta</a></li>
+		    <li class="tab"><a data-ng-click="ctrl.trocaAba(2)">Entrar</a></li>
+		  </ul>
+
+		  <div id="signup" data-ng-hide="ctrl.abaEntra">
+		    <h1>Ainda não tenho cadastro</h1>
+
+		    <div class="top-row">
+		      <div class="field-wrap">
+		        <label data-ng-hide="ctrl.nome.length > 0">
+		          Primeiro nome<span class="req">*</span>
+		        </label>
+		        <input type="text" data-ng-model="ctrl.nome" required autocomplete="off" />
+		      </div>
+
+		      <div class="field-wrap">
+		        <label data-ng-hide="ctrl.ultimoNome.length > 0">
+		          Ultimo nome<span class="req">*</span>
+		        </label>
+		        <input type="text" data-ng-model="ctrl.ultimoNome" required autocomplete="off"/>
+		      </div>
+		    </div>
+
+		    <div class="field-wrap">
+		      <label data-ng-hide="ctrl.email.length > 0">
+		        Email<span class="req">*</span>
+		      </label>
+		      <input type="text" data-ng-model="ctrl.email" required autocomplete="off"/>
+		    </div>
+
+		    <div class="field-wrap">
+		      <label data-ng-hide="ctrl.senha.length > 0">
+		        Senha<span class="req">*</span>
+		      </label>
+		      <input type="password" data-ng-model="ctrl.senha" required autocomplete="off"/>
+		    </div>
+
+		    <button type="submit" class="button button-block">Cadastrar</button>
+
+		  </div>
+
+		  <div id="login" data-ng-show="ctrl.abaEntra">
+		    <h1>Seja Bem-Vindo!</h1>
+
+		    <div class="field-wrap">
+		      <label data-ng-hide="ctrl.email.length > 0">
+		        Email<span class="req">*</span>
+		      </label>
+		      <input type="text" ng-model="ctrl.email" required autocomplete="off"/>
+		    </div>
+
+		    <div class="field-wrap">
+		      <label data-ng-hide="ctrl.senha.length > 0">
+		        Senha<span class="req">*</span>
+		      </label>
+		      <input type="password" ng-model="ctrl.senha" required autocomplete="off"/>
+		    </div>
+
+		    <p class="forgot"><a href="#">esqueceu sua senha?</a></p>
+
+		    <button class="button button-block" data-ng-click="ctrl.cadastrar()">Entrar</button>
+
+		  </div>
+
+		</div> <!-- /form -->
+
+	</div>
+
 </div>
 
 <style>

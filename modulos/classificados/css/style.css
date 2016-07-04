@@ -979,3 +979,13 @@ and (max-width : 991px) {
     padding: 20px;
     color: #fff;
 }
+
+.btnLogin {
+  height: 43px;
+    background-color: gainsboro;
+    background: none;
+    font-family: Arial, Tahoma;
+    font-weight: bold;
+    font-size: larger;
+    color: azure;
+}

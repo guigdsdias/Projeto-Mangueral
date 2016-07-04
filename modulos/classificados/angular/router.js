@@ -7,7 +7,8 @@ angular.module("pmApp", [
     'moduloIndexController',
     'moduloHomeController',
     'moduloSubCategoriaController',
-    'moduloCarouselController'
+    'moduloCarouselController',
+    'portalMangueiralFactory'
 ])
 
 .config(['$routeProvider',
@@ -25,42 +26,8 @@ angular.module("pmApp", [
     }
 ])
 
-.run(['$route','$window', function ($route,$window) {
+.run(['$route','$window','UserService', function ($route,$window,UserService) {
     //console.debug('tfa-app.js:run');
-
-    var watchLoginChange = function() {
-
-    var _self = this;
-
-    FB.Event.subscribe('auth.authResponseChange', function(res) {
-      console.log(res.status);
-      if (res.status === 'connected') {
-
-        /*
-         The user is already logged,
-         is possible retrieve his personal info
-        */
-
-        /*
-         This is also the point where you should create a
-         session for the current user.
-         For this purpose you can use the data inside the
-         res.authResponse object.
-        */
-        console.log(res.authResponse );
-      }
-        else {
-
-        /*
-         The user is not logged to the app, or into Facebook:
-         destroy the session on the server.
-        */
-
-      }
-
-      });
-
-    };
 
     $window.fbAsyncInit = function (){
       FB.init({
@@ -84,8 +51,8 @@ angular.module("pmApp", [
         js.id = id;
         js.async = true;
         js.src = '//connect.facebook.net/en_US/sdk.js';
-        watchLoginChange();
         ref.parentNode.insertBefore(js, ref);
+
       })(document);
 
     };
