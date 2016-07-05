@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="pmApp" style="padding-top:50px;">
+<html lang="en" ng-app="pmApp" style="padding-top:50px;color:#ffffff">
 
 <head>
 
@@ -44,17 +44,20 @@
     <!-- Custom Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css' />
 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">    
+
     <!-- http://plnkr.co/vendor/select2/select2.css -->
 
-
     <!-- vendor js -->
-    <script src="../../Config/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../../Config/vendor/jquery.appear.js"></script>
-    <script src="../../Config/js/contact_me.js"></script>
-    <script src="../../Config/vendor/jqBootstrapValidation.js"></script>
-    <script src="../../Config/vendor/modernizr.custom.js"></script>
-    <script src="../../Config/js/script.js"></script>
-    <script src="../../Config/vendor/angular-kendo.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.js"></script>
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.3.3.js"></script>
+    <script src="/Config/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/Config/vendor/jquery.appear.js"></script>
+    <script src="/Config/js/contact_me.js"></script>
+    <script src="/Config/vendor/jqBootstrapValidation.js"></script>
+    <script src="/Config/vendor/modernizr.custom.js"></script>
+    <script src="/Config/js/script.js"></script>
+    <script src="/Config/vendor/angular-kendo.js"></script>
 
     <!-- kendoui -->
     <!-- <script src="http://kendo.cdn.telerik.com/2016.1.226/js/kendo.all.min.js"></script> -->
@@ -67,13 +70,19 @@
     <script type="text/javascript" src="angular/router.js"></script>
     <script type="text/javascript" src="spa/resources/pm-constants.js"></script>
     <script type="text/javascript" src="spa/resources/pm-directives.js"></script>
+<<<<<<< HEAD
     <script type="text/javascript" src="spa/resources/pm-services.js"></script>
     <script type="text/javascript" src="../../Config/factory/portalMangueiralFactory.js"></script>
+=======
+    <script type="text/javascript" src="/admin/spa/resources/services.js"></script>
+    <script type="text/javascript" src="/admin/spa/resources/htmlDirectives.js"></script>
+    <script type="text/javascript" src="/admin/spa/resources/constants.js"></script>
+>>>>>>> origin/fernando
 
     <!-- controllers -->
     <script type="text/javascript" src="spa/index-controller.js"></script>
     <script type="text/javascript" src="spa/pages/home/home-controller.js"></script>
-    <script type="text/javascript" src="spa/pages/subcategoria/sub-categoria-controller.js"></script>
+    <script type="text/javascript" src="spa/pages/anuncio/inserir-controller.js"></script>
     <script type="text/javascript" src="spa/includes/home/carousel-controller.js"></script>
 
     <script src="http://connect.facebook.net/en_US/sdk.js"></script>
@@ -96,7 +105,7 @@
 
     <!-- Start Main Body Section -->
     <div class="mainbody-section text-center">
-        <div class="container" data-ng-controller="homeController as home">
+        <div class="container">
 
             <!-- CONTEUDO da navegação do "Router"  -->
             <div data-ng-view> </div>

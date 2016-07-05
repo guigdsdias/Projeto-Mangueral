@@ -5,15 +5,23 @@
 
 	.controller('indexController', indexController);
 
+<<<<<<< HEAD
 	indexController.$inject = ['$http','$rootScope','$scope','PARAMS','UserService'];
 
 	function indexController($http, $rootScope, $scope, PARAMS, UserService){
+=======
+	indexController.$inject = ['$http','$rootScope','$scope','INCLUDES'];
+
+	function indexController($http, $rootScope, $scope, INCLUDES){
+>>>>>>> origin/fernando
 		var vm = this;
 
 		vm.teste = "Teste indexController";
 
-		vm.includes = PARAMS.index.includes;
+		vm.includes = INCLUDES.index.files;
 
+
+<<<<<<< HEAD
 		vm.logado = false;
 
 		(function (){
@@ -56,6 +64,8 @@
 	    	});
 		}
 
+=======
+>>>>>>> origin/fernando
 	}
 
 })();
