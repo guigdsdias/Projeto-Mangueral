@@ -9,7 +9,8 @@ angular.module("pmApp", [
     'moduloCarouselController',
     'moduloInserirController',
     'htmlDirectives',
-    'constants'
+    'constants',
+    'ui.utils.masks'    
 ])
 
 .config(['$routeProvider',

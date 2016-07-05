@@ -92,6 +92,12 @@
 			if (vm.dominio[0].texto=="")
 				vm.dominio = [];
 		}
+
+		$scope.$watch("vm.categoria",function(){
+			vm.valorCaracteristica = [];
+			vm.caracteristicas = [];
+		})
+
 		// ao selecionar a característica é preciso buscar os valores possíveis para cada característica (dominio)
 		vm.selecionarCaracteristica = function(item){
 
@@ -106,10 +112,14 @@
 			vm.exibirSelectDominio = vm.dominio.length || false;
 
 			if (!vm.exibirSelectDominio){
+
 				$http({
 					method: "GET", url: "/apirest/admin/caracteristica_categoria",
 					params:{idCategoria:vm.categoria.codigo,idCaracteristica:item.id}
 				}).then(function(response){
+
+					// console.log(response);
+
 					if (response.data[0])
 						vm.construirDominio(response.data[0].dominio);
 					vm.exibirAutoDominio = vm.dominio.length || false;
