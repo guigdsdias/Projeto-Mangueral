@@ -77,8 +77,8 @@
 			vm.caracteristicaSelecionada = vm.valorCaracteristica = vm.addCaracteristica = null;
 		};
 
-		$scope.$watch("vm.valorCaracteristica",function(oldValue,newValue){
-			if (vm.exibirSelectDominio && newValue && oldValue){
+		$scope.$watch("vm.valorCaracteristica",function(newValue,oldValue){
+			if (vm.exibirSelectDominio && newValue && newValue.texto){
 				vm.salvarCaracteristica();
 			}
 		});
@@ -102,6 +102,7 @@
 		vm.selecionarCaracteristica = function(item){
 
 			vm.caracteristicaSelecionada=item;
+			console.log(vm.caracteristicaSelecionada);
 			vm.listaCaracteristica.forEach(function(e,i,a){
 				if (e.nome == item.nome){
 					vm.construirDominio(e.dominio);
@@ -122,6 +123,7 @@
 
 					if (response.data[0])
 						vm.construirDominio(response.data[0].dominio);
+
 					vm.exibirAutoDominio = vm.dominio.length || false;
 				});
 			}

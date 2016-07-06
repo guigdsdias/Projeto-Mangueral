@@ -1,4 +1,4 @@
-<div class="container-fluid" style="background-color:white;border-radius:10px;" data-ng-init="vm.teste='AAA'">
+<div class="container-fluid" style="background-color:white;border-radius:10px;padding-bottom:50px;" data-ng-init="vm.teste='AAA'">
 	<h1>Inserir Anuncio</h1><hr />
 
 	<div class="col-md-12">
@@ -33,16 +33,17 @@
 
 			<h-line label="Características:" width="10">
 
-				<div>
-
-					<!-- exibe as caracteristicas informadas -->
-					<label class="btn btn-warning" data-ng-repeat="item in vm.caracteristicas" data-ng-click="vm.alterarCaracteristica(item)" style="margin:5px 5px 5px 0;">
+				<!-- exibe as caracteristicas informadas -->
+				<div data-ng-repeat="item in vm.caracteristicas" style="display:table-cell;">
+					<label class="btn btn-warning" data-ng-click="vm.alterarCaracteristica(item)" style="margin:2px 2px 2px 0;">
 						<a style="color:#5d5d5d;font-weight:bold;"> {{item.chave}}: </a>
 						<span>{{item.valor}}</span>
 					</label>
+				</div>
 
+				<div style="display:table-cell;" data-ng-hide="vm.addCaracteristica">
 					<!-- botão Add Categoria -->
-					<a class="btn btn-primary" style="font-weight:bold;font-size:20px;padding:0px 15px;" data-ng-click="vm.addCaracteristica=true" data-ng-hide="vm.addCaracteristica">+</a>
+					<a class="btn btn-primary" data-ng-click="vm.addCaracteristica=true" style="font-weight:bold;font-size:20px;padding:1px 15px;" >+</a>
 
 				</div>
 
@@ -66,7 +67,6 @@
 					<!-- salvar característica -->
 					<span data-ng-if="vm.caracteristicaSelecionada">
 						<label for="idModelo" class="col-sm-2 control-label ng-binding">{{vm.caracteristicaSelecionada.nome}}:</label>
-
 						<div class="row" data-ng-if="vm.exibirSelectDominio">
 							<div class="col-sm-5">
 								<h-select width="11" ng-model="vm.valorCaracteristica" options="vm.dominio" />

@@ -1,6 +1,6 @@
 angular.module("pmApp", [
     'ngRoute',
-	'kendo.directives',
+	// 'kendo.directives',
 	'pmDirectives',
 	'pmConstants',
     'services',
@@ -10,7 +10,7 @@ angular.module("pmApp", [
     'moduloInserirController',
     'htmlDirectives',
     'constants',
-    'ui.utils.masks'    
+    'ui.utils.masks'
 ])
 
 .config(['$routeProvider',
