@@ -38,41 +38,16 @@
 		};
 	})
 
-	.directive("number",function($compile){
-		return{
-			restrict: 'A',
-			replace: true,
-			link: function(scope,elem,attrs){
-
-				if (attrs.number){
-
-					// attrs.$set('uiNumberMask',  attrs.number);
-					attrs.$set('ui-number-mask', attrs.number);
-					attrs.$set('number', null);
-					$compile(elem)(scope);
-
-				}
-
-
-			}
-		}
-	})
 	.directive('hTextField',function($compile){
 		return {
 			restrict: 	'E',
 			replace: true,
-			scope: 		{ id: '@', label: '@' , width: '@', placeholder: '@', prefix:'@', maxlength: '@' , model:'=ngModel', uiNumberMask:'@'},
+			scope: 		{ id: '@', label: '@' , width: '@', placeholder: '@', prefix:'@', maxlength: '@' , model:'=ngModel'},
 			template:	'<div ng-class="{\'input-group\':group}">'+
 								'<span class="input-group-addon" data-ng-if="prefix">{{prefix}}</span>'+
-								'<input class="form-control" id="{{id}}" type="text" data-ng-model="model" placeholder="{{placeholder}}" maxlength="{{maxlength}}" number="{{uiNumberMask}}"/>'+
+								'<input class="form-control" id="field_{{id}}" type="text" data-ng-model="model" placeholder="{{placeholder}}" maxlength="{{maxlength}}"/>'+
 						'</div>',
 			link: function (scope,elem,attrs){
-
-				var textField = elem.children()[0];
-
-				if (scope.uiNumberMask){
-					// console.log(elem);
-				}
 
 				if (scope.prefix)
 					scope.group = true;
