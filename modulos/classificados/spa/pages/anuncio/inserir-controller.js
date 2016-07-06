@@ -129,6 +129,12 @@
 			}
 		}
 
+		vm.removerCaracteristicaInformada = function(item){
+			// console.log("removerCaracteristicaInformada:",JSON.stringify(item));
+			vm.caracteristicas = ArrayServices.del(vm.caracteristicas,item);
+			// console.log(JSON.stringify(vm.caracteristicas[0]));
+		}
+
 	}
 
 })();

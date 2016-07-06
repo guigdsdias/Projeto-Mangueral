@@ -35,7 +35,7 @@
 
 				<!-- exibe as caracteristicas informadas -->
 				<div data-ng-repeat="item in vm.caracteristicas" style="display:table-cell;">
-					<label class="btn btn-warning" data-ng-click="vm.alterarCaracteristica(item)" style="margin:2px 2px 2px 0;">
+					<label class="btn btn-warning" data-ng-click="vm.removerCaracteristicaInformada(item)" style="margin:2px 2px 2px 0;">
 						<a style="color:#5d5d5d;font-weight:bold;"> {{item.chave}}: </a>
 						<span>{{item.valor}}</span>
 					</label>
@@ -62,7 +62,6 @@
 							<i class="material-icons pull-right" style="font-size:15px;color:darkred;"><b>close</b></i>
 						</a>
 					</span>
-
 
 					<!-- salvar característica -->
 					<span data-ng-if="vm.caracteristicaSelecionada">
