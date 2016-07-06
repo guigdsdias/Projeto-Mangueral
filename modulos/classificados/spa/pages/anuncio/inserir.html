@@ -24,10 +24,11 @@
 				<textarea class="form-control" row="3" id="idDescricao" data-ng-model="vm.descricao"></textarea>
 			</h-line>
 
-			{{vm.preco}}
-			<h-line id="idPreco" label="Preço:" width="2">
-				<h-text-field type="text" ng-model="vm.preco" prefix="R$" ui-number-mask="2" maxlength="14"></h-text-field>
-				<!-- <input type="text" ng-model="vm.preco" ui-mask="999.999,99"  ui-mask-placeholder="0,00" ui-mask-placeholder-char="_"/> -->
+			<h-line id="idPreco" label="Preço:" width="3">
+				<div class="input-group">
+					<span class="input-group-addon">R$</span>
+					<input class="form-control" type="text" data-ng-model="vm.preco" maxlength="14" ui-number-mask="2" style="width:125px;" placeholder="0,00"/>
+				</div>
 			</h-line>
 
 			<h-line label="Características:" width="10">
