@@ -1,14 +1,44 @@
 <div class="container-fluid" style="background-color:white;border-radius:10px;padding-bottom:50px;" data-ng-init="vm.teste='AAA'">
 	<h1>Inserir Anuncio</h1><hr />
 
+	<!-- <form>
+
+		<div class="row">
+
+			<div class="btn-group">
+				<div class="input-group-addon" style="border:solid 1px silver;height:200px;display:in-line">...</div>
+				<button ngf-select class="btn btn-default" ng-model="vm.picFile" accept="image/*">Select Picture</button>
+			</div>
+
+		</div>
+		<!-- <input type="text" placeholder="Locations loaded via $http" uib-typeahead="crct as crct.nome for crct in vm.listaCaracteristica | filter:{nome:$viewValue}" typeahead-loading="loadingLocations" typeahead-no-results="noResults" class="form-control">
+		<input type="text" 																								uib-typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control">
+		<input type="text" placeholder="Custom template" 			uib-typeahead="crct as crct.nome for crct in vm.listaCaracteristica | filter:{nome:$viewValue}" typeahead-template-url="customTemplate.html" class="form-control" typeahead-show-hint="true" typeahead-min-length="0">
+		<input type="text" placeholder="Custom popup template" 		uib-typeahead="crct as crct.nome for crct in vm.listaCaracteristica | filter:{nome:$viewValue}" typeahead-popup-template-url="customPopupTemplate.html" class="form-control"> -->
+
+		<!-- <div class="row" ngf-drop ng-model="vm.picFile" ngf-pattern="image/*" class="cropArea" style="border:solid 1px red;">
+			<img-crop image="vm.picFile  | ngfDataUrl" result-image="vm.croppedDataUrl" ng-init="vm.croppedDataUrl=''" style="border:solid 1px silver;"> </img-crop>
+		</div>
+
+		<div class="row" style="border:solid 1px green;">
+			<img ng-src="{{vm.croppedDataUrl}}" />
+		</div>
+		<button ng-click="vm.upload(vm.croppedDataUrl, vm.picFile.name)">Submit</button>
+
+		<span class="progress" ng-show="vm.progress >= 0">
+			<div style="width:{{vm.progress}}%" ng-bind="vm.progress + '%'"></div>
+		</span>
+		<span ng-show="vm.result">Upload Successful</span>
+		<span class="err" ng-show="vm.errorMsg">{{vm.errorMsg}}</span>
+
+	</form> -->
+
 	<div class="col-md-12">
+
+
+
 		<form class="form-horizontal" role="form" data-ng-init="vm.aceitaTroca = {'codigo':'S','texto':'Sim'}">
 
-
-			<!-- <input type="text" placeholder="Locations loaded via $http" uib-typeahead="crct as crct.nome for crct in vm.listaCaracteristica | filter:{nome:$viewValue}" typeahead-loading="loadingLocations" typeahead-no-results="noResults" class="form-control">
-		    <input type="text" 																								uib-typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control">
-		    <input type="text" placeholder="Custom template" 			uib-typeahead="crct as crct.nome for crct in vm.listaCaracteristica | filter:{nome:$viewValue}" typeahead-template-url="customTemplate.html" class="form-control" typeahead-show-hint="true" typeahead-min-length="0">
-		    <input type="text" placeholder="Custom popup template" 		uib-typeahead="crct as crct.nome for crct in vm.listaCaracteristica | filter:{nome:$viewValue}" typeahead-popup-template-url="customPopupTemplate.html" class="form-control"> -->
 
 			<h-checkbutton label="Objetivo do Anúncio:" width="4" ng-model="vm.objetivo" valor-inicial="0" options="[{codigo:'O',texto:'Ofertar'},{codigo:'B',texto:'Buscar Produtos/Serviços'}]"></h-checkbutton>
 
@@ -35,7 +65,7 @@
 
 				<!-- exibe as caracteristicas informadas -->
 				<div data-ng-repeat="item in vm.caracteristicas" style="display:table-cell;">
-					<label class="btn btn-warning" data-ng-click="vm.removerCaracteristicaInformada(item)" style="margin:2px 2px 2px 0;">
+					<label class="btn btn-warning" data-ng-click="vm.alterarCaracteristica(item)" style="margin:2px 2px 2px 0;">
 						<a style="color:#5d5d5d;font-weight:bold;"> {{item.chave}}: </a>
 						<span>{{item.valor}}</span>
 					</label>
@@ -62,6 +92,7 @@
 							<i class="material-icons pull-right" style="font-size:15px;color:darkred;"><b>close</b></i>
 						</a>
 					</span>
+
 
 					<!-- salvar característica -->
 					<span data-ng-if="vm.caracteristicaSelecionada">

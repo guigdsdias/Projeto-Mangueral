@@ -1,13 +1,13 @@
 (function() {
 	'use strict';
 
-	angular.module('moduloInserirController',['ngAnimate', 'ui.bootstrap'])
+	angular.module('moduloInserirController',['ngAnimate', 'ui.bootstrap', 'ngFileUpload', 'ngImgCrop'])
 
 	.controller('inserirController', inserirController);
 
-	inserirController.$inject = ['$http','$rootScope','$scope','INCLUDES', 'ArrayServices'];
+	inserirController.$inject = ['$http','$rootScope','$scope','INCLUDES', 'ArrayServices', 'Upload'];
 
-	function inserirController($http, $rootScope, $scope, INCLUDES, ArrayServices){
+	function inserirController($http, $rootScope, $scope, INCLUDES, ArrayServices, Upload){
 
 		var vm = this;
 		// vm.includes = INCLUDES.index.files;
@@ -134,7 +134,9 @@
 			vm.caracteristicas = ArrayServices.del(vm.caracteristicas,item);
 			ArrayServices.add(vm.listaCaracteristica,item);
 			// console.log(JSON.stringify(vm.caracteristicas[0]));
-		}
+		};
+
+
 
 	}
 
