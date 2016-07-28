@@ -5,13 +5,13 @@
 
 	.controller('homeController', homeController);
 
-	homeController.$inject = ['$http','$rootScope','$scope','TesteService','PARAMS'];
+	homeController.$inject = ['$http','$rootScope','$scope','INCLUDES'];
 
-	function homeController($http, $rootScope, $scope, TesteService, PARAMS){
+	function homeController($http, $rootScope, $scope, INCLUDES){
 
 		var vm = this;
 
-		vm.includes = PARAMS.index.includes;
+		vm.includes = INCLUDES.index.files;
 
 		$http({
 			url: "/apirest/admin/categoria",

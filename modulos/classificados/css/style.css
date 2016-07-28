@@ -44,8 +44,8 @@ p {
 
 
 .btn-primary {
-    border-color: #FF432E;
-    background-color: #FF432E;
+/*    border-color: #FF432E;
+    background-color: #FF432E;*/
     text-transform: uppercase;
     font-weight: 300;
     color: #fff;
@@ -65,7 +65,7 @@ p {
 .btn-primary.active,
 .open .dropdown-toggle.btn-primary {
     color: #fff;
-    border-color: #ea321e;
+/*    border-color: #ea321e;*/
     background-color: none !important;
 }
 

@@ -2,15 +2,14 @@
     'use strict';
 
     /* Services */
-
-    angular.module('htmlServices', [])
+    angular.module('services', [])
 
     // declaração dos serviços
-    .factory('TesteService', TesteService)
-    .factory('ColorPalette', ColorPalette);
+    .factory('ColorPalette', ColorPalette)
+    .factory('ArrayServices', ArrayServices);
 
     // injeção de dependências
-    TesteService.$inject = ['$http'];
+    ArrayServices.$inject = ['$http'];
     ColorPalette.$inject = ['$http'];
 
     /** construção dos serviços **/
@@ -28,24 +27,31 @@
         return factory;
     }
 
-    function TesteService($http) {
+    function ArrayServices($http) {
 
         var factory = {};
 
-        factory.get = function () {
-
-            return {dados:[
-                {id:1,uf:"DF"},
-                {id:2,uf:"MG"},
-                {id:3,uf:"SP"},
-                {id:4,uf:"ES"},
-                {id:5,uf:"GO"},
-                {id:6,uf:"TO"},
-                {id:7,uf:"PA"}
-            ]};
-
-            //return $http.get(PltConfig.baseAPIPath + '/v1/usuarioLogado', {cache: 'true', params : parametrosDePesquisa});
+        factory.add = function (arr,item) {
+            var strArr  = JSON.stringify(arr);
+			var strItem = JSON.stringify(item);
+			if (strArr.indexOf(strItem) < 0){
+				arr.push(item);
+			};
         };
+
+        factory.del = function(arr,item){
+			var strArr  = JSON.stringify(arr);
+			var strItem = JSON.stringify(item);
+			if (strArr.indexOf(strItem) > -1){
+				strArr = strArr.replace(strItem+",","");
+				strArr = strArr.replace(","+strItem,"");
+				strArr = strArr.replace(strItem,"");
+				arr = JSON.parse(strArr);
+			}
+
+            return arr;
+		}
+
 
         return factory;
     }

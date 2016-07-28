@@ -10,9 +10,9 @@
 
     angular.module('pmConstants', [])
 
-    .constant('PARAMS',{
+    .constant('INCLUDES',{
 		"index":{
-			"includes":{
+			"files":{
 				home: 	  pages	  +"home.html",
 				logo:     includes+"logo.html",
 				esquerda: includes+"esquerda.html",

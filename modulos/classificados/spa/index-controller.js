@@ -5,13 +5,11 @@
 
 	.controller('indexController', indexController);
 
-	indexController.$inject = ['$http','$rootScope','$location','$scope','PARAMS','UserService'];
+	indexController.$inject = ['$http','$rootScope','$location','$scope','PARAMS','UserService','INCLUDES'];
 
-	function indexController($http, $rootScope, $location, $scope, PARAMS, UserService){
+	function indexController($http, $rootScope, $location, $scope, PARAMS, UserService, INCLUDES){
 
 		var vm = this;
-
-		vm.teste = "Teste indexController";
 
 		vm.nomeUsuario = "";
 
@@ -19,6 +17,8 @@
 		vm.senha	= "";
 
 		vm.includes = PARAMS.index.includes;
+		vm.includes = INCLUDES.index.files;
+
 
 		vm.logado = false;
 
@@ -39,8 +39,8 @@
 					if (typeof(Storage) !== "undefined") {
     			console.log('suporta');
 					} else {
-    			console.log('náo suporta');
-}
+    				console.log('náo suporta');
+					}
 				});
 
 
@@ -103,7 +103,5 @@
 			$location.path('/cadastrese');
 		};
 
-
-	}
-
+}
 })();
