@@ -18,7 +18,6 @@
 			method: "GET"
 		}).then(function(response){
 			vm.listaCategoria = [];
-
 			vm.primeiros = response.data.splice(0,4);
 			vm.listaCategoria = response.data;
 

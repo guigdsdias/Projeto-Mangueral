@@ -1,0 +1,46 @@
+.formCadastro div {
+  text-align: left !important;;
+}
+
+.formCadastro input, .formCadastro select  {
+  background: none;
+  color: #fff;
+  font-size:12px !important;
+}
+
+.formCadastro input:focus {
+  border-color: #1ab188;
+}
+
+.formCadastro .formInvalid {
+  border-color: red;
+}
+
+.formCadastro .textError {
+  color: red;
+}
+
+.formCadastro .radio, .formCadastro .radio input{
+  margin-top: 0px !important;
+}
+
+
+.formCadastro .panel-heading{
+  background: none;
+  border-color: #008000;
+  color: #b3b3b3;
+}
+
+.formCadastro .panel-footer{
+  background: none;
+}
+
+.formCadastro .panel-default {
+  border-width: 0px;
+}
+
+.formCadastro .panel{
+  background: none;
+  color: #fff;
+  margin-bottom: 0px;
+}

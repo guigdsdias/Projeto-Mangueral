@@ -1,0 +1,213 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-2">
+
+						<div class="col-md-12">
+							<h3>
+								Crie uma conta no Portal Mangueral
+							</h3>
+						</div>
+
+						<div class="col-md-12">
+							<div class="row">
+
+								<div class="col-md-6">
+
+									<img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" class="img-thumbnail" />
+
+								</div>
+
+								<div class="col-md-6 formCadastro" >
+
+									<form name="form" novalidate >
+
+									<div class="panel panel-default">
+
+										<div class="panel-heading">
+											<h3 class="panel-title">
+												Nome
+											</h3>
+										</div>
+
+										<div class="panel-body">
+
+												<div class="col-xs-6">
+
+													<div class="form-group">
+														<label class="sr-only" for="nome">Nome</label>
+														<input type="text" class="form-control"  id="nome" name="nome" data-ng-class="{formInvalid: !form.nome.$valid && form.$submitted}" data-ng-model="ctrl.usuario.nome" placeholder="Nome" required>
+														<div class="textError" data-ng-show="form.$submitted && !form.nome.$valid">
+															<span>Nome obrigatório</span>
+														</div>
+													</div>
+												</div>
+
+												<div class="col-xs-6">
+
+													<div class="form-group">
+														<label class="sr-only" for="sobreNome">Sobrenome</label>
+														<input type="text" class="form-control" id="sobreNome" name="sobreNome" data-ng-class="{formInvalid: !form.sobreNome.$valid && form.$submitted}" data-ng-model="ctrl.usuario.sobreNome" placeholder="Sobrenome" required>
+														<div class="textError" data-ng-show="form.$submitted && !form.sobreNome.$valid">
+															<span>Sobrenome obrigatório</span>
+														</div>
+													</div>
+
+												</div>
+
+										</div>
+
+									</div>
+
+									<div class="panel panel-default">
+
+										<div class="panel-heading">
+											<h3 class="panel-title">
+												Usuário e senha
+											</h3>
+										</div>
+
+										<div class="panel-body">
+											<div class="col-xs-12">
+												<div class="form-group">
+													<label class="sr-only" for="email">Email</label>
+											    <input type="email" class="form-control" id="email" name="email" data-ng-class="{formInvalid: !form.email.$valid && form.$submitted}" data-ng-model="ctrl.usuario.email" placeholder="E-mail" required>
+													<div class="textError" data-ng-show="form.$submitted && !form.email.$valid">
+														<span>E-mail obrigatório</span>
+													</div>
+										  	</div>
+											</div>
+
+											<div class="col-xs-6">
+												<div class="form-group">
+													<label class="sr-only" for="senha">Senha</label>
+													<input type="password" class="form-control" id="senha" name="senha" data-ng-class="{formInvalid: !form.senha.$valid && form.$submitted}" data-ng-model="ctrl.usuario.senha" placeholder="Senha" required>
+													<div class="textError" data-ng-show="form.$submitted && !form.senha.$valid">
+														<span>Senha obrigatória</span>
+													</div>
+												</div>
+											</div>
+
+												<div class="col-xs-6">
+													<div class="form-group">
+														<label class="sr-only" for="crmSenha">Confirmação</label>
+														<input type="password" class="form-control" id="crmSenha" name="crmSenha" data-ng-class="{formInvalid: !form.crmSenha.$valid && form.$submitted}" data-ng-model="ctrl.snConfirmacao" placeholder="Confirme sua senha" required>
+														<div class="textError" data-ng-show="form.$submitted && !form.crmSenha.$valid">
+															<span>Confirmação obrigatória</span>
+														</div>
+													</div>
+
+												</div>
+
+										</div>
+
+									</div>
+
+									<div class="panel panel-default">
+
+										<div class="panel-heading">
+											<h3 class="panel-title">
+												Endereço
+											</h3>
+										</div>
+
+										<div class="panel-body">
+											<div class="row">
+
+												<div class="col-md-12">
+
+													<div class="col-xs-6">
+														<label for="quadra">Quadra</label>
+														<div class="form-group">
+															<select class="form-control input-sm" id="quadra" name="quadra" data-ng-class="{formInvalid: !form.quadra.$valid && form.$submitted}" data-ng-model="ctrl.endereco.quadra" required>
+																<option> Selecione </option>
+															</select>
+															<div class="textError" data-ng-show="form.$submitted && !form.quadra.$valid">
+																<span>Quadra obrigatória</span>
+															</div>
+														</div>
+													</div>
+
+													<div class="col-xs-6">
+														<div class="form-group">
+															<label for="rua">Rua</label>
+															<select class="form-control input-sm" id="rua" name="rua" data-ng-class="{formInvalid: !form.rua.$valid && form.$submitted}" data-ng-model="ctrl.endereco.rua" required>
+																<option> Selecione </option>
+															</select>
+															<div class="textError" data-ng-show="form.$submitted && !form.rua.$valid">
+																<span>Rua obrigatória</span>
+															</div>
+														</div>
+													</div>
+
+													<div class="col-xs-12">
+
+														<div class="form-group">
+															<label class="sr-only" for="complemento">Complemento</label>
+															<input type="text" class="form-control" id="complemento" name="complemento" data-ng-class="{formInvalid: !form.complemento.$valid && form.$submitted}" data-ng-model="ctrl.endereco.complemento" placeholder="Complemento" required>
+															<div class="textError" data-ng-show="form.$submitted && !form.complemento.$valid">
+																<span>Complemento obrigatório</span>
+															</div>
+														</div>
+
+													</div>
+
+												</div>
+
+											</div>
+
+										</div>
+
+									</div>
+
+									<div class="panel panel-default">
+
+										<div class="panel-heading">
+											<h3 class="panel-title">
+												Telefone
+											</h3>
+										</div>
+
+										<div class="panel-body">
+
+											<div class="col-xs-6">
+												<div class="form-group">
+													<label class="sr-only" for="residencial">Residêncial</label>
+													<input type="text" class="form-control" id="residencial" name="residencial" data-ng-class="{formInvalid: !form.residencial.$valid && form.$submitted}" data-ng-model="ctrl.telefone.residencial" placeholder="Residêncial" required>
+													<div class="textError" data-ng-show="form.$submitted && !form.residencial.$valid">
+														<span>Residencial obrigatório</span>
+													</div>
+												</div>
+											</div>
+
+											<div class="col-xs-6">
+												<div class="form-group">
+													<label class="sr-only" for="celular">Celular</label>
+													<input type="text" class="form-control" id="celular" name="celular" data-ng-class="{formInvalid: !form.celular.$valid && form.$submitted}" data-ng-model="ctrl.telefone.celular" placeholder="Celular" required>
+													<div class="textError" data-ng-show="form.$submitted && !form.celular.$valid">
+														<span>Celular obrigatório</span>
+													</div>
+												</div>
+											</div>
+
+										</div>
+
+										<div class="panel-footer">
+
+											<button type="submit" class="btn btn-success btn-block" data-ng-click="form.$valid ? ctrl.cadastrar() : false;">Cadastrar</button>
+
+										</div>
+
+									</div>
+
+									</form>
+
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+
+		</div>
+	</div>
+</div>
