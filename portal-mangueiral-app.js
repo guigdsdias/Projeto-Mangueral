@@ -1,7 +1,7 @@
 (function (){
   'use strict';
 
-  angular.module('PortalMangueiralApp',['ngRoute', 'cadastroUsuarioELoginModule', 'PortalMangueiralFactory'])
+  angular.module('PortalMangueiralApp',['ngRoute', 'cadastroUsuarioELoginModule', 'portalMangueiralFactory'])
   .config(['$routeProvider',function ($routeProvider){
 
     $routeProvider
@@ -39,9 +39,9 @@
         js = d.createElement('script');
         js.id = id;
         js.async = true;
-        js.src = '//connect.facebook.ne/en_US/all.js';
-
+        js.src = '//connect.facebook.net/en_US/sdk.js';
         ref.parentNode.insertBefore(js, ref);
+
       })(document);
 
     };
