@@ -8,7 +8,6 @@
 	indexController.$inject = ['$http','$rootScope','$location','$scope','PARAMS','UserService','INCLUDES'];
 
 	function indexController($http, $rootScope, $location, $scope, PARAMS, UserService, INCLUDES){
-
 		var vm = this;
 
 		vm.nomeUsuario = "";
@@ -33,11 +32,12 @@
 			if(vm.email && vm.senha){
 				$http.post('/apirest/admin/categoria/autenticar_usuario', {email: vm.email, senha: vm.senha})
 				.success(function (response){
-					console.log(response);
+					console.log(response.nome);
 					vm.logado = UserService.isLogged = true;
 					vm.nomeUsuario	 = UserService.userName = response.nome;
 					if (typeof(Storage) !== "undefined") {
     			console.log('suporta');
+					// localStorage.setItem("usuario", response);
 					} else {
     				console.log('náo suporta');
 					}

@@ -1,40 +1,24 @@
 angular.module("pmApp", [
     'ngRoute',
-<<<<<<< 6814ae32c11c60643379ac8d44b87766b7fd3be2
-	  'kendo.directives',
 	  'pmDirectives',
 	  'pmConstants',
-    'pmServices',
-=======
-	'kendo.directives',
-	'pmDirectives',
-	'pmConstants',
     'services',
->>>>>>> Atualizacao 04/07
     'moduloIndexController',
     'moduloHomeController',
-<<<<<<< HEAD
     'moduloSubCategoriaController',
     'moduloCarouselController',
     'cadastroUsuarioELoginModule',
-    'portalMangueiralFactory'
-=======
-    'moduloCarouselController',
+    'portalMangueiralFactory',
     'moduloInserirController',
     'htmlDirectives',
     'constants'
->>>>>>> origin/fernando
 ])
 
 .config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
-<<<<<<< 6814ae32c11c60643379ac8d44b87766b7fd3be2
-               when('/home',         {templateUrl: 'spa/pages/home/home.html'}).
-=======
                 when('/home',     {templateUrl: 'spa/pages/home/home.html',       controller: 'homeController as home'}).
                 when('/anunciar', {templateUrl: 'spa/pages/anuncio/inserir.html', controller: 'inserirController as vm'}).
->>>>>>> Atualizacao 04/07
                 // when('/subcategoria', {templateUrl: 'spa/pages/subcategoria/sub-categoria.html', controller: 'subCategoriaController as vm'}).
                 // when('/carossel',     {templateUrl: 'spa/includes/home/carousel.html', controller: 'carouselController as vm'}).
                when('/cadastrese',
