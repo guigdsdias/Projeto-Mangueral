@@ -1,3 +1,4 @@
 <?Php
 phpinfo();
+die();
 ?>
