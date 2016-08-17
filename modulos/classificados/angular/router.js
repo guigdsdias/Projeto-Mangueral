@@ -1,17 +1,17 @@
 angular.module("pmApp", [
     'ngRoute',
-	  'pmDirectives',
-	  'pmConstants',
+	'pmDirectives',
+	'pmConstants',
     'services',
     'moduloIndexController',
     'moduloHomeController',
-    'moduloSubCategoriaController',
     'moduloCarouselController',
+    'moduloInserirController',
     'cadastroUsuarioELoginModule',
     'portalMangueiralFactory',
-    'moduloInserirController',
     'htmlDirectives',
-    'constants'
+    'constants',
+    'ui.utils.masks'
 ])
 
 .config(['$routeProvider',

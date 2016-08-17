@@ -103,5 +103,5 @@
 			$location.path('/cadastrese');
 		};
 
-}
+	}
 })();
