@@ -849,5 +849,14 @@ export default StyleSheet.create({
         "paddingBottom": 20,
         "paddingLeft": 20,
         "color": "#fff"
+    },
+    "btnLogin": {
+        "height": 43,
+        "backgroundColor": "gainsboro",
+        "background": "none",
+        "fontFamily": "Arial, Tahoma",
+        "fontWeight": "bold",
+        "fontSize": "larger",
+        "color": "azure"
     }
 });
