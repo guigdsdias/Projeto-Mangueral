@@ -10,8 +10,16 @@
 
 		var vm = this;
 		// vm.includes = INCLUDES.index.files;
-		vm.avancar = function(){
-			$location.path("/upload");
+		vm.avancar = function(passo){
+			switch (passo) {
+				case 1:
+					$location.path("/upload");
+					break;
+				case 2:
+					$location.path("/visualizar");
+					break;
+
+			}
 		}
 
 		vm.categoria = {};

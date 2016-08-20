@@ -3,7 +3,7 @@
 	<h2 class="tituloPagina">Inserir Anuncio</h2>
 	<hr />
 
-	<migalha passo="1" itens="['Cadastrar','Upload','Visualizar']"></migalha>
+	<migalha passo="3" itens="['Cadastrar','Upload','Visualizar']"></migalha>
 
 	<hr />
 
@@ -12,6 +12,11 @@
 		<form class="form-horizontal" role="form" data-ng-init="vm.aceitaTroca = {'codigo':'S','texto':'Sim'}">
 
 			VIZUALIZAÇÃO
+
+			<button class="btn btn-primary pull-right" data-ng-click="vm.avancar(2)">
+				Finalizar	<i class="fa fa fa-check"></i>
+			</button>
+
 
 		</form>
 	</div>
