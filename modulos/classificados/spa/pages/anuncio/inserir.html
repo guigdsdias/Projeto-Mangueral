@@ -1,5 +1,11 @@
 <div class="container-fluid" style="background-color:white;border-radius:10px;padding-bottom:50px;" data-ng-init="vm.teste='AAA'">
-	<h1>Inserir Anuncio</h1><hr />
+
+	<h2 class="tituloPagina">Inserir Anuncio</h2>
+	<hr />
+
+	<migalha passo="1" itens="['Cadastrar','Upload','Visualizar']"></migalha>
+
+	<hr />
 
 	<div class="col-md-12">
 
@@ -122,6 +128,10 @@
 					</div>
 				</div>
 			</div>
+
+			<button class="btn btn-primary pull-right" data-ng-click="vm.avancar()">
+				Avancar	<i class="fa fa fa-arrow-right"></i>
+			</button>
 
 		</form>
 	</div>

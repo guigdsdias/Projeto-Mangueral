@@ -5,12 +5,14 @@
 
 	.controller('inserirController', inserirController);
 
-	inserirController.$inject = ['$http','$rootScope','$scope','INCLUDES', 'ArrayServices', 'Upload'];
-
-	function inserirController($http, $rootScope, $scope, INCLUDES, ArrayServices, Upload){
+	inserirController.$inject = ['$http','$rootScope','$scope','INCLUDES', 'ArrayServices', 'Upload', '$location'];
+	function inserirController($http, $rootScope, $scope, INCLUDES, ArrayServices, Upload, $location){
 
 		var vm = this;
 		// vm.includes = INCLUDES.index.files;
+		vm.avancar = function(){
+			$location.path("/upload");
+		}
 
 		vm.categoria = {};
 		vm.titulo = "";

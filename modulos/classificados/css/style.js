@@ -6,6 +6,11 @@ const {width, height, scale} = Dimensions.get("window"),
     vmax = Math.max(vw, vh);
 
 export default StyleSheet.create({
+    "tituloPagina": {
+        "fontWeight": "bold",
+        "color": "#777",
+        "fontFamily": "Comic Sans MS"
+    },
     "body": {
         "background": "url(/classificados/images/background.jpg) no-repeat",
         "backgroundAttachment": "fixed",
