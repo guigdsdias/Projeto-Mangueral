@@ -214,8 +214,6 @@
 			templateUrl: '/Config/angular/templates/migalha.html',
 			link: function (scope,elem,attrs){
 				scope.migalhaAtiva = function(i,p){
-					console.log("i: ",i);
-					console.log("p: ",p);
 					return (i+1 == p);
 				}
 			}

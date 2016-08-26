@@ -22,6 +22,28 @@
 			}
 		}
 
+		vm.visualizacao = {
+			current: 0,
+			next: function(){
+				console.log(vm.visualizacao.current == vm.visualizacao.imagens.length);
+				vm.visualizacao.current = (vm.visualizacao.current >= vm.visualizacao.imagens.length-1) ? 0 : vm.visualizacao.current + 1;
+				console.log("next: ",vm.visualizacao.current);
+			},
+			prev: function(){
+				console.log(vm.visualizacao.current);
+				vm.visualizacao.current = (vm.visualizacao.current <= 0) ? vm.visualizacao.imagens.length-1 : vm.visualizacao.current - 1;
+				console.log("prev: ",vm.visualizacao.current);
+			},
+			imagens: [
+				"http://arquivos.arsenalcar.com.br/ml/produtos_cod/4058/imagem1.jpg",
+				"http://www.dezeroacem.com.br/wordpress/wp-content/uploads/blogger/_ssXXvhqSEcw/TC0bK-Q7xXI/AAAAAAAAEVY/sMAmV13WCAg/s1600/Punto2011Essence01.jpg",
+				"http://autossegredos.com.br/wp-content/uploads/2011/02/palioetor3.jpg"
+			],
+			getImagem: function(){
+				return vm.visualizacao.imagens[vm.visualizacao.current];
+			}
+		}
+
 		vm.categoria = {};
 		vm.titulo = "";
 		vm.descricao = "";

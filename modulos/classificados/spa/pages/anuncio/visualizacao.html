@@ -1,5 +1,5 @@
 <div class="container-fluid" style="background-color:white;border-radius:10px;padding-bottom:50px;" data-ng-init="vm.teste='AAA'">
-
+{{vm.teste}}
 	<h2 class="tituloPagina">Inserir Anuncio</h2>
 	<hr />
 
@@ -11,7 +11,20 @@
 
 		<form class="form-horizontal" role="form" data-ng-init="vm.aceitaTroca = {'codigo':'S','texto':'Sim'}">
 
-			VIZUALIZAÇÃO
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="btn btn-default col-md-1" style="padding: 188px 0px;" data-ng-click="vm.visualizacao.prev()">
+							<i class="fa fa-chevron-left" aria-hidden="true"></i>
+						</div>
+						<div class="col-md-10 imagem-anuncio">
+						</div>
+						<div class="btn btn-default col-md-1" style="padding: 188px 0px;" data-ng-click="vm.visualizacao.next()">
+							<i class="fa fa-chevron-right" aria-hidden="true"></i>
+						</div>
+					</div>
+				</div>
+			</div>
 
 			<button class="btn btn-primary pull-right" data-ng-click="vm.avancar(2)">
 				Finalizar	<i class="fa fa fa-check"></i>
@@ -22,7 +35,15 @@
 	</div>
 </div>
 
+aaa: {{vm.visualizacao.getImagem()}}
 
 <style>
+.imagem-anuncio {
+	background: url({{vm.visualizacao.getImagem()}}) no-repeat;
+	background-size: 100%;
+	background-position: 50% 50%;
+	font-family: 'Open Sans', sans-serif;
+	height:400px;
+}
 .categoriaSelecionadaParaTroca{border:solid 5px #626262;width:190px;height:68px;}
 </style>
