@@ -1,7 +1,7 @@
 (function() {
 	'use strict';
 
-	angular.module('moduloInserirController',['ngAnimate', 'ui.bootstrap', 'ngFileUpload', 'ngImgCrop'])
+	angular.module('moduloInserirController',['ngAnimate', 'ui.bootstrap', 'ngFileUpload', 'ngImgCrop','ngAnimate'])
 
 	.controller('inserirController', inserirController);
 
@@ -23,6 +23,7 @@
 		}
 
 		vm.visualizacao = {
+			caracteristicas: [{chave:"Marca",valor:"Fiat"},{chave:"Ano",valor:"2016"},{chave:"Cor",valor:"Prata"},{chave:"Novo/Usado",valor:"Usado"}],
 			current: 0,
 			next: function(){
 				console.log(vm.visualizacao.current == vm.visualizacao.imagens.length);

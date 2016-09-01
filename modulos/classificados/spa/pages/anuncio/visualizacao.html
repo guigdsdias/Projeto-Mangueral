@@ -1,46 +1,79 @@
-<div class="container-fluid" style="background-color:white;border-radius:10px;padding-bottom:50px;" data-ng-init="vm.teste='AAA'">
-{{vm.teste}}
-	<h2 class="tituloPagina">Inserir Anuncio</h2>
+<div class="container-fluid" style="background-color:white;border-radius:10px;padding-bottom:50px;">
+
+	<h2 class="tituloPagina">{{vm.titulo ? vm.titulo :	 "Inserir Anuncio"}}</h2>
+
 	<hr />
 
 	<migalha passo="3" itens="['Cadastrar','Upload','Visualizar']"></migalha>
 
-	<hr />
-
 	<div class="col-md-12">
 
-		<form class="form-horizontal" role="form" data-ng-init="vm.aceitaTroca = {'codigo':'S','texto':'Sim'}">
+		<!-- Título -->
+		<h3 class="col-md-12" style="background-color:#f4f4f4;border-radius:10px;padding:18px;color:#FFF;background-color:#878787;">
+			<i class="fa fa-automobile pull-left"></i>
+			<span class="pull-left"><b> - Punto Prata 2016 </b></span>
+			<span class="pull-right"><b> R$ 30.000,00 </b></span>
+		</h3>
 
+		<!-- image view -->
+		<div class="col-md-12">
 			<div class="row">
-				<div class="col-md-12">
-					<div class="row">
-						<div class="btn btn-default col-md-1" style="padding: 188px 0px;" data-ng-click="vm.visualizacao.prev()">
-							<i class="fa fa-chevron-left" aria-hidden="true"></i>
-						</div>
-						<div class="col-md-10 imagem-anuncio">
-						</div>
-						<div class="btn btn-default col-md-1" style="padding: 188px 0px;" data-ng-click="vm.visualizacao.next()">
-							<i class="fa fa-chevron-right" aria-hidden="true"></i>
-						</div>
-					</div>
+				<div class="btn btn-default col-md-1" style="padding: 188px 0px;" data-ng-click="vm.visualizacao.prev()">
+					<i class="fa fa-chevron-left" aria-hidden="true"></i>
+				</div>
+				<div class="col-md-10 imagem-anuncio">
+				</div>
+				<div class="btn btn-default col-md-1" style="padding: 188px 0px;" data-ng-click="vm.visualizacao.next()">
+					<i class="fa fa-chevron-right" aria-hidden="true"></i>
 				</div>
 			</div>
+		</div>
 
+		<!-- descrição -->
+		<blockquote class="col-md-12" style="margin:5px 0px 35px;text-align:left;border-left-color:#4a4a4a">
+
+			<div class="col-md-3" style="text-align:right;"><b> Descrição: </b></div>
+			<div class="col-md-9">
+				lorem ipsum dolor sit amet consectetur adipiscing elit lorem ipsum dolor sit amet consectetur adipiscing elit lorem ipsum dolor sit amet consectetur adipiscing elit
+				lorem ipsum dolor sit amet consectetur adipiscing elit lorem ipsum dolor sit amet consectetur adipiscing elit lorem ipsum dolor sit amet consectetur adipiscing elit
+				lorem ipsum dolor sit amet consectetur adipiscing elit lorem ipsum dolor sit amet consectetur adipiscing elit lorem ipsum dolor sit amet consectetur adipiscing elit
+			</div>
+		</blockquote>
+
+		<!-- características -->
+		<blockquote data-ng-repeat="c in vm.visualizacao.caracteristicas" class="col-md-12" style="margin-top:-43px;border-left-color:#908e8e">
+			<div class="col-md-3" style="text-align:right;"><b> {{c.chave}}: </b></div>
+			<div class="col-md-9" style="text-align:left;"> {{c.valor}} </div>
+		</blockquote>
+
+		<!-- aceito trocar por -->
+		<blockquote class="col-md-12" style="margin-top:-25px;border-left-color:#d0d0d0">
+			<div class="col-md-3" style="text-align:right;"><b> Aceito trocar por: </b></div>
+			<div class="col-md-9" style="text-align:left;">
+
+				<label class="btn gray" style="width:200px;margin:5px;height:78px;">
+					<a data-toggle="false" style="color:white;font-weight:bold;font-size:20px;">
+						<i class="fa  fa-automobile"></i>
+						<p class="ng-binding" style="font-weight:bold;font-size:15px;margin-bottom:-13px;">Veículos</p>
+					</a>
+				</label>
+
+			 </div>
+		</blockquote>
+
+		<div class="col-md-12">
 			<button class="btn btn-primary pull-right" data-ng-click="vm.avancar(2)">
 				Finalizar	<i class="fa fa fa-check"></i>
 			</button>
+		</div>
 
-
-		</form>
 	</div>
 </div>
-
-aaa: {{vm.visualizacao.getImagem()}}
 
 <style>
 .imagem-anuncio {
 	background: url({{vm.visualizacao.getImagem()}}) no-repeat;
-	background-size: 100%;
+	background-size: 80%;
 	background-position: 50% 50%;
 	font-family: 'Open Sans', sans-serif;
 	height:400px;

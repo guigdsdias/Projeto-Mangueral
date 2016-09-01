@@ -17,6 +17,7 @@
 			url: "/apirest/admin/categoria",
 			method: "GET"
 		}).then(function(response){
+			console.log("response",response);
 			vm.listaCategoria = [];
 			vm.primeiros = response.data.splice(0,4);
 			vm.listaCategoria = response.data;
