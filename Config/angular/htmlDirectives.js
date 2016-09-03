@@ -231,15 +231,11 @@
 				scope.current = 0;
 
 				scope.next = function(){
-					console.log(scope.current == scope.itens.length);
 					scope.current = (scope.current >= scope.itens.length-1) ? 0 : scope.current + 1;
-					console.log("next: ",scope.current);
 				};
 
 				scope.prev = function(){
-					console.log(scope.current);
 					scope.current = (scope.current <= 0) ? scope.itens.length-1 : scope.current - 1;
-					console.log("prev: ",scope.current);
 				};
 
 				scope.getActive = function(index){
