@@ -21,7 +21,7 @@ angular.module("pmApp", [
                 when('/anunciar',   {templateUrl: 'spa/pages/anuncio/inserir.html',      controller: 'inserirController as vm'}).
                 when('/upload',     {templateUrl: 'spa/pages/anuncio/upload.html',       controller: 'inserirController as vm'}).
                 when('/visualizar', {templateUrl: 'spa/pages/anuncio/visualizacao.html', controller: 'inserirController as vm'}).
-                when('/bucar',      {templateUrl: 'spa/pages/anuncio/buscar.html',       controller: 'buscaController   as vm'}).
+                when('/buscar',      {templateUrl: 'spa/pages/anuncio/buscar.html',       controller: 'buscarController  as vm'}).
                 // when('/subcategoria', {templateUrl: 'spa/pages/subcategoria/sub-categoria.html', controller: 'subCategoriaController as vm'}).
                 // when('/carossel',     {templateUrl: 'spa/includes/home/carousel.html', controller: 'carouselController as vm'}).
                when('/cadastrese',
