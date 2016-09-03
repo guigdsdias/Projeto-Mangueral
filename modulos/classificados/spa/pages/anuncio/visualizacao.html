@@ -30,37 +30,28 @@
 		</div> -->
 
 
-		img: {{vm.visualizacao.getImagem()}}
-		<div class="row">
-				<div class="col-md-12">
-					<div class="carousel slide" id="carousel-10258">
-						<ol class="carousel-indicators">
-							<li class="active" data-slide-to="0" data-target="carousel-10258"> </li>
-							<li data-slide-to="1" data-target="carousel-10258"> </li>
-							<li data-slide-to="2" data-target="carousel-10258"> </li>
-						</ol>
-						<div class="carousel-inner">
-							<div class="item" data-ng-class="vm.visualizacao.getActive(0)">
-								<img alt="Carousel Bootstrap First" src="{{vm.visualizacao.imagens[0]}}" />
-							</div>
-							<div class="item" data-ng-class="vm.visualizacao.getActive(1)">
-								<img alt="Carousel Bootstrap Second" src="{{vm.visualizacao.imagens[1]}}" />
-							</div>
-							<div class="item" data-ng-class="vm.visualizacao.getActive(2)">
-								<img alt="Carousel Bootstrap Third" src="{{vm.visualizacao.imagens[2]}}" />
-							</div>
+		<div class="row" style="width:1110px;height:500px;">
+			<div class="col-md-12">
+				<div class="carousel slide" id="carousel-10258">
+					<ol class="carousel-indicators">
+						<li class="active" data-slide-to="0" data-target="carousel-10258"> </li>
+						<li data-slide-to="1" data-target="carousel-10258"> </li>
+						<li data-slide-to="2" data-target="carousel-10258"> </li>
+					</ol>
+					<div class="carousel-inner">
+						<div class="item" data-ng-repeat="img in vm.visualizacao.imagens" data-ng-class="vm.visualizacao.getActive($index)">
+							<img alt="Carousel Bootstrap First" src="{{img}}" />
 						</div>
-						<a class="left carousel-control" data-ng-click="vm.visualizacao.prev()"  data-slide="prev">
-							<span class="glyphicon glyphicon-chevron-left"></span>
-						</a>
-						<a class="right carousel-control" data-ng-click="vm.visualizacao.next()" data-slide="next">
-							<span class="glyphicon glyphicon-chevron-right"></span>
-						</a>
 					</div>
+					<a class="left carousel-control" data-ng-click="vm.visualizacao.prev()"  data-slide="prev">
+						<span class="glyphicon glyphicon-chevron-left"></span>
+					</a>
+					<a class="right carousel-control" data-ng-click="vm.visualizacao.next()" data-slide="next">
+						<span class="glyphicon glyphicon-chevron-right"></span>
+					</a>
 				</div>
 			</div>
-
-
+		</div>
 
 
 
