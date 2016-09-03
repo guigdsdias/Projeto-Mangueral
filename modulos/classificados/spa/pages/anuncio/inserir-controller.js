@@ -5,8 +5,8 @@
 
 	.controller('inserirController', inserirController);
 
-	inserirController.$inject = ['$http','$rootScope','$scope','INCLUDES', 'ArrayServices', 'Upload', '$location'];
-	function inserirController($http, $rootScope, $scope, INCLUDES, ArrayServices, Upload, $location){
+	inserirController.$inject = ['$http','$rootScope','$scope','INCLUDES', 'ArrayServices', 'Upload', '$location','$route'];
+	function inserirController($http, $rootScope, $scope, INCLUDES, ArrayServices, Upload, $location, $route){
 
 		var vm = this;
 		// vm.includes = INCLUDES.index.files;
@@ -21,6 +21,17 @@
 
 			}
 		}
+
+
+
+
+
+
+
+
+
+
+
 
 		vm.visualizacao = {
 			caracteristicas: [{chave:"Marca",valor:"Fiat"},{chave:"Ano",valor:"2016"},{chave:"Cor",valor:"Prata"},{chave:"Novo/Usado",valor:"Usado"}],
@@ -42,6 +53,12 @@
 			],
 			getImagem: function(){
 				return vm.visualizacao.imagens[vm.visualizacao.current];
+			},
+			getActive: function(index){
+				if (vm.visualizacao.imagens[vm.visualizacao.current] == vm.visualizacao.imagens[index])
+					return "active";
+				else
+					return "";
 			}
 		}
 
