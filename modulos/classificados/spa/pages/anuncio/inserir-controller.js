@@ -22,17 +22,6 @@
 			}
 		}
 
-
-
-
-
-
-
-
-
-
-
-
 		vm.visualizacao = {
 			caracteristicas: [{chave:"Marca",valor:"Fiat"},{chave:"Ano",valor:"2016"},{chave:"Cor",valor:"Prata"},{chave:"Novo/Usado",valor:"Usado"}],
 			imagens: [

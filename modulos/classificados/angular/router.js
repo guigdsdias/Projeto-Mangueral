@@ -7,6 +7,7 @@ angular.module("pmApp", [
     'moduloHomeController',
     'moduloCarouselController',
     'moduloInserirController',
+    'moduloPesquisaController',
     'cadastroUsuarioELoginModule',
     'portalMangueiralFactory',
     'htmlDirectives',
@@ -17,11 +18,11 @@ angular.module("pmApp", [
 .config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
-                when('/home',       {templateUrl: 'spa/pages/home/home.html',            controller: 'homeController as home'}).
-                when('/anunciar',   {templateUrl: 'spa/pages/anuncio/inserir.html',      controller: 'inserirController as vm'}).
-                when('/upload',     {templateUrl: 'spa/pages/anuncio/upload.html',       controller: 'inserirController as vm'}).
-                when('/visualizar', {templateUrl: 'spa/pages/anuncio/visualizacao.html', controller: 'inserirController as vm'}).
-                when('/buscar',      {templateUrl: 'spa/pages/anuncio/buscar.html',       controller: 'buscarController  as vm'}).
+                when('/home',         {templateUrl: 'spa/pages/home/home.html',            controller: 'homeController as home'}).
+                when('/anunciar',     {templateUrl: 'spa/pages/anuncio/inserir.html',      controller: 'inserirController as vm'}).
+                when('/upload',       {templateUrl: 'spa/pages/anuncio/upload.html',       controller: 'inserirController as vm'}).
+                when('/visualizar',   {templateUrl: 'spa/pages/anuncio/visualizacao.html', controller: 'inserirController as vm'}).
+                when('/pesquisaGrid', {templateUrl: 'spa/pages/anuncio/pesquisaGrid.html', controller: 'pesquisaController  as vm'}).
                 // when('/subcategoria', {templateUrl: 'spa/pages/subcategoria/sub-categoria.html', controller: 'subCategoriaController as vm'}).
                 // when('/carossel',     {templateUrl: 'spa/includes/home/carousel.html', controller: 'carouselController as vm'}).
                when('/cadastrese',

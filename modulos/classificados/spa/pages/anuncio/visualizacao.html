@@ -1,54 +1,15 @@
 <div class="container-fluid" style="background-color:white;border-radius:10px;padding-bottom:50px;">
 
-	<h2 class="tituloPagina">{{vm.titulo ? vm.titulo :	 "Inserir Anuncio"}}</h2>
-
-	<hr />
-
-	<migalha passo="3" itens="['Cadastrar','Upload','Visualizar']"></migalha>
+	<div>
+		<h2 class="tituloPagina">{{vm.titulo ? vm.titulo :	 "Inserir Anuncio"}}</h2>
+		<hr />
+		<migalha passo="3" itens="['Cadastrar','Upload','Visualizar']"></migalha>
+	</div>
 
 	<div class="col-md-12">
 
-		<!-- Título -->
-		<h3 class="col-md-12" style="background-color:#f4f4f4;border-radius:4px;padding:18px;color:#FFF;background-color:#878787;margin-bottom:2px;">
-			<i class="fa fa-automobile pull-left"></i>
-			<span class="pull-left"><b> - Ofereço Punto Prata 2016 </b></span>
-			<span class="pull-right"><b>R$ 30.000,00 </b></span>
-		</h3>
-
-		<!-- image view -->
-		<carrossel itens="vm.visualizacao.imagens" width="1110px" height="500px"></carrossel>
-
-		<!-- descrição -->
-		<blockquote class="col-md-12" style="margin:5px 0px 35px;text-align:left;border-left-color:#4a4a4a">
-
-			<div class="col-md-3" style="text-align:right;"><b> Descrição: </b></div>
-			<div class="col-md-9">
-				lorem ipsum dolor sit amet consectetur adipiscing elit lorem ipsum dolor sit amet consectetur adipiscing elit lorem ipsum dolor sit amet consectetur adipiscing elit
-				lorem ipsum dolor sit amet consectetur adipiscing elit lorem ipsum dolor sit amet consectetur adipiscing elit lorem ipsum dolor sit amet consectetur adipiscing elit
-				lorem ipsum dolor sit amet consectetur adipiscing elit lorem ipsum dolor sit amet consectetur adipiscing elit lorem ipsum dolor sit amet consectetur adipiscing elit
-			</div>
-		</blockquote>
-
-		<!-- características -->
-		<blockquote data-ng-repeat="c in vm.visualizacao.caracteristicas" class="col-md-12" style="margin-top:-43px;border-left-color:#908e8e">
-			<div class="col-md-3" style="text-align:right;"><b> {{c.chave}}: </b></div>
-			<div class="col-md-9" style="text-align:left;"> {{c.valor}} </div>
-		</blockquote>
-
-		<!-- aceito trocar por -->
-		<blockquote class="col-md-12" style="margin-top:-25px;border-left-color:#d0d0d0">
-			<div class="col-md-3" style="text-align:right;"><b> Aceito trocar por: </b></div>
-			<div class="col-md-9" style="text-align:left;">
-
-				<label class="btn gray" style="width:200px;margin:5px;height:78px;">
-					<a data-toggle="false" style="color:white;font-weight:bold;font-size:20px;">
-						<i class="fa  fa-automobile"></i>
-						<p class="ng-binding" style="font-weight:bold;font-size:15px;margin-bottom:-13px;">Veículos</p>
-					</a>
-				</label>
-
-			 </div>
-		</blockquote>
+		<!-- Requisito: depende do objeto "vm.visualizacao" -->
+		<div data-ng-include="'spa/includes/visualizaAnuncio.html'"> </div>
 
 		<div class="col-md-12">
 			<button class="btn btn-primary pull-right" data-ng-click="vm.avancar(2)">
@@ -58,16 +19,3 @@
 
 	</div>
 </div>
-
-<style>
-a {cursor:pointer;}
-a span{cursor:pointer}
-.imagem-anuncio {
-	background: url({{vm.visualizacao.getImagem()}}) no-repeat;
-	background-size: 80%;
-	background-position: 50% 50%;
-	font-family: 'Open Sans', sans-serif;
-	height:400px;
-}
-.categoriaSelecionadaParaTroca{border:solid 5px #626262;width:190px;height:68px;}
-</style>
