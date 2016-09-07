@@ -1,0 +1,20 @@
+<div class="row" style="width:{{width}};height:{{height}};{{stye}}">
+	<div class="col-md-12">
+		<div class="carousel slide" id="carousel-10258">
+			<ol class="carousel-indicators">
+				<li data-ng-class="getActive($index)" data-ng-repeat="img in itens" data-ng-click="setSelected($index);"> </li>
+			</ol>
+			<div class="carousel-inner">
+				<div class="item" data-ng-repeat="img in itens" data-ng-class="getActive($index)">
+					<img alt="Carousel Bootstrap First" src="{{img}}" />
+				</div>
+			</div>
+			<a class="left carousel-control" data-ng-click="prev()"  data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+			</a>
+			<a class="right carousel-control" data-ng-click="next()" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+			</a>
+		</div>
+	</div>
+</div>
