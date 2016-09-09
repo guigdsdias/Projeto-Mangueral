@@ -5,9 +5,9 @@
 
 	.controller('indexController', indexController);
 
-	indexController.$inject = ['$http','$rootScope','$location','$scope','PARAMS','UserService','INCLUDES'];
+	indexController.$inject = ['$http','$rootScope','$location','$scope','PARAMS','UserService','INCLUDES', 'usuarioService', 'autenticacaoService'];
 
-	function indexController($http, $rootScope, $location, $scope, PARAMS, UserService, INCLUDES){
+	function indexController($http, $rootScope, $location, $scope, PARAMS, UserService, INCLUDES, usuarioService, autenticacaoService){
 		var vm = this;
 
 		vm.nomeUsuario = "";
@@ -29,36 +29,74 @@
 
 		// ----------------- Login Normal ----------------------
 		vm.entrar = function () {
+
 			if(vm.email && vm.senha){
-				$http.post('/apirest/admin/categoria/autenticar_usuario', {email: vm.email, senha: vm.senha})
-				.success(function (response){
-					console.log(response.nome);
+				if(autenticacaoService.autenticacao(vm.nome, vm.senha)){
+					console.log(response);
 					vm.logado = UserService.isLogged = true;
-					vm.nomeUsuario	 = UserService.userName = response.nome;
-					if (typeof(Storage) !== "undefined") {
-    			console.log('suporta');
-					// localStorage.setItem("usuario", response);
-					} else {
-    				console.log('náo suporta');
-					}
-				});
+					var usr = localStorage.get('ptMgDadoUsuario');
+					console.log(usr);
+					vm.nomeUsuario	 = UserService.userName = usr;
 
-
+				}
+			} else {
+				console.log('false');
+				return false;
 			}
 
 		};
 
 		// ----------------- Login do facebook -----------------
-
 		vm.loginFacebook = function (){
 			FB.login(function(response){
-					// Handle the response object, like in statusChangeCallback() in our demo
-					// code.
-			}, {scope: 'public_profile'});
+				console.log(response);
+
+				var token = response.authResponse.access_token;
+
+				FB.api('/me', 'get', { access_token: token, fields: 'id,name,gender,picture,last_name,email' }, function(response) {
+					console.log(response);
+
+					var usuario = response;
+
+				 	$rootScope.$apply(function() {
+
+						//Verifica se Usuario já esta cadastrado
+						usuarioService.getUsuarioEmail( response.email )
+						.success(function (response){
+							console.log(response);
+
+							if(response === 'false'){//Se false usuario não é cadastrado
+								console.log('cadastrando');
+								usuarioService.cadastrar(usuario.name, usuario.last_name, usuario.email, 'facebook', 1)
+								.success(function (response){
+									console.log(response);
+									gerarToken(usuario.email, 'facebook');
+
+								});
+
+							} else if( !response.usr_cdt_face ){
+								console.log('alterando');
+								usuarioService.alterar(response.usr_nm, response.usr_sbnm, response.usr_email, reseponse.usr_sn, 1, response.usr_cdt_google, response.id_usr)
+			          .success(function (response){
+			            console.log('-------------------------');
+			            console.log(response);
+
+			          });
+
+							} else {
+								console.log('gerando token');
+								gerarToken( usuario.email, 'facebook' );
+							}
+
+						});
+
+				 });
+				});
+
+			},{scope:'public_profile,email'});
 		};
 
 		// ----------------- Logout do facebook -----------------
-
 		vm.logoutFacebook = function (){
 			FB.logout(function(response) {
 				console.log(response);
@@ -70,9 +108,10 @@
 		};
 
 		// ----------------- Verifica status do facebook -----------------
-
 		function statusLoginFacebook () {
 				FB.Event.subscribe('auth.authResponseChange', function(res) {
+					// var token = res.authResponse.access_toke;
+					console.log(res);
 					if (res.status === 'connected') {
 						infoUsuarioFacebook();
 
@@ -85,23 +124,31 @@
 		}
 
 		// ----------------- recupera informacoes do facebook -----------------
-
-		function infoUsuarioFacebook (){
-			FB.api('/me', function(response) {
-			 console.log(response);
+		function infoUsuarioFacebook (token){
+			FB.api('/me', 'get', { access_token: token, fields: 'id,name,gender,picture,email' }, function(response) {
 			 $rootScope.$apply(function() {
-					 vm.nomeUsuario	 = UserService.userName = response.name;
-					 vm.logado			 = UserService.isLogged = true;
-					 $location.path('/home');
+				 	vm.fotoFacebook	 = response.picture.data.url;
+					vm.nomeUsuario	 = UserService.userName = response.name;
+					vm.logado				 = UserService.isLogged = true;
+					$location.path('/home');
 			 });
 		 	});
 		}
 
 		// ----------------- Verifica status do facebook -----------------
-
-		vm. cadastrar = function cadastrar () {
+		vm.cadastrar = function cadastrar () {
 			$location.path('/cadastrese');
 		};
+
+		function gerarToken(email, senha){
+			autenticacaoService.gerarToken(email, senha)
+			.success(function (response){
+				console.log(response);
+			})
+			.error(function (response){
+				console.log(response);
+			});
+		}
 
 }
 })();

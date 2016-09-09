@@ -2,57 +2,52 @@
   angular.module('cadastroUsuarioELoginModule', [])
   .controller('cadastroUsuarioELoginController',cadastroUsuarioELoginController);
 
-  cadastroUsuarioELoginController.$inject = ['$scope', '$rootScope', '$http', 'UserService'];
+  cadastroUsuarioELoginController.$inject = ['$scope', '$rootScope', '$http', 'usuarioService', '$location'];
 
-  function cadastroUsuarioELoginController($scope, $rootScope, $http, UserService) {
+  function cadastroUsuarioELoginController($scope, $rootScope, $http, usuarioService, $location) {
     var vm = this;
 
-    vm.usuario  = {nome: '', sobreNome: '', email: '', senha: ''};
+    vm.nome = '';
+    vm.sobreNome = '';
+    vm.email = '';
+    vm.senha = '';
+    vm.tipoCadastro = 0;
 
-    vm.endereco = {quadra: '', rua: '', complemento: ''};
-
-    vm.telefone = {residencial: '', celular: ''};
-
-    vm.quadras  = [];
-    vm.ruas     = [];
-    vm.numeros  = [];
-
-    (function () {
-      numeroEndereco();
-    })();
-
-    function numeroEndereco() {
-
-      //Configura quantidade de quadras
-      for (var q = 0; q < 10; q++) {
-        vm.quadras.push(q);
-      }
-
-      // Configura quantidade de ruas
-      for (var r = 0; r < 10; r++) {
-        vm.ruas.push(r);
-      }
-      // Configura quantidade de numeros
-      for (var n = 0; n < 50; n++) {
-        vm.numeros.push(n);
-      }
-    }
+    vm.cdSenha = true;
 
     vm.cadastrar = function () {
-      buscarUsuario();
-  };
 
-function buscarUsuario(){
-  var param = {usuario: vm.usuario, telefone: vm.telefone, endereco: vm.endereco};
+      usuarioService.getUsuarioEmail(vm.email)
+      .success(function (response){
+        console.log(response);
 
-  $http.post('/apirest/admin/categoria/cadastrar_usuario', param)
-  .then(function(response){
-    console.log('-------------------------');
-    console.log(response);
-  });
+        if(response === 'false'){ // Se usuario não estiver cadastrado
 
-}
+          usuarioService.cadastrar(vm.nome, vm.sobreNome, vm.email, vm.senha, vm.tipoCadastro)
+          .success(function(response){
+            console.log('-------------------------');
+            console.log(response);
 
+          });
 
-}
+          // Se usuário estiver cadastrado pelo facebook ou google e não foi cdastrado pelo app
+        } else if(response.usr_cdt_app != 1 && (response.usr_cdt_face == 1 || response.usr_cdt_google == 1) ){
+
+          usuarioService.alterar(vm.nome, vm.sobreNome, vm.email, vm.senha, response.usr_cdt_face, response.usr_cdt_google, response.id_usr)
+          .success(function (response){
+            console.log('-------------------------');
+            console.log(response);
+
+          });
+
+        }else {
+          console.log('Usuario já cadastrado.');
+        }
+
+      });
+
+    };
+
+  }
+
 })();

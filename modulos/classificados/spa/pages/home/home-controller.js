@@ -18,7 +18,7 @@
 			method: "GET"
 		}).then(function(response){
 			vm.listaCategoria = [];
-			vm.primeiros = response.data.splice(0,4);
+			// vm.primeiros = response.data.splice(0,4);
 			vm.listaCategoria = response.data;
 
 			// de 4 em 4 itens - preenche com mais elementos no final caso não seja múltiplo de 4

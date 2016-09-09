@@ -17,7 +17,7 @@
 
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav"><li class="active"><a href="#">Home</a></li></ul>
-					<ul class="nav navbar-nav"><li class=""><a href="#">
+					<ul class="nav navbar-nav"> <li class=""><a href="#">
 						<i class="fa fa-map-marker" aria-hidden="true" style="font-size:23px;margin-top:-3px;"></i>
 						Comércio Local
 					</a></li></ul>
@@ -37,7 +37,7 @@
 
 						<li style="border-left:solid 1px #222222;" data-ng-show="ctrl.logado">
 							<div class="col-xs-6">
-								<img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" class="img-thumbnail" />
+								<img alt="Bootstrap Image Preview" class="img-circle"data-ng-src="{{ctrl.fotoFacebook}}" />
 							</div>
 						</li>
 
@@ -61,7 +61,7 @@
 
 								<!-- Logar -->
 								<li class="">
-
+									<form name="form" novalidate>
 										<div id="login" >
 									    <h1>Seja Bem-Vindo!</h1>
 
@@ -75,7 +75,7 @@
 
 									    <p class="forgot"><a href="#">esqueceu sua senha?</a></p>
 
-									    <button class="button button-block" data-ng-click="ctrl.entrar()">Entrar</button>
+									    <button class="button button-block" data-ng-click="form.$valid ? ctrl.entrar() :  false;">Entrar</button>
 											<br>
 											<div class="col-md-6">
 													<button class="button buttonFace button-block" data-ng-click="ctrl.loginFacebook()">
@@ -92,6 +92,7 @@
 											</div>
 
 									  </div>
+									</form>
 
 								</li>
 

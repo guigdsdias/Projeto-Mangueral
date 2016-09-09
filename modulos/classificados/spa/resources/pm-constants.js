@@ -38,17 +38,17 @@
     })
 
     .constant('MSG',{
-		VALIDACAO: {
-		},
-		ALTERACAO: {
-		},
-		CADASTRO:{
-		},
-		CANCELAMENTO:{
-		},
-		DADO:{
-			VAZIO:""
-		}
-  });
+  		VALIDACAO: {
+  		},
+  		ALTERACAO: {
+  		},
+  		CADASTRO:{
+  		},
+  		CANCELAMENTO:{
+  		},
+  		DADO:{
+  			VAZIO:""
+  		}
+    });
 
 })(angular);
