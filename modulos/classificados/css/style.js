@@ -6,6 +6,11 @@ const {width, height, scale} = Dimensions.get("window"),
     vmax = Math.max(vw, vh);
 
 export default StyleSheet.create({
+    "tituloPagina": {
+        "fontWeight": "bold",
+        "color": "#777",
+        "fontFamily": "Comic Sans MS"
+    },
     "body": {
         "background": "url(/classificados/images/background.jpg) no-repeat",
         "backgroundAttachment": "fixed",
@@ -849,5 +854,14 @@ export default StyleSheet.create({
         "paddingBottom": 20,
         "paddingLeft": 20,
         "color": "#fff"
+    },
+    "btnLogin": {
+        "height": 43,
+        "backgroundColor": "gainsboro",
+        "background": "none",
+        "fontFamily": "Arial, Tahoma",
+        "fontWeight": "bold",
+        "fontSize": "larger",
+        "color": "azure"
     }
 });

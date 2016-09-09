@@ -38,7 +38,24 @@
 		};
 	})
 
-	.directive('hTextField',function(){
+	.directive('hTextField',function($compile){
+		return {
+			restrict: 	'E',
+			replace: true,
+			scope: 		{ id: '@', label: '@' , width: '@', placeholder: '@', prefix:'@', maxlength: '@' , model:'=ngModel'},
+			template:	'<div ng-class="{\'input-group\':group}">'+
+								'<span class="input-group-addon" data-ng-if="prefix">{{prefix}}</span>'+
+								'<input class="form-control" id="field_{{id}}" type="text" data-ng-model="model" placeholder="{{placeholder}}" maxlength="{{maxlength}}"/>'+
+						'</div>',
+			link: function (scope,elem,attrs){
+
+				if (scope.prefix)
+					scope.group = true;
+			}
+		};
+	})
+
+	.directive('hTextArea',function(){
 		return {
 			restrict: 	'E',
 			// replace: true,

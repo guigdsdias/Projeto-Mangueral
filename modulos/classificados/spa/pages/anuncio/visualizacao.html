@@ -1,0 +1,21 @@
+<div class="container-fluid" style="background-color:white;border-radius:10px;padding-bottom:50px;">
+
+	<div>
+		<h2 class="tituloPagina">{{vm.titulo ? vm.titulo :	 "Inserir Anuncio"}}</h2>
+		<hr />
+		<migalha passo="3" itens="['Cadastrar','Upload','Visualizar']"></migalha>
+	</div>
+
+	<div class="col-md-12">
+
+		<!-- Requisito: depende do objeto "vm.visualizacao" -->
+		<div data-ng-include="'spa/includes/visualizaAnuncio.html'"> </div>
+
+		<div class="col-md-12">
+			<button class="btn btn-primary pull-right" data-ng-click="vm.avancar(2)">
+				Finalizar	<i class="fa fa fa-check"></i>
+			</button>
+		</div>
+
+	</div>
+</div>

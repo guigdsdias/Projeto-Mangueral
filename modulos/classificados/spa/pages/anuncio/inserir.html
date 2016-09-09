@@ -1,16 +1,17 @@
-<div class="container-fluid" style="background-color:white;border-radius:10px;" data-ng-init="vm.teste='AAA'">
-	<h1>Inserir Anuncio</h1><hr />
+<div class="container-fluid" style="background-color:white;border-radius:10px;padding-bottom:50px;" data-ng-init="vm.teste='AAA'">
+
+	<h2 class="tituloPagina">Inserir Anuncio</h2>
+	<hr />
+
+	<migalha passo="1" itens="['Cadastrar','Upload','Visualizar']"></migalha>
+
+	<hr />
 
 	<div class="col-md-12">
+
 		<form class="form-horizontal" role="form" data-ng-init="vm.aceitaTroca = {'codigo':'S','texto':'Sim'}">
 
-
-			<!-- <input type="text" placeholder="Locations loaded via $http" uib-typeahead="crct as crct.nome for crct in vm.listaCaracteristica | filter:{nome:$viewValue}" typeahead-loading="loadingLocations" typeahead-no-results="noResults" class="form-control">
-		    <input type="text" 																								uib-typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control">
-		    <input type="text" placeholder="Custom template" 			uib-typeahead="crct as crct.nome for crct in vm.listaCaracteristica | filter:{nome:$viewValue}" typeahead-template-url="customTemplate.html" class="form-control" typeahead-show-hint="true" typeahead-min-length="0">
-		    <input type="text" placeholder="Custom popup template" 		uib-typeahead="crct as crct.nome for crct in vm.listaCaracteristica | filter:{nome:$viewValue}" typeahead-popup-template-url="customPopupTemplate.html" class="form-control"> -->
-
-			<h-checkbutton label="Objetivo do Anúncio:" width="4" ng-model="vm.objetivo" valor-inicial="0" options="[{codigo:'O',texto:'Ofertar'},{codigo:'B',texto:'Buscar Produtos/Serviços'}]"></h-checkbutton>
+			<h-checkbutton label="Objetivo do Anúncio:" width="4" ng-model="vm.objetivo" valor-inicial="0" options="[{codigo:'O',texto:'Ofertar'},{codigo:'B',texto:'Adquirir'}]"></h-checkbutton>
 
 			<h-line label="Categoria:" width="10">
 				<h-select id="idCategoria" label="Categoria: " width="20" ng-model="vm.categoria" options="vm.listaCategoria" valor-inicial="0"></h-select>
@@ -24,24 +25,26 @@
 				<textarea class="form-control" row="3" id="idDescricao" data-ng-model="vm.descricao"></textarea>
 			</h-line>
 
-			<h-line id="idPreco" label="Preço:" width="2">
-				<!-- <h-text-field type="text" ng-model="vm.preco" prefix="R$"></h-text-field> -->
-				<input type="text" ng-model="vm.preco" ui-mask="999.999,99"  ui-mask-placeholder="0,00" ui-mask-placeholder-char="_"/>
+			<h-line id="idPreco" label="Preço:" width="3">
+				<div class="input-group">
+					<span class="input-group-addon">R$</span>
+					<input class="form-control" type="text" data-ng-model="vm.preco" maxlength="14" ui-number-mask="2" style="width:125px;" placeholder="0,00"/>
+				</div>
 			</h-line>
 
 			<h-line label="Características:" width="10">
 
-				<div>
-
-					<!-- exibe as caracteristicas informadas -->
-					<label class="btn btn-warning" data-ng-repeat="item in vm.caracteristicas" data-ng-click="vm.alterarCaracteristica(item)" style="margin:5px 5px 5px 0;">
+				<!-- exibe as caracteristicas informadas -->
+				<div data-ng-repeat="item in vm.caracteristicas" style="display:table-cell;">
+					<label class="btn btn-warning" data-ng-click="vm.alterarCaracteristica(item)" style="margin:2px 2px 2px 0;">
 						<a style="color:#5d5d5d;font-weight:bold;"> {{item.chave}}: </a>
 						<span>{{item.valor}}</span>
 					</label>
+				</div>
 
+				<div style="display:table-cell;" data-ng-hide="vm.addCaracteristica">
 					<!-- botão Add Categoria -->
-					<a class="btn btn-primary" style="font-weight:bold;font-size:20px;padding:0px 15px;" data-ng-click="vm.addCaracteristica=true" data-ng-hide="vm.addCaracteristica">+</a>
-
+					<a class="btn btn-primary" data-ng-click="vm.addCaracteristica=true" style="font-weight:bold;font-size:20px;padding:1px 15px;" >+</a>
 				</div>
 
 
@@ -125,6 +128,10 @@
 					</div>
 				</div>
 			</div>
+
+			<button class="btn btn-primary pull-right" data-ng-click="vm.avancar(1)">
+				Avancar	<i class="fa fa fa-arrow-right"></i>
+			</button>
 
 		</form>
 	</div>

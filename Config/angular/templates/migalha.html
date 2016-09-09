@@ -1,0 +1,15 @@
+<div style="background-color:#f1f1f1;padding:0px 0px 6px;">
+	<div class="migalha" data-ng-repeat="item in itens">
+		<span class="migalha-indicador" data-ng-class="{'migalha-ativa':migalhaAtiva($index,passo)}">{{$index+1}}</span>
+		<span class="migalha-titulo" data-ng-class="{'migalha-ativa':migalhaAtiva($index,passo)}">{{item}}</span>
+	</div>
+</div>
+
+
+<style>
+.migalha {display:inline-block;margin-top:5px;}
+.migalha-indicador {border-radius: 67px; font-size: 22px; display: inline-block; padding: 2px 12px; background-color:#b1b1b1; color: white;font-family:Comic Sans MS;}
+.migalha-indicador.migalha-ativa {background-color: #466a85; color: white;}
+.migalha-titulo {margin-left:5px;margin-right:45px;color:#b1b1b1;display:inline-block;font-family:Comic Sans MS; font-size:22px;}
+.migalha-titulo.migalha-ativa {color: #466a85;}
+</style>

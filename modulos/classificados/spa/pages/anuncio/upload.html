@@ -1,0 +1,35 @@
+<div class="container-fluid" style="background-color:white;border-radius:10px;padding-bottom:50px;" data-ng-init="vm.teste='AAA'">
+
+	<h2 class="tituloPagina">Inserir Anuncio</h2>
+	<hr />
+
+	<migalha passo="2" itens="['Cadastrar','Upload','Visualizar']"></migalha>
+
+	<hr />
+
+		<form class="form-horizontal" role="form" data-ng-init="vm.aceitaTroca = {'codigo':'S','texto':'Sim'}">
+
+			<div class="row">
+				<div data-ng-repeat="item in [0,1,2,3,4,5]" class="col-sm-2 ">
+					<div class="item-upload"> <i class="fa fa-plus"></i> </div>
+				</div>
+			</div>
+
+			<br> <br>
+			<button class="btn btn-primary pull-right" data-ng-click="vm.avancar(2)">
+				Avancar	<i class="fa fa fa-arrow-right"></i>
+			</button>
+
+		</form>
+</div>
+
+<style media="screen">
+	.item-upload{
+		border:dashed 2px silver;
+		color:silver;
+		font-size:15px;
+		cursor:pointer;
+		width:100% !important;
+		padding:70px;
+	}
+</style>
